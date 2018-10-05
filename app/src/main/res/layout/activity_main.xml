@@ -31,7 +31,8 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryWhite"
         android:minHeight="?attr/actionBarSize"
-        android:theme="@style/ThemeOverlay.AppCompat.Light">
+        android:theme="@style/ThemeOverlay.AppCompat.Light"
+        app:tabIndicatorColor="@color/colorPrimary">
 
     </android.support.design.widget.TabLayout>
 

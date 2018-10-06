@@ -20,6 +20,10 @@
             android:name=".RecipeDetail"
             android:label="@string/title_activity_recipe_detail"
             android:theme="@style/AppTheme" />
+        <activity
+            android:name=".DrawerNav"
+            android:label="@string/title_activity_drawer_nav"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

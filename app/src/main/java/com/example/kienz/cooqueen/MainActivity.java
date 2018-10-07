@@ -15,9 +15,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import rest.ApiInterface;
+
 public class MainActivity extends AppCompatActivity
         implements tab1.OnFragmentInteractionListener,tab2.OnFragmentInteractionListener,tab3.OnFragmentInteractionListener {
 
+
+    ApiInterface apiInterface;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +44,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+        // Inflate the menu; this adds model.hits to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }

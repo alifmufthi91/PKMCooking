@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -7,14 +8,7 @@
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="0dp"
-        android:fillViewport="true">
+        android:layout_height="match_parent">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -23,39 +17,54 @@
 
             <TextView
                 android:id="@+id/textView3"
-                android:layout_width="352dp"
-                android:layout_height="45dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginStart="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
                 android:text="Recomended for You"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
             <HorizontalScrollView
-                android:layout_width="352dp"
-                android:layout_height="125dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/textView3"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp">
+                android:scrollbarSize="0dp"
+                android:scrollbars="none">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical" />
-            </HorizontalScrollView>
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp">
 
+                    <ImageButton
+                        android:layout_width="50pt"
+                        android:layout_height="50pt"
+                        android:layout_marginRight="8dp" />
+
+                    <ImageButton
+                        android:layout_width="50pt"
+                        android:layout_height="50pt"
+                        android:layout_marginRight="8dp" />
+
+                    <ImageButton
+                        android:layout_width="50pt"
+                        android:layout_height="50pt"
+                        android:layout_marginRight="8dp" />
+
+                    <ImageButton
+                        android:layout_width="50pt"
+                        android:layout_height="50pt"
+                        android:layout_marginRight="8dp" />
+
+
+                </LinearLayout>
+            </HorizontalScrollView>
         </RelativeLayout>
+
     </android.support.v4.widget.NestedScrollView>
 
 </RelativeLayout>

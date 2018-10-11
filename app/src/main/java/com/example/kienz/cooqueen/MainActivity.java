@@ -16,10 +16,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
+import java.util.ArrayList;
 import java.util.List;
 
+import model.Params;
+import model.Recipe;
 import model.Test_Hero;
+import model.example;
 import rest.ApiInterface;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -58,27 +61,48 @@ public class MainActivity extends AppCompatActivity
 //        TESTING PRADIKA===========================================================================================================================================
     public void retrofittest() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(ApiInterface.BASE_URL)
+                .baseUrl(apiInterface.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         ApiInterface api = retrofit.create(ApiInterface.class);
-        Call<List<Test_Hero>> call = api.getheroes();
-        call.enqueue(new Callback<List<Test_Hero>>() {
+        Call<example> call = api.doGetRecipeList("lontong");
+        call.enqueue(new Callback<example>() {
             @Override
-            public void onResponse(Call<List<Test_Hero>> call, Response<List<Test_Hero>> response) {
-                List<Test_Hero> heroes = response.body();
-                for (Test_Hero h : heroes) {
-                    Log.d("realname", h.getRealname());
-                    Log.d("imageurl", h.getImageurl());
-                    Log.d("createdby", h.getCreatedby());
+            public void onResponse(Call<example> call, Response<example> response) {
 
-                }
+                example heroes = response.body();
+                Log.d("statuspaket","yes");
+
             }
+
             @Override
-            public void onFailure(Call<List<Test_Hero>> call, Throwable t) {
+            public void onFailure(Call<example> call, Throwable t) {
+                Log.d("statuspaket","no");
                 Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG);
             }
+
+
         });
+//        final FindRecipes foodService = new FindRecipes();
+//        FindRecipes.findRecipes("flour", "chicken", new Callback() {
+//
+//            @Override
+//            public void onFailure(Call call, IOException e) {
+//                e.printStackTrace();
+//            }
+//
+//            @Override
+//            public void onResponse(Call call, Response response) {
+//                ArrayList<Resep> mRecipes = new ArrayList<>();
+//                mRecipes = foodService.processResults(response);
+//                for (Resep h : mRecipes) {
+//                    Log.d("nama",h.getName());
+//                    Log.d("urlgambar",h.getImageUrl());
+//                    Log.d("sumber",h.getSourceUrl());
+//                }
+//            }
+//
+//        });
     }
 //        TESTING PRADIKA===========================================================================================================================================
 

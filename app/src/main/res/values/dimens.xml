@@ -1,5 +1,8 @@
 <resources>
     <dimen name="app_bar_height">280dp</dimen>
+    <dimen name="home_card">130dp</dimen>
+    <dimen name="home_card_images">100dp</dimen>
+    <dimen name="home_card_text">110dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="text_margin">16dp</dimen>
     <!-- Default screen margins, per the Android Design guidelines. -->

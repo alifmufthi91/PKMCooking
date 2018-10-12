@@ -23,10 +23,10 @@ public class example {
     public Params params;
     @SerializedName("more")
     @Expose
-    public Boolean more;
+    public String more;
     @SerializedName("count")
     @Expose
-    public Integer count;
+    public String count;
     @SerializedName("hits")
     @Expose
     public List<Hit> hits = null;
@@ -63,19 +63,19 @@ public class example {
         this.params = params;
     }
 
-    public Boolean getMore() {
+    public String getMore() {
         return more;
     }
 
-    public void setMore(Boolean more) {
+    public void setMore(String more) {
         this.more = more;
     }
 
-    public Integer getCount() {
+    public String getCount() {
         return count;
     }
 
-    public void setCount(Integer count) {
+    public void setCount(String count) {
         this.count = count;
     }
 

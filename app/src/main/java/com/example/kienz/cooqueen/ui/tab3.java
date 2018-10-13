@@ -1,4 +1,4 @@
-package com.example.kienz.cooqueen;
+package com.example.kienz.cooqueen.ui;
 
 import android.content.Context;
 import android.net.Uri;
@@ -8,16 +8,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.kienz.cooqueen.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link tab1.OnFragmentInteractionListener} interface
+ * {@link tab3.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link tab1#newInstance} factory method to
+ * Use the {@link tab3#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class tab1 extends Fragment {
+public class tab3 extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -29,9 +31,7 @@ public class tab1 extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-
-
-    public tab1() {
+    public tab3() {
         // Required empty public constructor
     }
 
@@ -41,11 +41,11 @@ public class tab1 extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment tab1.
+     * @return A new instance of fragment tab3.
      */
     // TODO: Rename and change types and number of parameters
-    public static tab1 newInstance(String param1, String param2) {
-        tab1 fragment = new tab1();
+    public static tab3 newInstance(String param1, String param2) {
+        tab3 fragment = new tab3();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -66,7 +66,7 @@ public class tab1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tab1, container, false);
+        return inflater.inflate(R.layout.fragment_tab3, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -107,5 +107,4 @@ public class tab1 extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
-
 }

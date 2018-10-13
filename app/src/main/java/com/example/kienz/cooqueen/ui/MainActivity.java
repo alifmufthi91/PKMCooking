@@ -1,34 +1,36 @@
-package com.example.kienz.cooqueen;
+package com.example.kienz.cooqueen.ui;
 
 
-
-
+import android.net.Uri;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.net.Uri;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-
-import model.Recipe;
-import services.FoodService;
+import com.example.kienz.cooqueen.R;
+import com.example.kienz.cooqueen.adapter.MyPagerAdapter;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
+import butterknife.ButterKnife;
+import model.Recipe;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
+import services.FoodService;
 
 public class MainActivity extends AppCompatActivity
         implements tab1.OnFragmentInteractionListener,tab2.OnFragmentInteractionListener,tab3.OnFragmentInteractionListener {
 
     //      =========ALIF
     public ArrayList<Recipe> mRecipes = new ArrayList<>();
+//    @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
+
 
     //      =============
 
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
@@ -47,11 +50,11 @@ public class MainActivity extends AppCompatActivity
         tabLayout.setupWithViewPager(viewPager);
 
 
+
 //        ================================
 //        retrofittest();
           getRecipes("flour","chicken");
 //        ================================
-
 
     }
 

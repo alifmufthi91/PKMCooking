@@ -3,7 +3,6 @@ package com.example.kienz.cooqueen;
 
 
 
-import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -13,28 +12,27 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
-import java.util.ArrayList;
-import java.util.List;
 
-import model.Params;
+
 import model.Recipe;
-import model.Test_Hero;
-import model.example;
-import rest.ApiInterface;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import services.FoodService;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity
         implements tab1.OnFragmentInteractionListener,tab2.OnFragmentInteractionListener,tab3.OnFragmentInteractionListener {
 
+    //      =========ALIF
+    public ArrayList<Recipe> mRecipes = new ArrayList<>();
 
-    ApiInterface apiInterface;
+    //      =============
+
+
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,39 +48,81 @@ public class MainActivity extends AppCompatActivity
 
 
 //        ================================
-        retrofittest();
+//        retrofittest();
+          getRecipes("flour","chicken");
 //        ================================
-
 
 
     }
 
+//       TESTING ALIF
+
+
+    private void getRecipes(String ingredient1, String ingredient2) {
+        final FoodService foodService = new FoodService();
+
+        foodService.findRecipes(ingredient1, ingredient2, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.d("statmsg","no");
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) {
+                Log.d("statmsg","yes");
+                mRecipes = foodService.processResults(response);
+                for (Recipe h : mRecipes) {
+                    Log.d("nama",h.getName());
+                    Log.d("urlgambar",h.getImageUrl());
+                    Log.d("sumber",h.getSourceUrl());
+                }
+
+
+
+            }
+        });
+    }
+
+
+
+
+
+
+
+
 
 //        TESTING PRADIKA===========================================================================================================================================
-    public void retrofittest() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(apiInterface.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        ApiInterface api = retrofit.create(ApiInterface.class);
-        Call<example> call = api.doGetRecipeList("lontong");
-        call.enqueue(new Callback<example>() {
-            @Override
-            public void onResponse(Call<example> call, Response<example> response) {
-
-                example heroes = response.body();
-                Log.d("statuspaket","yes");
-
-            }
-
-            @Override
-            public void onFailure(Call<example> call, Throwable t) {
-                Log.d("statuspaket","no");
-                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG);
-            }
-
-
-        });
+//    public void retrofittest() {
+//        Retrofit retrofit = new Retrofit.Builder()
+//                .baseUrl(apiInterface.BASE_URL)
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .build();
+//        ApiInterface api = retrofit.create(ApiInterface.class);
+//        Call<List<Test_Hero>> call = api.getheroes();
+//        call.enqueue(new Callback<List<Test_Hero>>() {
+//            @Override
+//            public void onResponse(Call<List<Test_Hero>> call, Response<List<Test_Hero>> response) {
+//
+////                ResponseEdamamRecipe recipes = response.body();
+////                Log.d("statuspaket","yes");
+//                if (response.isSuccessful()) {
+//                    Log.d("statuspaket","yes");
+//                    // todo display the data instead of just a toast
+//                }
+//                else {
+//                    Log.d("statuspaket","fail");
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<Test_Hero>> call, Throwable t) {
+//                Log.d("statuspaket","no");
+//                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG);
+//            }
+//
+//
+//        });
 //        final FindRecipes foodService = new FindRecipes();
 //        FindRecipes.findRecipes("flour", "chicken", new Callback() {
 //
@@ -103,7 +143,7 @@ public class MainActivity extends AppCompatActivity
 //            }
 //
 //        });
-    }
+//    }
 //        TESTING PRADIKA===========================================================================================================================================
 
 

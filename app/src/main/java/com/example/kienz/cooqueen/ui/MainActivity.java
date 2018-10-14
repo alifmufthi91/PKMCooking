@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
 import com.example.kienz.cooqueen.R;
 import com.example.kienz.cooqueen.adapter.MyPagerAdapter;
@@ -50,16 +51,30 @@ public class MainActivity extends AppCompatActivity
         tabLayout.setupWithViewPager(viewPager);
 
 
-
 //        ================================
 //        retrofittest();
-          getRecipes("flour","chicken");
+        getRecipes("flour", "chicken");
 //        ================================
 
-    }
-
+        ImageView imageView = (ImageView) findViewById(R.id.iv);
+//        Picasso.get()
+//                .load("https://www.gettyimages.ca/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg")
+//                .into(imageView, new com.squareup.picasso.Callback() {
+//                    @Override
+//                    public void onSuccess() {
+//                        Log.d("PicassoStatus","success");
+//                    }
+//
+//                    @Override
+//                    public void onError(Exception e) {
+//                        Log.d("PicassoStatus","Failed");
+//                        e.getMessage();
+//
+//                    }
+//                });
 //       TESTING ALIF
 
+    }
 
     private void getRecipes(String ingredient1, String ingredient2) {
         final FoodService foodService = new FoodService();

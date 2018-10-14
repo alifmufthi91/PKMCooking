@@ -6,12 +6,17 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ImageView;
 
+import com.makeramen.roundedimageview.RoundedImageView;
+
 import java.io.InputStream;
 
 public class ImageFromUrl extends AsyncTask<String, Void, Bitmap> {
     ImageView bmImage;
 
     public ImageFromUrl(ImageView bmImage) {
+        this.bmImage = bmImage;
+    }
+    public ImageFromUrl(RoundedImageView bmImage) {
         this.bmImage = bmImage;
     }
 

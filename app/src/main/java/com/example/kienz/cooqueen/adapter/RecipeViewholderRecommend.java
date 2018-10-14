@@ -39,7 +39,7 @@ public class RecipeViewholderRecommend extends RecyclerView.ViewHolder {
     }
 
     public void bindRecipe(Recipe recipe) {
-        Picasso.with(mContext).load(recipe.getImageUrl()).into(mRecipeImageView);
+        Picasso.get().load(recipe.getImageUrl()).into(mRecipeImageView);
         mRecipeNameTextView.setText(recipe.getName());
     }
 }

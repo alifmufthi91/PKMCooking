@@ -80,9 +80,6 @@ public class MainActivity extends AppCompatActivity
                     Log.d("urlgambar",h.getImageUrl());
                     Log.d("sumber",h.getSourceUrl());
                 }
-
-
-
             }
         });
     }

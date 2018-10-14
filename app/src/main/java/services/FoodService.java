@@ -29,13 +29,14 @@ public class FoodService {
     public static void findRecipes(String ingredient1, String ingredient2, Callback callback) {
         String APP_KEY = Constants.APP_KEY;
         String APP_ID = Constants.APP_ID;
-        OkHttpClient client = new OkHttpClient.Builder()
-                .build();
+        OkHttpClient client = new OkHttpClient.Builder().build();
         String ingredients = (ingredient1 + "," + ingredient2).replaceAll("\\s","");
+
         HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.BASE_URL).newBuilder();
         urlBuilder.addQueryParameter(Constants.QUERY_PARAMETER, ingredients);
         urlBuilder.addQueryParameter(Constants.APP_QUERY_PARAMETER, APP_ID);
         urlBuilder.addQueryParameter(Constants.KEY_QUERY_PARAMETER, APP_KEY);
+
         String url = urlBuilder.build().toString();
         Log.v(TAG, url);
 

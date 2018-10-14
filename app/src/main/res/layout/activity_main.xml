@@ -15,7 +15,8 @@
         android:background="@color/colorPrimaryWhite"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Light"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:translationZ="4dp">
 
     </android.support.v7.widget.Toolbar>
 
@@ -26,7 +27,8 @@
         android:background="@color/colorPrimaryWhite"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Light"
-        app:tabIndicatorColor="@color/colorPrimary">
+        app:tabIndicatorColor="@color/colorPrimary"
+        android:translationZ="4dp">
 
     </android.support.design.widget.TabLayout>
 

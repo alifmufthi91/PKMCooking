@@ -6,4 +6,10 @@
     <color name="colorPrimaryDark">#2f97bc</color>
     <color name="colorAccent">#bc2f62</color>
     <color name="component">#4da9f9</color>
+
+    <color name="colorAccent2">#FF4081</color>
+    <color name="colorControlHighlight">@color/fifty_percent_transparency_grey_400</color>
+    <color name="fifty_percent_transparency_grey_400">#80bdbdbd</color>
+    <color name="grey_500">#9e9e9e</color>
+    <color name="grey_700">#616161</color>
 </resources>

@@ -64,8 +64,6 @@ public class tab2 extends Fragment  {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-
     }
 
     @Override
@@ -73,19 +71,6 @@ public class tab2 extends Fragment  {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_tab2, container, false);
-    }
-
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        Button btn1 = (Button) view.findViewById(R.id.changeac);
-
-        btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), RecipeDetail.class);
-                startActivity(intent);
-
-            }
-        });
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -125,5 +110,18 @@ public class tab2 extends Fragment  {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        Button btn1 = (Button) view.findViewById(R.id.changeac);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), RecipeDetail.class);
+                startActivity(intent);
+
+            }
+        });
     }
 }

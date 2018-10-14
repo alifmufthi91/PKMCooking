@@ -27,6 +27,7 @@ import util.ImageFromUrl;
  * create an instance of this fragment.
  */
 public class tab3 extends Fragment {
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -84,12 +85,6 @@ public class tab3 extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        ImageView iv = (ImageView) view.findViewById(R.id.iv);
-        Picasso.get().load("https://www.gettyimages.ca/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg").into(iv);
-    }
-
-    @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener) {
@@ -119,5 +114,10 @@ public class tab3 extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        ImageView iv = (ImageView) view.findViewById(R.id.iv);
+        Picasso.get().load("https://www.gettyimages.ca/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg").into(iv);
     }
 }

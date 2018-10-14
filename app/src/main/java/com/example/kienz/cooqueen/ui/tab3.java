@@ -1,14 +1,21 @@
 package com.example.kienz.cooqueen.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 
 import com.example.kienz.cooqueen.R;
+import com.squareup.picasso.Picasso;
+
+import util.ImageFromUrl;
 
 
 /**
@@ -74,6 +81,12 @@ public class tab3 extends Fragment {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        ImageView iv = (ImageView) view.findViewById(R.id.iv);
+        Picasso.get().load("https://www.gettyimages.ca/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg").into(iv);
     }
 
     @Override

@@ -24,7 +24,7 @@ import services.FoodService;
 public class MainActivity extends AppCompatActivity implements tab1.OnFragmentInteractionListener,tab2.OnFragmentInteractionListener,tab3.OnFragmentInteractionListener {
 
     //      =========ALIF
-    public ArrayList<Recipe> mRecipes = new ArrayList<>();
+//    public ArrayList<Recipe> mRecipes = new ArrayList<>();
 //    @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
     //      =============
 
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements tab1.OnFragmentIn
 
 
 //        ================================
-        getRecipes("flour", "chicken");
+//        getRecipes("flour", "chicken");
 //        ================================
 
 
@@ -54,27 +54,27 @@ public class MainActivity extends AppCompatActivity implements tab1.OnFragmentIn
         tabLayout.setupWithViewPager(viewPager);
     }
 
-    private void getRecipes(String ingredient1, String ingredient2) {
-        final FoodService foodService = new FoodService();
-        foodService.findRecipes(ingredient1, ingredient2, new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                Log.d("statmsg","no");
-                e.printStackTrace();
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) {
-                Log.d("statmsg","yes");
-                mRecipes = foodService.processResults(response);
-                for (Recipe h : mRecipes) {
-                    Log.d("nama",h.getName());
-                    Log.d("urlgambar",h.getImageUrl());
-                    Log.d("sumber",h.getSourceUrl());
-                }
-            }
-        });
-    }
+//    private void getRecipes(String ingredient1, String ingredient2) {
+//        final FoodService foodService = new FoodService();
+//        foodService.findRecipes(ingredient1, ingredient2, new Callback() {
+//            @Override
+//            public void onFailure(Call call, IOException e) {
+//                Log.d("statmsg","no");
+//                e.printStackTrace();
+//            }
+//
+//            @Override
+//            public void onResponse(Call call, Response response) {
+//                Log.d("statmsg","yes");
+//                mRecipes = foodService.processResults(response);
+//                for (Recipe h : mRecipes) {
+//                    Log.d("nama",h.getName());
+//                    Log.d("urlgambar",h.getImageUrl());
+//                    Log.d("sumber",h.getSourceUrl());
+//                }
+//            }
+//        });
+//    }
 
     @Override
     public void onFragmentInteraction(Uri uri){

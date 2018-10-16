@@ -6,12 +6,27 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.kienz.cooqueen.R;
+import com.example.kienz.cooqueen.adapter.RecipeListAdapter;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import model.Recipe;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
+import services.FoodService;
 
 
 /**
@@ -32,6 +47,10 @@ public class tab1 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private RecipeListAdapter adapter;
+    private ArrayList<Recipe> mRecipes = new ArrayList<>();
+    @BindView (R.id.recyclerView)
+    RecyclerView recy;
 
     private OnFragmentInteractionListener mListener;
 
@@ -69,8 +88,39 @@ public class tab1 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        View v = inflater.inflate(R.layout.fragment_tab1, container, false);
+        ButterKnife.bind(this,v);
+        mRecipes.addAll(getRecipes("ayam","flour"));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        recy.setLayoutManager(layoutManager);
+        for (Recipe h : mRecipes) {
+            Log.d("namonn",h.getName());
+        }
+        adapter = new RecipeListAdapter(getActivity(),mRecipes);
+        recy.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tab1, container, false);
+        return v;
+    }
+
+    private ArrayList<Recipe> getRecipes(String ingredient1, String ingredient2) {
+        final FoodService foodService = new FoodService();
+        final ArrayList<Recipe> Rec = new ArrayList<>();
+        foodService.findRecipes(ingredient1, ingredient2, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.d("statmsg","no");
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) {
+                Log.d("statmsg","yes");
+                Rec.addAll(foodService.processResults(response));
+            }
+        });
+        return Rec;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

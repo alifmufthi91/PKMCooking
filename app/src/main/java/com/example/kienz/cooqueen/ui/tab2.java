@@ -1,23 +1,29 @@
-package com.example.kienz.cooqueen;
+package com.example.kienz.cooqueen.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import com.example.kienz.cooqueen.R;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link tab3.OnFragmentInteractionListener} interface
+ * {@link tab2.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link tab3#newInstance} factory method to
+ * Use the {@link tab2#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class tab3 extends Fragment {
+public class tab2 extends Fragment  {
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -29,7 +35,7 @@ public class tab3 extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public tab3() {
+    public tab2() {
         // Required empty public constructor
     }
 
@@ -39,11 +45,11 @@ public class tab3 extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment tab3.
+     * @return A new instance of fragment tab2.
      */
     // TODO: Rename and change types and number of parameters
-    public static tab3 newInstance(String param1, String param2) {
-        tab3 fragment = new tab3();
+    public static tab2 newInstance(String param1, String param2) {
+        tab2 fragment = new tab2();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -64,7 +70,7 @@ public class tab3 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tab3, container, false);
+        return inflater.inflate(R.layout.fragment_tab2, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -104,5 +110,18 @@ public class tab3 extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        Button btn1 = (Button) view.findViewById(R.id.changeac);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), RecipeDetail.class);
+                startActivity(intent);
+
+            }
+        });
     }
 }

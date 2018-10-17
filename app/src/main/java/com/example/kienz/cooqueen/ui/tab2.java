@@ -6,12 +6,17 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.kienz.cooqueen.R;
+import com.example.kienz.cooqueen.SearchRecipe;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 /**
@@ -32,6 +37,8 @@ public class tab2 extends Fragment  {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    @BindView(R.id.search_tab2)
+    SearchView searchView;
 
     private OnFragmentInteractionListener mListener;
 
@@ -69,8 +76,10 @@ public class tab2 extends Fragment  {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_tab2, container, false);
+        ButterKnife.bind(this,v);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tab2, container, false);
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -121,6 +130,27 @@ public class tab2 extends Fragment  {
                 Intent intent = new Intent(getActivity(), RecipeDetail.class);
                 startActivity(intent);
 
+            }
+        });
+
+        searchView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchView.setIconified(false);
+            }
+        });
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                Intent searchIntent = new Intent(getContext(),SearchRecipe.class);
+                searchIntent.putExtra("resep",s);
+                startActivity(searchIntent);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
             }
         });
     }

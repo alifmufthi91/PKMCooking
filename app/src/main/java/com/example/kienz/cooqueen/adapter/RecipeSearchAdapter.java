@@ -24,7 +24,7 @@ public class RecipeSearchAdapter  extends RecyclerView.Adapter<RecipeSearchViewh
 
     @Override
     public RecipeSearchViewholder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.searchrecipeview, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_searchrecipe, parent, false);
         RecipeSearchViewholder viewHolder = new RecipeSearchViewholder(view, mRecipes);
         return viewHolder;
     }

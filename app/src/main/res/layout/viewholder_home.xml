@@ -20,6 +20,7 @@
 
             <ImageView
                 android:id="@+id/recipe_img"
+                android:background="@drawable/shape_bg_white_rounded_rect"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@mipmap/img_panck"

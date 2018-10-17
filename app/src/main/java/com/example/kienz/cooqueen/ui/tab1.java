@@ -1,7 +1,6 @@
 package com.example.kienz.cooqueen.ui;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,21 +11,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.example.kienz.cooqueen.R;
 import com.example.kienz.cooqueen.adapter.RecipeListAdapter;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import model.Recipe;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
-import services.FoodService;
 
 
 /**
@@ -48,9 +41,8 @@ public class tab1 extends Fragment {
     private String mParam1;
     private String mParam2;
     private RecipeListAdapter adapter;
-    private ArrayList<Recipe> mRecipes = new ArrayList<>();
-    @BindView (R.id.recyclerView)
-    RecyclerView recy;
+    public ArrayList<Recipe> mRecipes = new ArrayList<>();
+    @BindView (R.id.recyclerView) RecyclerView recy;
 
     private OnFragmentInteractionListener mListener;
 
@@ -86,42 +78,55 @@ public class tab1 extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
-        View v = inflater.inflate(R.layout.fragment_tab1, container, false);
-        ButterKnife.bind(this,v);
-        mRecipes.addAll(getRecipes("ayam","flour"));
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         recy.setLayoutManager(layoutManager);
+        Recipe A=new Recipe("Aloha","https://s3-ap-southeast-1.amazonaws.com/plukme/upload/media/posts/2018-03/02/terperangkap-antara-gelap-dan-sunyi-1519931610_1519931610-b.jpg","google.com","");
+        mRecipes.add(A);
+        mRecipes.add(A);
+        mRecipes.add(A);
+        mRecipes.add(A);
+        mRecipes.add(A);
+        mRecipes.add(A);
+
         for (Recipe h : mRecipes) {
             Log.d("namonn",h.getName());
         }
         adapter = new RecipeListAdapter(getActivity(),mRecipes);
         recy.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        View v = inflater.inflate(R.layout.fragment_tab1, container, false);
+        ButterKnife.bind(this,v);
         // Inflate the layout for this fragment
         return v;
     }
 
-    private ArrayList<Recipe> getRecipes(String ingredient1, String ingredient2) {
-        final FoodService foodService = new FoodService();
-        final ArrayList<Recipe> Rec = new ArrayList<>();
-        foodService.findRecipes(ingredient1, ingredient2, new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                Log.d("statmsg","no");
-                e.printStackTrace();
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) {
-                Log.d("statmsg","yes");
-                Rec.addAll(foodService.processResults(response));
-            }
-        });
-        return Rec;
-    }
+//    private void getRecipes(String ingredient1, String ingredient2) {
+//        final FoodService foodService = new FoodService();
+//        foodService.findRecipes(ingredient1, ingredient2, new Callback() {
+//            @Override
+//            public void onFailure(Call call, IOException e) {
+//                Log.d("statmsg","no");
+//                e.printStackTrace();
+//            }
+//
+//            @Override
+//            public void onResponse(Call call, Response response) {
+//                Log.d("statmsg","yes");
+//                mRecipes = foodService.processResults(response);
+//                for (Recipe h : mRecipes) {
+//                    Log.d("namonn",h.getName());
+//                }
+//            }
+//        });
+//    }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

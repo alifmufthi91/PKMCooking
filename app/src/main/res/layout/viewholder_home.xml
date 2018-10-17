@@ -32,7 +32,8 @@
                 android:layout_alignParentBottom="true"
                 android:gravity="center"
                 android:text="motherfucker"
-                android:textColor="@color/colorPrimaryWhite"/>
+                android:textColor="@color/colorPrimaryWhite"
+                android:fontFamily="@font/poppinsmedium"/>
         </RelativeLayout>
 
     </android.support.design.card.MaterialCardView>

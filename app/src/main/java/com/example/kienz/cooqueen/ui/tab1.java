@@ -40,6 +40,7 @@ public class tab1 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
     private RecipeListAdapter adapter;
     public ArrayList<Recipe> mRecipes = new ArrayList<>();
     @BindView (R.id.recyclerView) RecyclerView recy;

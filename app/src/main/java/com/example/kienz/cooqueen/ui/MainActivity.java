@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements tab1.OnFragmentIn
         super.onCreate(savedInstanceState);
         init();
 
-
 //        ================================
 //        getRecipes("flour", "chicken");
 //        ================================

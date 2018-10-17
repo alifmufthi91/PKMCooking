@@ -12,4 +12,5 @@
     <color name="fifty_percent_transparency_grey_400">#80bdbdbd</color>
     <color name="grey_500">#9e9e9e</color>
     <color name="grey_700">#616161</color>
+    <color name="grey_200">#EEEEEE</color>
 </resources>

@@ -10,7 +10,6 @@ import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.example.kienz.cooqueen.R;
 import com.example.kienz.cooqueen.SearchRecipe;
@@ -122,16 +121,6 @@ public class tab2 extends Fragment  {
     }
 
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        Button btn1 = (Button) view.findViewById(R.id.changeac);
-
-        btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), RecipeDetail.class);
-                startActivity(intent);
-
-            }
-        });
 
         searchView.setOnClickListener(new View.OnClickListener() {
             @Override

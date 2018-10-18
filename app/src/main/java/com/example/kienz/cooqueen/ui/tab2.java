@@ -6,15 +6,30 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.kienz.cooqueen.R;
+import com.example.kienz.cooqueen.adapter.RecipeFragSearchAdapter;
+import com.example.kienz.cooqueen.adapter.RecipeFragSearchViewholder;
+import com.example.kienz.cooqueen.adapter.RecipeRecommendAdapter;
+import com.example.kienz.cooqueen.adapter.RecipeSearchAdapter;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import model.Recipe;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
+import services.FoodService;
 
 
 /**
@@ -37,6 +52,10 @@ public class tab2 extends Fragment  {
     private String mParam2;
     @BindView(R.id.search_tab2)
     SearchView searchView;
+    @BindView(R.id.recyclerView_fragsearch)
+    RecyclerView recycler_fragsearch;
+    private RecipeFragSearchAdapter mAdapter;
+    public ArrayList<Recipe> mRecipes = new ArrayList<>();
 
     private OnFragmentInteractionListener mListener;
 
@@ -69,6 +88,7 @@ public class tab2 extends Fragment  {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
@@ -97,6 +117,8 @@ public class tab2 extends Fragment  {
                     + " must implement OnFragmentInteractionListener");
         }
     }
+
+
 
     @Override
     public void onDetach() {
@@ -139,6 +161,52 @@ public class tab2 extends Fragment  {
             @Override
             public boolean onQueryTextChange(String s) {
                 return false;
+            }
+        });
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        recycler_fragsearch.setLayoutManager(layoutManager);
+        Recipe A=new Recipe("Aloha","https://s3-ap-southeast-1.amazonaws.com/plukme/upload/media/posts/2018-03/02/terperangkap-antara-gelap-dan-sunyi-1519931610_1519931610-b.jpg","google.com","");
+        mRecipes.add(A);
+        mRecipes.add(A);
+        mRecipes.add(A);
+        mRecipes.add(A);
+        mRecipes.add(A);
+        mRecipes.add(A);
+
+        for (Recipe h : mRecipes) {
+            Log.d("namonn",h.getName());
+        }
+        mAdapter = new RecipeFragSearchAdapter(getActivity(),mRecipes);
+        recycler_fragsearch.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
+
+    }
+
+    private void getRecipes(String ingredient1, String ingredient2) {
+        final FoodService foodService = new FoodService();
+
+        foodService.findRecipes(ingredient1, ingredient2, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) {
+                mRecipes = foodService.processResults(response);
+
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mAdapter = new RecipeFragSearchAdapter(getContext(), mRecipes);
+                        recycler_fragsearch.setAdapter(mAdapter);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+                        recycler_fragsearch.setLayoutManager(layoutManager);
+                        recycler_fragsearch.setHasFixedSize(true);
+                    }
+                });
+
             }
         });
     }

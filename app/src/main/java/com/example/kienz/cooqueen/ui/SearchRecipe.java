@@ -1,10 +1,11 @@
-package com.example.kienz.cooqueen;
+package com.example.kienz.cooqueen.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.example.kienz.cooqueen.R;
 import com.example.kienz.cooqueen.adapter.RecipeSearchAdapter;
 
 import java.io.IOException;

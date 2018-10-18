@@ -22,7 +22,7 @@
             android:name=".ui.RecipeDetail"
             android:label="@string/title_activity_recipe_detail"
             android:theme="@style/AppTheme" />
-        <activity android:name=".SearchRecipe"></activity>
+        <activity android:name=".ui.SearchRecipe"></activity>
     </application>
 
 </manifest>

@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.kienz.cooqueen.R;
-import com.example.kienz.cooqueen.SearchRecipe;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

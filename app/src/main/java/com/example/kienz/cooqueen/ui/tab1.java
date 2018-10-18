@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.kienz.cooqueen.R;
-import com.example.kienz.cooqueen.adapter.RecipeListAdapter;
+import com.example.kienz.cooqueen.adapter.RecipeRecommendAdapter;
 
 import java.util.ArrayList;
 
@@ -41,7 +41,7 @@ public class tab1 extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private RecipeListAdapter adapter;
+    private RecipeRecommendAdapter adapter;
     public ArrayList<Recipe> mRecipes = new ArrayList<>();
     @BindView (R.id.recyclerView) RecyclerView recy;
 
@@ -94,7 +94,7 @@ public class tab1 extends Fragment {
         for (Recipe h : mRecipes) {
             Log.d("namonn",h.getName());
         }
-        adapter = new RecipeListAdapter(getActivity(),mRecipes);
+        adapter = new RecipeRecommendAdapter(getActivity(),mRecipes);
         recy.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }

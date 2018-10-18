@@ -3,25 +3,23 @@ package com.example.kienz.cooqueen.ui;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+
 import com.example.kienz.cooqueen.R;
 import com.example.kienz.cooqueen.adapter.MyPagerAdapter;
-import java.io.IOException;
-import java.util.ArrayList;
-import butterknife.ButterKnife;
-import model.Recipe;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
-import services.FoodService;
 
-public class MainActivity extends AppCompatActivity implements tab1.OnFragmentInteractionListener,tab2.OnFragmentInteractionListener,tab3.OnFragmentInteractionListener {
+import butterknife.ButterKnife;
+
+public class MainActivity extends AppCompatActivity implements tab1.OnFragmentInteractionListener,tab2.OnFragmentInteractionListener,tab3.OnFragmentInteractionListener, NavigationView.OnNavigationItemSelectedListener {
 
     //      =========ALIF
 //    public ArrayList<Recipe> mRecipes = new ArrayList<>();
@@ -32,16 +30,6 @@ public class MainActivity extends AppCompatActivity implements tab1.OnFragmentIn
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        init();
-
-//        ================================
-//        getRecipes("flour", "chicken");
-//        ================================
-
-
-    }
-
-    private void init(){
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -51,7 +39,31 @@ public class MainActivity extends AppCompatActivity implements tab1.OnFragmentIn
         viewPager.setAdapter(myPagerAdapter);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayout);
         tabLayout.setupWithViewPager(viewPager);
+
+//        ================================
+//        getRecipes("flour", "chicken");
+//        ================================
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
     }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
 
 //    private void getRecipes(String ingredient1, String ingredient2) {
 //        final FoodService foodService = new FoodService();
@@ -96,6 +108,31 @@ public class MainActivity extends AppCompatActivity implements tab1.OnFragmentIn
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.nav_camera) {
+            // Handle the camera action
+        } else if (id == R.id.nav_gallery) {
+
+        } else if (id == R.id.nav_slideshow) {
+
+        } else if (id == R.id.nav_manage) {
+
+        } else if (id == R.id.nav_share) {
+
+        } else if (id == R.id.nav_send) {
+
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 }
 

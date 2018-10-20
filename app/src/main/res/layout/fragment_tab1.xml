@@ -11,31 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView_fraghome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginTop="8dp">
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginLeft="16dp"
-                android:text="Recomended for You"
-                android:textSize="16dp"
-                android:fontFamily="@font/poppinsmedium"/>
-
-            <android.support.v7.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="130dp"
-                android:id="@+id/recyclerView"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:orientation="horizontal"
-                android:layout_marginTop="0dp"/>
-        </LinearLayout>
+        </android.support.v7.widget.RecyclerView>
 
 
 

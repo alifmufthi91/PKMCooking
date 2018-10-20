@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,20 +17,12 @@ import android.view.ViewGroup;
 
 import com.example.kienz.cooqueen.R;
 import com.example.kienz.cooqueen.adapter.RecipeFragSearchAdapter;
-import com.example.kienz.cooqueen.adapter.RecipeFragSearchViewholder;
-import com.example.kienz.cooqueen.adapter.RecipeRecommendAdapter;
-import com.example.kienz.cooqueen.adapter.RecipeSearchAdapter;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import model.Recipe;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
-import services.FoodService;
 
 
 /**
@@ -141,7 +134,11 @@ public class tab2 extends Fragment  {
         void onFragmentInteraction(Uri uri);
     }
 
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        super.onActivityCreated(savedInstanceState);
 
         searchView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -164,7 +161,9 @@ public class tab2 extends Fragment  {
             }
         });
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL
+                , false);
         recycler_fragsearch.setLayoutManager(layoutManager);
         Recipe A=new Recipe("Aloha","https://s3-ap-southeast-1.amazonaws.com/plukme/upload/media/posts/2018-03/02/terperangkap-antara-gelap-dan-sunyi-1519931610_1519931610-b.jpg","google.com","");
         mRecipes.add(A);
@@ -180,34 +179,5 @@ public class tab2 extends Fragment  {
         mAdapter = new RecipeFragSearchAdapter(getActivity(),mRecipes);
         recycler_fragsearch.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
-
-    }
-
-    private void getRecipes(String ingredient1, String ingredient2) {
-        final FoodService foodService = new FoodService();
-
-        foodService.findRecipes(ingredient1, ingredient2, new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) {
-                mRecipes = foodService.processResults(response);
-
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        mAdapter = new RecipeFragSearchAdapter(getContext(), mRecipes);
-                        recycler_fragsearch.setAdapter(mAdapter);
-                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-                        recycler_fragsearch.setLayoutManager(layoutManager);
-                        recycler_fragsearch.setHasFixedSize(true);
-                    }
-                });
-
-            }
-        });
     }
 }

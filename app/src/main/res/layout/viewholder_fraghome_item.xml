@@ -19,7 +19,7 @@
             android:background="@drawable/shape_bg_white_rounded_rect">
 
             <ImageView
-                android:id="@+id/recipe_img"
+                android:id="@+id/imageView_fraghome_items"
                 android:background="@drawable/shape_bg_white_rounded_rect"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -27,11 +27,12 @@
                 android:scaleType="centerCrop"/>
 
             <TextView
-                android:id="@+id/recipe_name"
+                android:id="@+id/textView_fraghome_items"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:layout_alignParentBottom="true"
-                android:gravity="center"
+                android:textAlignment="center"
                 android:text="motherfucker"
                 android:textColor="@color/colorPrimaryWhite"
                 android:fontFamily="@font/poppinsmedium"/>

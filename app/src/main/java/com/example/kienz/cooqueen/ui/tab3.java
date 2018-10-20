@@ -3,6 +3,7 @@ package com.example.kienz.cooqueen.ui;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -112,7 +113,9 @@ public class tab3 extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         ImageView iv = (ImageView) view.findViewById(R.id.iv);
         Picasso.get().load("https://www.gettyimages.ca/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg").into(iv);
     }

@@ -2,6 +2,7 @@ package com.example.kienz.cooqueen.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -17,13 +18,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import model.Recipe;
 
-public class RecipeRecommendViewholder extends RecyclerView.ViewHolder {
-    @BindView(R.id.recipe_img) ImageView mRecipeImageView;
-    @BindView(R.id.recipe_name) TextView mRecipeNameTextView;
+public class RecipeFragHomeItemsViewholder extends RecyclerView.ViewHolder {
+    @BindView(R.id.imageView_fraghome_items) ImageView mRecipeImageView;
+    @BindView(R.id.textView_fraghome_items) TextView mRecipeNameTextView;
     private Context mContext;
     private ArrayList<Recipe> mRecipes = new ArrayList<>();
 
-    public RecipeRecommendViewholder(View itemView, ArrayList<Recipe> recipes) {
+
+    public RecipeFragHomeItemsViewholder(View itemView, ArrayList<Recipe> recipes) {
         super(itemView);
         ButterKnife.bind(this, itemView);
         mContext = itemView.getContext();

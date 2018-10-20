@@ -12,25 +12,25 @@ import java.util.ArrayList;
 
 import model.Recipe;
 
-public class RecipeRecommendAdapter extends RecyclerView.Adapter<RecipeRecommendViewholder> {
+public class RecipeFragHomeItemsAdapter extends RecyclerView.Adapter<RecipeFragHomeItemsViewholder> {
     private ArrayList<Recipe> mRecipes = new ArrayList<>();
     private Context mContext;
 
 
-    public RecipeRecommendAdapter(Context context, ArrayList<Recipe> recipes) {
+    public RecipeFragHomeItemsAdapter(Context context, ArrayList<Recipe> recipes) {
         mContext = context;
         mRecipes = recipes;
     }
 
     @Override
-    public RecipeRecommendViewholder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_fraghome, parent, false);
-        RecipeRecommendViewholder viewHolder = new RecipeRecommendViewholder(view, mRecipes);
+    public RecipeFragHomeItemsViewholder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_fraghome_item, parent, false);
+        RecipeFragHomeItemsViewholder viewHolder = new RecipeFragHomeItemsViewholder(view, mRecipes);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(RecipeRecommendViewholder holder, int position) {
+    public void onBindViewHolder(RecipeFragHomeItemsViewholder holder, int position) {
         holder.bindRecipe(mRecipes.get(position));
     }
 

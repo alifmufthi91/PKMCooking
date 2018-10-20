@@ -3,6 +3,7 @@ package com.example.kienz.cooqueen.ui;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,13 +14,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.kienz.cooqueen.R;
-import com.example.kienz.cooqueen.adapter.RecipeRecommendAdapter;
+import com.example.kienz.cooqueen.adapter.RecipeFragHomeAdapter;
+import com.example.kienz.cooqueen.adapter.RecipeFragHomeItemsAdapter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import model.Recipe;
+import model.RecyclerHome;
 
 
 /**
@@ -41,9 +45,13 @@ public class tab1 extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private RecipeRecommendAdapter adapter;
+    private RecipeFragHomeItemsAdapter adapter;
     public ArrayList<Recipe> mRecipes = new ArrayList<>();
-    @BindView (R.id.recyclerView) RecyclerView recy;
+    @BindView (R.id.recyclerView_fraghome) RecyclerView recy;
+
+    RecyclerView recyclerView;
+    RecyclerView.Adapter Adapter;
+    List<RecyclerHome> items;
 
     private OnFragmentInteractionListener mListener;
 
@@ -76,27 +84,6 @@ public class tab1 extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-        recy.setLayoutManager(layoutManager);
-        Recipe A=new Recipe("Aloha","https://s3-ap-southeast-1.amazonaws.com/plukme/upload/media/posts/2018-03/02/terperangkap-antara-gelap-dan-sunyi-1519931610_1519931610-b.jpg","google.com","");
-        mRecipes.add(A);
-        mRecipes.add(A);
-        mRecipes.add(A);
-        mRecipes.add(A);
-        mRecipes.add(A);
-        mRecipes.add(A);
-
-        for (Recipe h : mRecipes) {
-            Log.d("namonn",h.getName());
-        }
-        adapter = new RecipeRecommendAdapter(getActivity(),mRecipes);
-        recy.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
     }
 
     @Override
@@ -168,8 +155,36 @@ public class tab1 extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+//        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+//        recy.setLayoutManager(layoutManager);
+//        Recipe A=new Recipe("Aloha","https://s3-ap-southeast-1.amazonaws.com/plukme/upload/media/posts/2018-03/02/terperangkap-antara-gelap-dan-sunyi-1519931610_1519931610-b.jpg","google.com","");
+//        mRecipes.add(A);
+//        mRecipes.add(A);
+//        mRecipes.add(A);
+//        mRecipes.add(A);
+//        mRecipes.add(A);
+//        mRecipes.add(A);
+//
+//        for (Recipe h : mRecipes) {
+//            Log.d("namonn",h.getName());
+//        }
+//
+//        adapter = new RecipeFragHomeItemsAdapter(getActivity(),mRecipes);
+//        recy.setAdapter(adapter);
+//        adapter.notifyDataSetChanged();
 
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView_fraghome);
+        recyclerView.hasFixedSize();
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+
+        items = new ArrayList<>();
+        for (int i=0;i<10;i++){
+            items.add(new RecyclerHome("hai"));
+        }
+        Adapter = new RecipeFragHomeAdapter(items,getActivity());
+//        recyclerView.setAdapter(Adapter);
     }
-
 }

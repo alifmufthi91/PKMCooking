@@ -18,12 +18,11 @@ import com.example.kienz.cooqueen.adapter.RecipeFragHomeAdapter;
 import com.example.kienz.cooqueen.adapter.RecipeFragHomeItemsAdapter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import model.Recipe;
-import model.RecyclerHome;
+import model.Recommender;
 
 
 /**
@@ -45,15 +44,6 @@ public class tab1 extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private RecipeFragHomeItemsAdapter adapter;
-    public ArrayList<Recipe> mRecipes = new ArrayList<>();
-    @BindView (R.id.recyclerView_fraghome) RecyclerView recy;
-
-    RecyclerView recyclerView;
-    RecyclerView.Adapter Adapter;
-    List<RecyclerHome> items;
-
-    private OnFragmentInteractionListener mListener;
 
     public tab1() {
         // Required empty public constructor
@@ -155,36 +145,34 @@ public class tab1 extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 
+
+    private RecipeFragHomeAdapter adapter;
+    public ArrayList<Recommender> mRecipes = new ArrayList<>();
+    @BindView (R.id.recyclerView_fraghome) RecyclerView recy;
+
+    private OnFragmentInteractionListener mListener;
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-//        recy.setLayoutManager(layoutManager);
-//        Recipe A=new Recipe("Aloha","https://s3-ap-southeast-1.amazonaws.com/plukme/upload/media/posts/2018-03/02/terperangkap-antara-gelap-dan-sunyi-1519931610_1519931610-b.jpg","google.com","");
-//        mRecipes.add(A);
-//        mRecipes.add(A);
-//        mRecipes.add(A);
-//        mRecipes.add(A);
-//        mRecipes.add(A);
-//        mRecipes.add(A);
-//
-//        for (Recipe h : mRecipes) {
-//            Log.d("namonn",h.getName());
-//        }
-//
-//        adapter = new RecipeFragHomeItemsAdapter(getActivity(),mRecipes);
-//        recy.setAdapter(adapter);
-//        adapter.notifyDataSetChanged();
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView_fraghome);
-        recyclerView.hasFixedSize();
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+        recy.setLayoutManager(layoutManager);
+        Recommender A = new Recommender("haha");
+        mRecipes.add(A);
+        mRecipes.add(A);
+        mRecipes.add(A);
+        mRecipes.add(A);
+        mRecipes.add(A);
+        mRecipes.add(A);
 
-        items = new ArrayList<>();
-        for (int i=0;i<10;i++){
-            items.add(new RecyclerHome("hai"));
+        for (Recommender h : mRecipes) {
+            Log.d("namonn",h.getTitle());
         }
-        Adapter = new RecipeFragHomeAdapter(items,getActivity());
-//        recyclerView.setAdapter(Adapter);
+
+        adapter = new RecipeFragHomeAdapter(getActivity(),mRecipes);
+        recy.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+
     }
 }

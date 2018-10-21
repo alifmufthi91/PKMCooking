@@ -1,8 +1,6 @@
 package com.example.kienz.cooqueen.adapter;
 
-import android.app.LauncherActivity;
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,37 +9,37 @@ import android.view.ViewGroup;
 import com.example.kienz.cooqueen.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import model.Recipe;
-import model.RecyclerHome;
+import model.Recommender;
 
 public class RecipeFragHomeAdapter extends RecyclerView.Adapter<RecipeFragHomeViewholder> {
+    private ArrayList<Recommender> recommenders;
+    private Context mContext;
 
-    List<RecyclerHome> items;
-    Context context;
 
-    public RecipeFragHomeAdapter(List<RecyclerHome> items, Context context) {
-        this.items = items;
-        this.context = context;
-    }
-
-    @NonNull
-    @Override
-    public RecipeFragHomeViewholder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.viewholder_fraghome_recycler,viewGroup,false);
-        return new RecipeFragHomeViewholder(v);
+    public RecipeFragHomeAdapter(Context context, ArrayList<Recommender> recipes) {
+        mContext = context;
+        recommenders = recipes;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecipeFragHomeViewholder holder, int i) {
-        RecyclerHome item = items.get(i);
-        holder.mRecyclerTextView.setText(item.getTitle());
+    public RecipeFragHomeViewholder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_fraghome_recycler, parent, false);
+        RecipeFragHomeViewholder viewHolder = new RecipeFragHomeViewholder(view, recommenders);
+        return viewHolder;
+    }
+
+    @Override
+    public void onBindViewHolder(RecipeFragHomeViewholder holder, int position) {
+        holder.bindRecipe(recommenders.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return recommenders.size();
     }
+
+
+
 }

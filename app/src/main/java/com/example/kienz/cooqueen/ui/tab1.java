@@ -158,7 +158,12 @@ public class tab1 extends Fragment {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recy.setLayoutManager(layoutManager);
-        Recommender A = new Recommender("haha");
+        ArrayList<Recipe> recipeArrayList = new ArrayList<Recipe>();
+        Recipe recipe = new Recipe("hoho","https://www.gettyimages.com/gi-resources/images/500px/983794168.jpg","google.com","");
+        recipeArrayList.add(recipe);
+        recipeArrayList.add(recipe);
+        recipeArrayList.add(recipe);
+        Recommender A = new Recommender("haha",recipeArrayList);
         mRecipes.add(A);
         mRecipes.add(A);
         mRecipes.add(A);

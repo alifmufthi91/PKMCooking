@@ -22,6 +22,7 @@ public class RecipeFragHomeItemsAdapter extends RecyclerView.Adapter<RecipeFragH
         mRecipes = recipes;
     }
 
+
     @Override
     public RecipeFragHomeItemsViewholder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_fraghome_item, parent, false);

@@ -1,6 +1,7 @@
 package com.example.kienz.cooqueen.ui;
 
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -18,6 +19,7 @@ import com.example.kienz.cooqueen.R;
 import com.example.kienz.cooqueen.adapter.MyPagerAdapter;
 
 import butterknife.ButterKnife;
+import io.realm.SyncUser;
 
 public class MainActivity extends AppCompatActivity implements tab1.OnFragmentInteractionListener,tab2.OnFragmentInteractionListener,tab3.OnFragmentInteractionListener, NavigationView.OnNavigationItemSelectedListener {
 
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements tab1.OnFragmentIn
         viewPager.setAdapter(myPagerAdapter);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayout);
         tabLayout.setupWithViewPager(viewPager);
+
 
 //        ================================
 //        getRecipes("flour", "chicken");
@@ -102,8 +105,15 @@ public class MainActivity extends AppCompatActivity implements tab1.OnFragmentIn
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_settings:
+            case R.id.action_logout:
                 // Action goes here
+                SyncUser syncUser = SyncUser.current();
+                if (syncUser != null) {
+                    syncUser.logOut();
+                    Intent intent = new Intent(this, LoginActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                }
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

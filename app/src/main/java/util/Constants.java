@@ -11,5 +11,5 @@ public class Constants {
     public static final String QUERY_PARAMETER = "q";
     public static final String KEY_QUERY_PARAMETER = "app_key";
     public static final String APP_QUERY_PARAMETER = "app_id";
-
+    public static final String AUTH_URL = "https://cooquenpkmjtk16.us1a.cloud.realm.io";
 }

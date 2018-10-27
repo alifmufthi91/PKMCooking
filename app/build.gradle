@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 28
@@ -18,7 +19,16 @@ android {
     }
     productFlavors {
     }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
 }
+
+realm {
+    syncEnabled = true
+}
+
 
 dependencies {
 
@@ -44,6 +54,7 @@ dependencies {
 
     annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc1'
 
+    implementation 'io.realm:android-adapters:3.0.0'
 
 
 

@@ -12,14 +12,23 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.example.kienz.cooqueen.R;
 import com.example.kienz.cooqueen.adapter.MyPagerAdapter;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.realm.Realm;
+import io.realm.RealmResults;
+import io.realm.SyncConfiguration;
 import io.realm.SyncUser;
+import model.User;
+import util.Constants;
 
 public class MainActivity extends AppCompatActivity implements tab1.OnFragmentInteractionListener,tab2.OnFragmentInteractionListener,tab3.OnFragmentInteractionListener, NavigationView.OnNavigationItemSelectedListener {
 
@@ -27,13 +36,38 @@ public class MainActivity extends AppCompatActivity implements tab1.OnFragmentIn
 //    public ArrayList<Recipe> mRecipes = new ArrayList<>();
 //    @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
     //      =============
-
+    private Realm realm;
+    private User profile;
+    @BindView(R.id.nav_view)
+    NavigationView mNavigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        SyncConfiguration configuration = SyncUser.current()
+                .createConfiguration(Constants.AUTH_URL + "/~/my")
+                .build();
+        realm = Realm.getInstance(configuration);
         ButterKnife.bind(this);
+        View headerView =  mNavigation.getHeaderView(0);
+        TextView navUsername = (TextView) headerView.findViewById(R.id.userName);
+        TextView navUseremail = (TextView) headerView.findViewById(R.id.userEmail);
+
+//        TeSTING Query
+        realm.executeTransaction(realm -> {
+            final RealmResults<User> users = realm.where(User.class).findAll();
+            for(User a : users){
+                Log.d("nameuser", a.getName());
+            }
+        });
+//
+
+        Log.d("realm",realm.getPath());
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ViewPager viewPager = (ViewPager) findViewById(R.id.pager);

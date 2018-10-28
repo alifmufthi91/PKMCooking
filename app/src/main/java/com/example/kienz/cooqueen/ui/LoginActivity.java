@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.content.Loader;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -29,16 +28,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.kienz.cooqueen.R;
+import com.example.kienz.cooqueen.RegisterActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.ObjectServerError;
 import io.realm.Realm;
-import io.realm.SyncConfiguration;
 import io.realm.SyncCredentials;
 import io.realm.SyncUser;
-import model.User;
 import util.Constants;
 
 import static android.Manifest.permission.READ_CONTACTS;
@@ -98,6 +96,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
 
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+        Button mSignUpButton = (Button) findViewById(R.id.sign_up_button);
+        mSignUpButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -198,18 +204,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            SyncCredentials myCredentials = SyncCredentials.usernamePassword(email, password, true);
+            SyncCredentials myCredentials = SyncCredentials.usernamePassword(email, password, false);
             SyncUser.logInAsync(myCredentials, Constants.AUTH_URL, new SyncUser.Callback<SyncUser>() {
                 @Override
                 public void onSuccess(SyncUser user) {
-                    SyncConfiguration configuration = SyncUser.current()
-                            .createConfiguration(Constants.AUTH_URL + "/default")
-                            .build();
-                    realm = Realm.getInstance(configuration);
-                    realm.executeTransactionAsync(realm -> {
-                        User newuser = new User(email,email,SyncUser.current().getIdentity());
-                        realm.insert(newuser);
-                    });
                     showProgress(false);
                     goToMainActivity();
                 }
@@ -225,12 +223,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
-        return email.contains("@");
+        return email.contains("@")&& email.contains(".");
     }
 
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
-        return password.length() > 4;
+        return password.length() > 7;
     }
 
     /**
@@ -273,8 +271,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
         return new CursorLoader(this,
                 // Retrieve data rows for the device user's 'profile' contact.
-                Uri.withAppendedPath(ContactsContract.Profile.CONTENT_URI,
-                        ContactsContract.Contacts.Data.CONTENT_DIRECTORY), ProfileQuery.PROJECTION,
+                ContactsContract.Data.CONTENT_URI, ProfileQuery.PROJECTION,
 
                 // Select only email addresses.
                 ContactsContract.Contacts.Data.MIMETYPE +

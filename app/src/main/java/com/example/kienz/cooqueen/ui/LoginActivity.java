@@ -101,7 +101,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(intent);
+                int result = 0;
+                startActivityForResult(intent, result);
             }
         });
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
@@ -309,6 +310,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mEmailView.setAdapter(adapter);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode==2){
+            finish();
+        }
+    }
+
 
     private interface ProfileQuery {
         String[] PROJECTION = {
@@ -325,6 +333,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private void goToMainActivity(){
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 
 

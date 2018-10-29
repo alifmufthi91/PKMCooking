@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -122,22 +123,24 @@ public class RegisterActivity extends AppCompatActivity {
             SyncUser.logInAsync(myCredentials, Constants.AUTH_URL, new SyncUser.Callback<SyncUser>() {
                 @Override
                 public void onSuccess(SyncUser user) {
-                    SyncConfiguration configuration = SyncUser.current()
-                            .createConfiguration(Constants.AUTH_URL + "/~/my")
-                            .build();
-                    realm = Realm.getInstance(configuration);
+                    String url = "https://cooquenpkmjtk16.us1a.cloud.realm.io/~/my";
+                    SyncConfiguration config = new SyncConfiguration.Builder(SyncUser.current(), url).build();
+                    realm = Realm.getInstance(config);
                     realm.executeTransactionAsync(realm -> {
                         User newuser = new User(name,email,SyncUser.current().getIdentity());
                         realm.insert(newuser);
                     });
-                    showProgress(false);
                     goToMainActivity();
+                    showProgress(false);
                 }
 
                 @Override
                 public void onError(ObjectServerError error) {
                     showProgress(false);
                     Log.e("Register error", error.toString());
+                    if(error.toString().contains("INVALID_CREDENTIALS(611)")){
+                        mEmailView.setError("Email telah terdaftar");
+                    }
                 }
             });
         }
@@ -145,7 +148,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
-        return email.contains("@")&& email.contains(".");
+        return (!TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches());
     }
 
     private boolean isPasswordValid(String password) {

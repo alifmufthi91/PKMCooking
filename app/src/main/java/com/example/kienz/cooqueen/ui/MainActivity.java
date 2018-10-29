@@ -24,11 +24,9 @@ import com.example.kienz.cooqueen.adapter.MyPagerAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.realm.Realm;
-import io.realm.RealmResults;
 import io.realm.SyncConfiguration;
 import io.realm.SyncUser;
 import model.User;
-import util.Constants;
 
 public class MainActivity extends AppCompatActivity implements tab1.OnFragmentInteractionListener,tab2.OnFragmentInteractionListener,tab3.OnFragmentInteractionListener, NavigationView.OnNavigationItemSelectedListener {
 
@@ -46,23 +44,26 @@ public class MainActivity extends AppCompatActivity implements tab1.OnFragmentIn
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        String url = "https://cooquenpkmjtk16.us1a.cloud.realm.io/~/my";
+        SyncConfiguration config = new SyncConfiguration.Builder(SyncUser.current(), url).build();
+        realm = Realm.getInstance(config);
 
-        SyncConfiguration configuration = SyncUser.current()
-                .createConfiguration(Constants.AUTH_URL + "/~/my")
-                .build();
-        realm = Realm.getInstance(configuration);
         ButterKnife.bind(this);
         View headerView =  mNavigation.getHeaderView(0);
         TextView navUsername = (TextView) headerView.findViewById(R.id.userName);
         TextView navUseremail = (TextView) headerView.findViewById(R.id.userEmail);
 
 //        TeSTING Query
-        realm.executeTransaction(realm -> {
-            final RealmResults<User> users = realm.where(User.class).findAll();
-            for(User a : users){
-                Log.d("nameuser", a.getName());
-            }
-        });
+         profile = realm.where(User.class).findFirst();
+         Log.d("nameuser", profile.getName());
+         navUseremail.setText(profile.getEmail());
+         navUsername.setText(profile.getName());
+//        realm.executeTransaction(realm -> {
+//            final RealmResults<User> users = realm.where(User.class).findAll();
+//            for(User a : users){
+//                Log.d("nameuser", a.getName());
+//            }
+//        });
 //
 
         Log.d("realm",realm.getPath());
@@ -147,6 +148,7 @@ public class MainActivity extends AppCompatActivity implements tab1.OnFragmentIn
                     Intent intent = new Intent(this, LoginActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
+                    finish();
                 }
                 return true;
             default:

@@ -17,6 +17,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -209,14 +210,17 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             SyncUser.logInAsync(myCredentials, Constants.AUTH_URL, new SyncUser.Callback<SyncUser>() {
                 @Override
                 public void onSuccess(SyncUser user) {
-                    showProgress(false);
                     goToMainActivity();
+                    showProgress(false);
                 }
 
                 @Override
                 public void onError(ObjectServerError error) {
                     showProgress(false);
                     Log.e("Login error", error.toString());
+                    if (error.toString().contains("INVALID_CREDENTIALS(611)")){
+                        mPasswordView.setError("Password tidak benar");
+                    }
                 }
             });
         }
@@ -224,7 +228,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
-        return email.contains("@")&& email.contains(".");
+        return (!TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches());
     }
 
     private boolean isPasswordValid(String password) {

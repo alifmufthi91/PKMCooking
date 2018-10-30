@@ -8,7 +8,9 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SnapHelper;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +18,7 @@ import android.view.ViewGroup;
 import com.example.kienz.cooqueen.R;
 import com.example.kienz.cooqueen.adapter.RecipeFragHomeAdapter;
 import com.example.kienz.cooqueen.adapter.RecipeFragHomeItemsAdapter;
+import com.github.rubensousa.gravitysnaphelper.GravitySnapHelper;
 
 import java.util.ArrayList;
 
@@ -156,10 +159,20 @@ public class tab1 extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
+
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recy.setLayoutManager(layoutManager);
+
         ArrayList<Recipe> recipeArrayList = new ArrayList<Recipe>();
         Recipe recipe = new Recipe("hoho","https://www.gettyimages.com/gi-resources/images/500px/983794168.jpg","google.com","");
+        recipeArrayList.add(recipe);
+        recipeArrayList.add(recipe);
+        recipeArrayList.add(recipe);
+        recipeArrayList.add(recipe);
+        recipeArrayList.add(recipe);
+        recipeArrayList.add(recipe);
         recipeArrayList.add(recipe);
         recipeArrayList.add(recipe);
         recipeArrayList.add(recipe);

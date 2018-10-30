@@ -56,5 +56,7 @@ dependencies {
 
     implementation 'io.realm:android-adapters:3.0.0'
 
+    implementation 'com.github.rubensousa:gravitysnaphelper:1.5'
+
 
 }

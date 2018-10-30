@@ -1,34 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:padding="5dp"
-    android:layout_marginTop="4dp"
-    android:layout_marginLeft="4dp"
-    android:layout_marginRight="4dp"
-    android:background="@drawable/shape_bg_white_rounded_rect">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+    android:layout_width="match_parent"
+    android:layout_height="200dp">
 
         <ImageView
             android:id="@+id/recipe_img_search"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:background="@drawable/shape_bg_white_rounded_rect"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:scaleType="centerCrop"
             android:src="@mipmap/img_panck" />
 
         <TextView
             android:id="@+id/recipe_name_search"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginHorizontal="16dp"
             android:layout_alignParentBottom="true"
             android:gravity="center"
             android:text="something dipped with tar tar sauce"
             android:textSize="18dp"
-            android:textColor="@android:color/background_dark" />
-    </LinearLayout>
+            android:fontFamily="@font/poppinsbold"
+            android:textColor="@android:color/white" />
+
 </RelativeLayout>

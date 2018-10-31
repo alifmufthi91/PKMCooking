@@ -11,19 +11,19 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="top"
         android:background="@color/colorPrimaryWhite"
-        android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Light"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         android:translationZ="4dp">
-
     </android.support.v7.widget.Toolbar>
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tablayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="top"
         android:background="@color/colorPrimaryWhite"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Light"
@@ -31,8 +31,8 @@
         android:translationZ="4dp">
 
     </android.support.design.widget.TabLayout>
-
     <com.example.kienz.cooqueen.adapter.NonSwipeableViewPager
+
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:id="@+id/pager">

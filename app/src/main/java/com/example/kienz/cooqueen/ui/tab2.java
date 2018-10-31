@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -146,6 +147,7 @@ public class tab2 extends Fragment  {
                 searchView.setIconified(false);
             }
         });
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
@@ -154,7 +156,6 @@ public class tab2 extends Fragment  {
                 startActivity(searchIntent);
                 return false;
             }
-
             @Override
             public boolean onQueryTextChange(String s) {
                 return false;
@@ -164,7 +165,9 @@ public class tab2 extends Fragment  {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL
                 , false);
-        recycler_fragsearch.setLayoutManager(layoutManager);
+        GridLayoutManager gridManager = new GridLayoutManager(getActivity(),2);
+
+        recycler_fragsearch.setLayoutManager(gridManager);
         Recipe A=new Recipe("Aloha","https://s3-ap-southeast-1.amazonaws.com/plukme/upload/media/posts/2018-03/02/terperangkap-antara-gelap-dan-sunyi-1519931610_1519931610-b.jpg","google.com","");
         mRecipes.add(A);
         mRecipes.add(A);

@@ -23,7 +23,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginBottom="4dp"
                 android:text="Recommended"
-                android:textSize="17sp"
+                android:textSize="20sp"
                 android:fontFamily="@font/robotomedium"
                 android:textColor="@color/text"/>
 

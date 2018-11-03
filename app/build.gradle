@@ -10,6 +10,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        renderscriptTargetApi 19
+        renderscriptSupportModeEnabled true
     }
     buildTypes {
         release {
@@ -58,5 +60,8 @@ dependencies {
 
     implementation 'com.github.rubensousa:gravitysnaphelper:1.5'
 
+    implementation 'com.jackandphantom.android:blurimage:1.2.0'
+
+    implementation 'jp.wasabeef:picasso-transformations:2.2.1'
 
 }

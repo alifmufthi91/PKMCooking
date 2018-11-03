@@ -8,17 +8,13 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SnapHelper;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.kienz.cooqueen.R;
 import com.example.kienz.cooqueen.adapter.RecipeFragHomeAdapter;
-import com.example.kienz.cooqueen.adapter.RecipeFragHomeItemsAdapter;
-import com.github.rubensousa.gravitysnaphelper.GravitySnapHelper;
 
 import java.util.ArrayList;
 
@@ -166,7 +162,7 @@ public class tab1 extends Fragment {
         recy.setLayoutManager(layoutManager);
 
         ArrayList<Recipe> recipeArrayList = new ArrayList<Recipe>();
-        Recipe recipe = new Recipe("hoho","https://www.gettyimages.com/gi-resources/images/500px/983794168.jpg","google.com","");
+        Recipe recipe = new Recipe("Burger","https://images.unsplash.com/photo-1504185945330-7a3ca1380535?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9f2d35c4ea30a81e428e66c653748f91&auto=format&fit=crop&w=621&q=80","google.com","");
         recipeArrayList.add(recipe);
         recipeArrayList.add(recipe);
         recipeArrayList.add(recipe);
@@ -176,7 +172,7 @@ public class tab1 extends Fragment {
         recipeArrayList.add(recipe);
         recipeArrayList.add(recipe);
         recipeArrayList.add(recipe);
-        Recommender A = new Recommender("haha",recipeArrayList);
+        Recommender A = new Recommender("Recommended for you",recipeArrayList);
         mRecipes.add(A);
         mRecipes.add(A);
         mRecipes.add(A);

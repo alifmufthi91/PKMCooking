@@ -2,20 +2,17 @@ package com.example.kienz.cooqueen.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SnapHelper;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.kienz.cooqueen.R;
-import com.github.rubensousa.gravitysnaphelper.GravitySnapHelper;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import model.Recipe;
 import model.Recommender;
 import util.PaddingItemDecoration;
 
@@ -51,9 +48,9 @@ public class RecipeFragHomeAdapter extends RecyclerView.Adapter<RecipeFragHomeVi
                 .mRecipeNameRecyclerView.getContext(),
                 LinearLayoutManager.HORIZONTAL, false));
 
-        SnapHelper snapHelperStart = new GravitySnapHelper(Gravity.START);
+        SnapHelper snapHelperStart = new LinearSnapHelper();
         snapHelperStart.attachToRecyclerView(holder.mRecipeNameRecyclerView);
-        int size = 16; // Get the offset that you want
+        int size = 32; // Get the offset that you want
         holder.mRecipeNameRecyclerView.addItemDecoration(new PaddingItemDecoration(size));
 
         holder.mRecipeNameRecyclerView.setOnFlingListener(null);

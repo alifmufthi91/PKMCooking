@@ -168,7 +168,12 @@ public class tab2 extends Fragment  {
         GridLayoutManager gridManager = new GridLayoutManager(getActivity(),2);
 
         recycler_fragsearch.setLayoutManager(gridManager);
-        Recipe A=new Recipe("Aloha","https://s3-ap-southeast-1.amazonaws.com/plukme/upload/media/posts/2018-03/02/terperangkap-antara-gelap-dan-sunyi-1519931610_1519931610-b.jpg","google.com","");
+        Recipe A=new Recipe("Ayam","https://keeprecipes.com/sites/keeprecipes/files/imagecache/recipe_large/05-resep_ayam_goreng_bumbu_kuning_-_cara_membuat.jpg","google.com","");
+        mRecipes.add(A);
+        mRecipes.add(A);
+        mRecipes.add(A);
+        mRecipes.add(A);
+        mRecipes.add(A);
         mRecipes.add(A);
         mRecipes.add(A);
         mRecipes.add(A);

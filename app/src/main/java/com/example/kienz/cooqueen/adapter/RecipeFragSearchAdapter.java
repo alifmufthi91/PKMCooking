@@ -1,7 +1,6 @@
 package com.example.kienz.cooqueen.adapter;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +32,7 @@ public class RecipeFragSearchAdapter extends RecyclerView.Adapter<RecipeFragSear
     @Override
     public void onBindViewHolder(RecipeFragSearchViewholder holder, int position) {
         holder.bindRecipe(mRecipes.get(position));
+
     }
 
     @Override

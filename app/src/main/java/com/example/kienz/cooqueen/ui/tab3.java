@@ -9,10 +9,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import com.example.kienz.cooqueen.R;
-import com.squareup.picasso.Picasso;
 
 
 /**
@@ -116,7 +114,5 @@ public class tab3 extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ImageView iv = (ImageView) view.findViewById(R.id.iv);
-        Picasso.get().load("https://www.gettyimages.ca/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg").into(iv);
     }
 }

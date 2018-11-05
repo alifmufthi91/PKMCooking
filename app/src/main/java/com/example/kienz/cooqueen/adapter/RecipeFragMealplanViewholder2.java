@@ -17,16 +17,16 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import model.Meal_Plan;
 
-public class RecipeFragMealplanViewholder extends RecyclerView.ViewHolder {
-    @BindView(R.id.imageView_fragmealplan_type)
+public class RecipeFragMealplanViewholder2 extends RecyclerView.ViewHolder {
+    @BindView(R.id.imageView_fragmealplan_item)
     ImageView mRecipeImageView;
-    @BindView(R.id.textView_fragmealplan_type)
+    @BindView(R.id.textView_fragmealplan_item)
     TextView mRecipeNameTextView;
 
     private Context mContext;
     private ArrayList<Meal_Plan> mRecipes = new ArrayList<>();
 
-    public RecipeFragMealplanViewholder(View itemView, ArrayList<Meal_Plan> recipes) {
+    public RecipeFragMealplanViewholder2(View itemView, ArrayList<Meal_Plan> recipes) {
         super(itemView);
         ButterKnife.bind(this, itemView);
         mContext = itemView.getContext();

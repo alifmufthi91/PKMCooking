@@ -46,9 +46,7 @@ public class RecipeFragSearchViewholder extends RecyclerView.ViewHolder {
     }
 
     public void bindRecipe(Recipe recipe) {
-
         Picasso.get().load(recipe.getImageUrl()).transform(new BlurTransformation(mContext,3,3)).into(mRecipeImageView);
-
         mRecipeNameTextView.setText(recipe.getName());
     }
 }

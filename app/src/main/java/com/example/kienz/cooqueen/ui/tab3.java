@@ -6,11 +6,21 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.kienz.cooqueen.R;
+import com.example.kienz.cooqueen.adapter.RecipeFragMealplanAdapter;
+
+import java.util.ArrayList;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import model.Meal_Plan;
+import model.Meal_Plan_Holder;
 
 
 /**
@@ -69,7 +79,10 @@ public class tab3 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tab3, container, false);
+        View v = inflater.inflate(R.layout.fragment_tab3, container, false);
+        ButterKnife.bind(this,v);
+        // Inflate the layout for this fragment
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -111,8 +124,36 @@ public class tab3 extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 
+    private RecipeFragMealplanAdapter adapter;
+    Meal_Plan_Holder mealPlans = new Meal_Plan_Holder();
+    public ArrayList<Meal_Plan> mRecipes = new ArrayList<>();
+    @BindView(R.id.recyclerView_fragplan)
+    RecyclerView recycler;
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
+        recycler.setLayoutManager(layoutManager);
+
+        Meal_Plan mealPlanitems = new Meal_Plan("breakfast","https://images.unsplash.com/photo-1504185945330-7a3ca1380535?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9f2d35c4ea30a81e428e66c653748f91&auto=format&fit=crop&w=621&q=80",
+                "BREAKFAST");
+
+        mealPlans.add(mealPlanitems);
+        mealPlans.add(mealPlanitems);
+        mealPlans.add(mealPlanitems);
+        mealPlans.add("dinner","https://images.unsplash.com/photo-1504185945330-7a3ca1380535?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9f2d35c4ea30a81e428e66c653748f91&auto=format&fit=crop&w=621&q=80",
+                "BREAKFAST");
+        mealPlans.add("lunch","https://images.unsplash.com/photo-1504185945330-7a3ca1380535?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9f2d35c4ea30a81e428e66c653748f91&auto=format&fit=crop&w=621&q=80",
+                "BREAKFAST");
+        mealPlans.add("lunch","https://images.unsplash.com/photo-1504185945330-7a3ca1380535?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9f2d35c4ea30a81e428e66c653748f91&auto=format&fit=crop&w=621&q=80",
+                "BREAKFAST");
+        mealPlans.add("breakfast","https://images.unsplash.com/photo-1504185945330-7a3ca1380535?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9f2d35c4ea30a81e428e66c653748f91&auto=format&fit=crop&w=621&q=80",
+                "BREAKFAST");
+
+        adapter = new RecipeFragMealplanAdapter(getActivity(),mealPlans.getMealPlanArrayList());
+        recycler.setAdapter(adapter);
+
     }
 }

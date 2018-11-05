@@ -43,6 +43,7 @@ public class tab1 extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private OnFragmentInteractionListener mListener;
 
     public tab1() {
         // Required empty public constructor
@@ -148,8 +149,6 @@ public class tab1 extends Fragment {
     private RecipeFragHomeAdapter adapter;
     public ArrayList<Recommender> mRecipes = new ArrayList<>();
     @BindView (R.id.recyclerView_fraghome) RecyclerView recy;
-
-    private OnFragmentInteractionListener mListener;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {

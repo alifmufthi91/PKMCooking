@@ -44,12 +44,7 @@ public class tab2 extends Fragment  {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    @BindView(R.id.search_tab2)
-    SearchView searchView;
-    @BindView(R.id.recyclerView_fragsearch)
-    RecyclerView recycler_fragsearch;
-    private RecipeFragSearchAdapter mAdapter;
-    public ArrayList<Recipe> mRecipes = new ArrayList<>();
+
 
     private OnFragmentInteractionListener mListener;
 
@@ -135,6 +130,13 @@ public class tab2 extends Fragment  {
         void onFragmentInteraction(Uri uri);
     }
 
+
+    @BindView(R.id.search_tab2)
+    SearchView searchView;
+    @BindView(R.id.recyclerView_fragsearch)
+    RecyclerView recycler_fragsearch;
+    private RecipeFragSearchAdapter mAdapter;
+    public ArrayList<Recipe> mRecipes = new ArrayList<>();
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {

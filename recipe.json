@@ -1,59 +1,162 @@
 {
-  "hits" : [ {
-    "recipe" : {
-      "label" : "Wortel dibumbui & apel muffin",
-      "image" : "https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe/recipe-image/2018/11/carrot-apple-muffins.jpg?itok=fxqTkVSY",
-      "source" : "www.bbcgoodfood.com",
-      "url" : "https://www.bbcgoodfood.com/recipes/spiced-carrot-apple-muffins",
-      "sajian" : 9,
-      "desc" : "Muffin buah-buahan ini sangat cocok untuk sarapan di perjalanan atau camilan pagi hari. Tambahkan buah kering, kacang atau biji untuk tekstur, jika Anda suka",
-      "foodLabels" : [ "freezable", "vegetarian" ],
-      "ingredientLines" : [ "100 ml minyak rapeseed", "100 ml yogurt alami", "50ml madu berair", "2 butir telur", "1 sdt ekstrak vanili", "200g tepung penggilingan sendiri", "1 sdt soda bikarbonat", "1½ sdt campuran bumbu tanah", "1 Apel diparut", "1 Wortel diparut", "50g sultana, kismis, kacang atau biji cincang (opsional)" ],
-      "instructionLines" : [ "Panaskan oven hingga 180C / 160C fan / gas 4 dan lapisi muffin tin dengan kertas muffin . Campur minyak, yogurt, madu, telur, dan vanila dalam kendi. Dalam mangkuk, gabungkan tepung, bikarbonat, bumbu campuran, dan ¼ tsp garam. Tuangkan campuran yogurt ke dalam campuran tepung dan tambahkan apel dan wortel, serta bahan tambahan yang Anda gunakan. Campur dengan spatula sampai tercampur dengan baik, lalu masukkan campuran ke dalam muffin.", "Panggang selama 20-22 menit, atau sampai tusuk sate dimasukkan ke tengah muffin keluar bersih. Biarkan dingin selama setidaknya 5 menit. Dapat disimpan dalam kaleng selama tiga hari atau dibekukan selama dua bulan; defrost semalaman sebelum disajikan." ],
-      "toolsLines" : [ "Oven", "Mangkuk", "Spatula", "Muffin tin" ],
-      "totalNutrients" : {
-        "ENERC_KCAL" : {
-          "label" : "Energi",
-          "quantity" : 234,
-          "unit" : "kcal"
+  "hits": [
+    {
+      "recipe": {
+        "label": "Wortel dibumbui & apel muffin",
+        "image": "https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe/recipe-image/2018/11/carrot-apple-muffins.jpg?itok=fxqTkVSY",
+        "source": "www.bbcgoodfood.com",
+        "url": "https://www.bbcgoodfood.com/recipes/spiced-carrot-apple-muffins",
+        "sajian": 9,
+        "desc": "Muffin buah-buahan ini sangat cocok untuk sarapan di perjalanan atau camilan pagi hari. Tambahkan buah kering, kacang atau biji untuk tekstur, jika Anda suka",
+        "foodLabels": [
+          "freezable",
+          "vegetarian"
+        ],
+        "ingredientLines": [
+          "100 ml minyak rapeseed",
+          "100 ml yogurt alami",
+          "50ml madu berair",
+          "2 butir telur",
+          "1 sdt ekstrak vanili",
+          "200g tepung penggilingan sendiri",
+          "1 sdt soda bikarbonat",
+          "1½ sdt campuran bumbu tanah",
+          "1 Apel diparut",
+          "1 Wortel diparut",
+          "50g sultana, kismis, kacang atau biji cincang (opsional)"
+        ],
+        "instructionLines": [
+          "Panaskan oven hingga 180C / 160C fan / gas 4 dan lapisi muffin tin dengan kertas muffin . Campur minyak, yogurt, madu, telur, dan vanila dalam kendi. Dalam mangkuk, gabungkan tepung, bikarbonat, bumbu campuran, dan ¼ tsp garam. Tuangkan campuran yogurt ke dalam campuran tepung dan tambahkan apel dan wortel, serta bahan tambahan yang Anda gunakan. Campur dengan spatula sampai tercampur dengan baik, lalu masukkan campuran ke dalam muffin.",
+          "Panggang selama 20-22 menit, atau sampai tusuk sate dimasukkan ke tengah muffin keluar bersih. Biarkan dingin selama setidaknya 5 menit. Dapat disimpan dalam kaleng selama tiga hari atau dibekukan selama dua bulan; defrost semalaman sebelum disajikan."
+        ],
+        "toolsLines": [
+          "Oven",
+          "Mangkuk",
+          "Spatula",
+          "Muffin tin"
+        ],
+        "totalNutrients": {
+          "ENERC_KCAL": {
+            "label": "Energi",
+            "quantity": 234,
+            "unit": "kcal"
+          },
+          "FAT": {
+            "label": "Lemak",
+            "quantity": 13,
+            "unit": "g"
+          },
+          "FASAT": {
+            "label": "Lemaj Jenuh",
+            "quantity": 1,
+            "unit": "g"
+          },
+          "CARB": {
+            "label": "Karbohidrat",
+            "quantity": 23,
+            "unit": "g"
+          },
+          "SUGAR": {
+            "label": "Gula",
+            "quantity": 6,
+            "unit": "g"
+          },
+          "FIBER": {
+            "label": "Serat",
+            "quantity": 1,
+            "unit": "g"
+          },
+          "PROTEIN": {
+            "label": "Protein",
+            "quantity": 4,
+            "unit": "g"
+          },
+          "SALT": {
+            "label": "Garam",
+            "quantity": 0.7,
+            "unit": "g"
+          }
         },
-        "FAT" : {
-          "label" : "Lemak",
-          "quantity" : 13,
-          "unit" : "g"
+        "bookmarked": false
+      }
+    },
+    {
+      "recipe": {
+        "label": "Nasi goreng pedas",
+        "image": "https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/quick-spicy-nasi-goreng.jpg?itok=tkL7Dx5q",
+        "source": "www.bbcgoodfood.com",
+        "url": "https://www.bbcgoodfood.com/recipes/quick-spicy-nasi-goreng",
+        "sajian": 1,
+        "desc": "Nasi goreng sederhana dan mudah dibuat, dengan bahan-bahan yang sehat seperti kubis Cina dan nasi merah, selesai dengan telur goreng",
+        "foodLabels": [
+          "easily doubled",
+          "vegetarian"
+        ],
+        "ingredientLines": [
+          "2 sdm minyak sayur",
+          "1 bawang kecil, diiris halus",
+          "2 siung bawang putih, dilumatkan",
+          "1 wortel, parut",
+          "½ kubis Cina atau Savoy kecil, diparut",
+          "175g nasi merah matang",
+          "1 sdm saus ikan(pilihan)",
+          "1 sdm kecap",
+          "1 telur",
+          "Saus sriracha untuk disajikan"
+        ],
+        "instructionLines": [
+          "Panaskan minyak dalam wajan dengan api besar. Tambahkan bawang dan masak selama 3-4 menit sampai lunak dan sedikit karamel. Tambahkan bawang putih dan aduk selama 1 menit.",
+          "Masukkan wortel dan kubis, lalu masak selama 1-2 menit. Tambahkan nasi dan aduk hingga hangat. Tuangkan saus ikan, kecap, dan bumbu. Buatlah lubang di baigan tengah wajan dan pecahkan telur di tengahnya. Goreng sampai putih telur hampir matang.",
+          "Sajikan nasi dalam mangkuk besar, ditutup dengan telur goreng dan dilumuri saus sambal."
+        ],
+        "toolsLines": [
+          "Penggorengan",
+          "Spatula"
+        ],
+        "totalNutrients": {
+          "ENERC_KCAL": {
+            "label": "Energi",
+            "quantity": 540,
+            "unit": "kcal"
+          },
+          "FAT": {
+            "label": "Lemak",
+            "quantity": 30,
+            "unit": "g"
+          },
+          "FASAT": {
+            "label": "Lemaj Jenuh",
+            "quantity": 5,
+            "unit": "g"
+          },
+          "CARB": {
+            "label": "Karbohidrat",
+            "quantity": 47,
+            "unit": "g"
+          },
+          "SUGAR": {
+            "label": "Gula",
+            "quantity": 11,
+            "unit": "g"
+          },
+          "FIBER": {
+            "label": "Serat",
+            "quantity": 9,
+            "unit": "g"
+          },
+          "PROTEIN": {
+            "label": "Protein",
+            "quantity": 17,
+            "unit": "g"
+          },
+          "SALT": {
+            "label": "Garam",
+            "quantity": 6.4,
+            "unit": "g"
+          }
         },
-        "FASAT" : {
-          "label" : "Lemaj Jenuh",
-          "quantity" : 1,
-          "unit" : "g"
-        },
-        "CARB" : {
-          "label" : "Karbohidrat",
-          "quantity" : 23,
-          "unit" : "g"
-        },
-        "SUGAR" : {
-          "label" : "Gula",
-          "quantity" : 6,
-          "unit" : "g"
-        },
-        "FIBER" : {
-          "label" : "Serat",
-          "quantity" : 1,
-          "unit" : "g"
-        },
-        "PROTEIN" : {
-          "label" : "Protein",
-          "quantity" : 4,
-          "unit" : "g"
-        },
-        "SALT" : {
-          "label" : "Garam",
-          "quantity" : 0.7,
-          "unit" : "g"
-        }
-      },
-    "bookmarked" : false
+        "bookmarked": false
+      }
     }
-  }]
+  ]
 }

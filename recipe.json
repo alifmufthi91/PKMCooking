@@ -324,6 +324,89 @@
         },
         "bookmarked": false
       }
+    },
+    {
+      "recipe": {
+        "label": "Daging sapi cincang dengan kacang hitam dan salad alpukat",
+        "image": "https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/chilli-beef.jpg?itok=g_L2sNUI",
+        "source": "www.bbcgoodfood.com",
+        "url": "https://www.bbcgoodfood.com/recipes/chilli-beef-black-beans-and-avocado-salad",
+        "sajian": 6,
+        "desc": "Hidangan daging dengan kacang hitam untuk membuat semuanya lebih ringan. Sayuran satu-pot ini masih dikemas dengan banyak rasa",
+        "foodLabels": [
+          "freezable"
+        ],
+        "ingredientLines": [
+          "1 sdm biji jinten",
+          "1 sendok makan ketumbar",
+          "2 sendok makan bubuk cabe pedas",
+          "2 sdm paprika manis",
+          "500g kemasan daging beku ekstra tanpa lemak",
+          "4 siung bawang putih, diiris",
+          "400g bisa memotong tomat",
+          "1 kaldu blok daging sapi rendah garam",
+          "2 sendok makan tomat pure",
+          "3 pak cabe, dibuang dan dipotong dadu",
+          "ketumbar, batang dan daun cincang dan dipisahkan",
+          "2 x 400g kaleng kacang hitam",
+          "250 g bungkus nasi gandum utuh",
+          "1 buah alpukat kecil, dicincang",
+          "daun bayi salad",
+          "1 bawang merah kecil, dibelah dua dan diiris tipis",
+          "tomat cincang kecil, dibelah dua"
+        ],
+        "instructionLines": [
+          "Masukkan bumbu ke dalam wajan besar dan hangatkan selama beberapa detik untuk memanggangnya. Tambahkan daging cincang dan bawang putih, dan aduk, hancurkan daging sapi saat coklat. Tuangkan tomat dan sekaleng air, remukan kaldu blok, lalu aduk tomat, daun lada dan batang ketumbar.",
+          "Tutup panci dan masak selama 15 menit. Masukkan kacang hitam, dan masak selama 10 menit lagi sampai semuanya empuk. Sementara itu, panaskan nasi dan aduk bahan salad bersama-sama. Aduk daun ketumbar ke dalam cabe dan sajikan."
+        ],
+        "toolsLines": [
+          "Penggorengan",
+          "Spatula"
+        ],
+        "totalNutrients": {
+          "ENERC_KCAL": {
+            "label": "Energi",
+            "quantity": 539,
+            "unit": "kcal"
+          },
+          "FAT": {
+            "label": "Lemak",
+            "quantity": 22,
+            "unit": "g"
+          },
+          "FASAT": {
+            "label": "Lemak Jenuh",
+            "quantity": 6,
+            "unit": "g"
+          },
+          "CARB": {
+            "label": "Karbohidrat",
+            "quantity": 54,
+            "unit": "g"
+          },
+          "SUGAR": {
+            "label": "Gula",
+            "quantity": 12,
+            "unit": "g"
+          },
+          "FIBER": {
+            "label": "Serat",
+            "quantity": 12,
+            "unit": "g"
+          },
+          "PROTEIN": {
+            "label": "Protein",
+            "quantity": 32,
+            "unit": "g"
+          },
+          "SALT": {
+            "label": "Garam",
+            "quantity": 2,
+            "unit": "g"
+          }
+        },
+        "bookmarked": false
+      }
     }
   ]
 }

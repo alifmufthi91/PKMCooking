@@ -47,7 +47,7 @@
             "unit": "g"
           },
           "FASAT": {
-            "label": "Lemaj Jenuh",
+            "label": "Lemak Jenuh",
             "quantity": 1,
             "unit": "g"
           },
@@ -125,7 +125,7 @@
             "unit": "g"
           },
           "FASAT": {
-            "label": "Lemaj Jenuh",
+            "label": "Lemak Jenuh",
             "quantity": 5,
             "unit": "g"
           },
@@ -152,6 +152,173 @@
           "SALT": {
             "label": "Garam",
             "quantity": 6.4,
+            "unit": "g"
+          }
+        },
+        "bookmarked": false
+      }
+    },
+    {
+      "recipe": {
+        "label": "Daging sapi rendang & nasi kunyit",
+        "image": "https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/beef-rendang-turmeric-rice.jpg?itok=DlBYtKBK",
+        "source": "www.bbcgoodfood.com",
+        "url": "https://www.bbcgoodfood.com/recipes/beef-rendang-turmeric-rice",
+        "sajian": 6,
+        "desc": "Daging rendang enak menggunakan santan dan rempah rempah dileburi saus khas malaysia ",
+        "foodLabels": [
+          "freezable"
+        ],
+        "ingredientLines": [
+          "3 sdm minyak sayur",
+          "Daging sapi 2kg shin atau rok, potong dadu seukuran gigitan",
+          "2 tangkai serai, dipukuli ",
+          "2 x 400ml kaleng santan",
+          "4 sdm kelapa kering",
+          "2 daun jeruk purut, robek",
+          "1½ sdm bubuk kaldu ayam",
+          "2 sdm pasta asam jawa",
+          "1 sdt gula",
+          "¼ sdt garam",
+          "15 cabe kering",
+          "6-8 bayi bawang merah",
+          "jahe sepotong ibu jari, dicincang",
+          "lengkuas sepotong ibu jari, kupas dan cincang",
+          "3 batang serai, dicincang",
+          "2 sdm minyak",
+          "2 sdt biji mustard",
+          "2 sendok teh kunyit",
+          "10 daun kari (opsional)",
+          "700g beras melati",
+          "2 sendok makan bubuk kaldu ayam"
+        ],
+        "instructionLines": [
+          "Untuk pasta, rendam cabai dalam air mendidih selama 15 menit. Tiriskan, buang bijinya dan kocok dengan sisa bahan pasta ke dalam food processor kecil hingga halus.",
+          "Panaskan minyak dalam wajan. Goreng pasta selama 5 menit hingga aromanya dilepaskan. Tambahkan daging sapi dan serai, dan aduk rata. Setelah daging sapi mulai kehilangan warna merah jambu, tambahkan santan dan air 250 ml. Didihkan, kemudian turunkan ke simmer, tanpa penutup. Aduk sesekali untuk menghindari menempel, dan lebih sering menjelang akhir.",
+          "Sementara itu, panggang kelapa dalam wajan dengan api kecil selama 5-7 menit sampai coklat keemasan. Sisihkan untuk mendinginkan. Menggunakan blender, memadukannya dengan potongan-potongan halus - tetapi tidak terlalu bagus. Taruh ke satu sisi.",
+          "Setelah 2 jam, tambahkan kelapa, daun jeruk purut, bubuk kaldu ayam, pasta asam, gula dan garam ke dalam panci. Didihkan selama 30 menit lebih. Anda harus mulai melihat minyak yang memisahkan dari campuran. Sudah siap ketika daging lunak dan hampir berantakan.",
+          "Untuk beras, gunakan panci berbahan dasar berat dengan penutup. Panaskan minyak dalam wajan dan tambahkan biji sesawi. Setelah biji mulai bermunculan, tambahkan kunyit, daun kari (jika menggunakan) dan nasi, dan aduk rata. Tambahkan kaldu ayam dan 1 liter air. Didihkan, kemudian matikan hingga mendidih terendah dan masak, tutup, selama 5 menit. Hapus dari panas, dengan tutup dan biarkan uap selama 25 menit."
+        ],
+        "toolsLines": [
+          "Penggorengan",
+          "Spatula",
+          "Food processor",
+          "Pemanggang",
+          "Blender",
+          "Panci"
+        ],
+        "totalNutrients": {
+          "ENERC_KCAL": {
+            "label": "Energi",
+            "quantity": 1405,
+            "unit": "kcal"
+          },
+          "FAT": {
+            "label": "Lemak",
+            "quantity": 71,
+            "unit": "g"
+          },
+          "FASAT": {
+            "label": "Lemak Jenuh",
+            "quantity": 37,
+            "unit": "g"
+          },
+          "CARB": {
+            "label": "Karbohidrat",
+            "quantity": 108,
+            "unit": "g"
+          },
+          "SUGAR": {
+            "label": "Gula",
+            "quantity": 8,
+            "unit": "g"
+          },
+          "FIBER": {
+            "label": "Serat",
+            "quantity": 4,
+            "unit": "g"
+          },
+          "PROTEIN": {
+            "label": "Protein",
+            "quantity": 81,
+            "unit": "g"
+          },
+          "SALT": {
+            "label": "Garam",
+            "quantity": 0.8,
+            "unit": "g"
+          }
+        },
+        "bookmarked": false
+      }
+    },
+    {
+      "recipe": {
+        "label": "Pasta seafood 20 menit",
+        "image": "https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--22610_11.jpg?itok=gXuxI8bR",
+        "source": "www.bbcgoodfood.com",
+        "url": "https://www.bbcgoodfood.com/recipes/1940/20minute-seafood-pasta-",
+        "sajian": 4,
+        "desc": "Buat hidangan yang rendah lemak dan memuaskan dalam hitungan menit - ideal untuk Jumat malam",
+        "foodLabels": [],
+        "ingredientLines": [
+          "1 sdm minyak zaitun",
+          "1 bawang, dicincang",
+          "1 siung bawang putih, dicincang",
+          "1 sdt paprika",
+          "400g tomat kaleng cincang",
+          "1 liter kaldu ayam",
+          "300g spageti",
+          "240 g bungkus campuran seafood beku, dicairkan",
+          "segelintir peterseli daun, diiris cincang, dan lemon untuk disajikan"
+        ],
+        "instructionLines": [
+          "Panaskan minyak dalam wajan atau wajan besar, lalu masak bawang dan bawang putih di atas api sedang selama 5 menit hingga lunak. Tambahkan paprika, tomat dan kaldu, lalu didihkan.",
+          "Kecilkan api hingga mendidih, aduk pasta dan masak selama 7 menit, aduk sesekali untuk menghindarkan pasta menempel. Aduk seafood, masak selama 3 menit lebih sampai semua dipanaskan dan pasta dimasak, lalu bumbui sesuai selera. Taburi dengan parsley dan sajikan dengan irisan lemon."
+        ],
+        "toolsLines": [
+          "Penggorengan",
+          "Spatula"
+        ],
+        "totalNutrients": {
+          "ENERC_KCAL": {
+            "label": "Energi",
+            "quantity": 370,
+            "unit": "kcal"
+          },
+          "FAT": {
+            "label": "Lemak",
+            "quantity": 5,
+            "unit": "g"
+          },
+          "FASAT": {
+            "label": "Lemak Jenuh",
+            "quantity": 1,
+            "unit": "g"
+          },
+          "CARB": {
+            "label": "Karbohidrat",
+            "quantity": 62,
+            "unit": "g"
+          },
+          "SUGAR": {
+            "label": "Gula",
+            "quantity": 0,
+            "unit": "g"
+          },
+          "FIBER": {
+            "label": "Serat",
+            "quantity": 4,
+            "unit": "g"
+          },
+          "PROTEIN": {
+            "label": "Protein",
+            "quantity": 23,
+            "unit": "g"
+          },
+          "SALT": {
+            "label": "Garam",
+            "quantity": 1.4,
             "unit": "g"
           }
         },

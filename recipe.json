@@ -494,6 +494,85 @@
         },
         "bookmarked": false
       }
+    },
+    {
+      "recipe": {
+        "label": "Ayam chipotle",
+        "image": "https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe/recipe-image/2016/11/chipotle-chicken-wraps.jpg?itok=WfC_QXh-",
+        "source": "www.bbcgoodfood.com",
+        "url": "https://www.bbcgoodfood.com/recipes/chipotle-chicken-wraps",
+        "sajian": 4,
+        "desc": "Chipotle ayam berasap sehat, dikemas dengan sayuran, sangat bagus untuk snack malam. Untuk membuat versi sayuran, cukup ganti ayam dengan ubi jalar panggang",
+        "foodLabels": [
+          "healthy"
+        ],
+        "ingredientLines": [
+          "1 sdm minyak sayur",
+          "1 bawang, diiris halus",
+          "1 siung bawang putih",
+          "2 buah dada ayam, diiris-iris",
+          "2 sdm pasta chipotle",
+          "400g tomat",
+          "400g kaleng kacang hitam, dikeringkan",
+          "4 besar tepung jagung atau tepung tortilla",
+          "½ buah alpukat, dirajam, kupas dan diiris",
+          "½ Selada Permata Bayi, diparut",
+          "1 jeruk nipis, dibelah dua"
+        ],
+        "instructionLines": [
+          "Panaskan minyak dalam wajan di atas api sedang-rendah. Masukkan bawang dan masak selama 10 menit sampai lunak. Hancurkan bawang putih dan aduk selama 1 menit sebelum menambahkan ayam. Muncul panas dan coklat ayam seluruh. Sendokkan chipotle dan aduk untuk melapisi selama 1 menit. Tuangkan tomat dan didihkan. Bumbui dengan baik dan kecilkan api hingga mendidih lembut.",
+          "Masak selama 5-6 menit atau sampai ayam matang dan cairan telah menguap. Aduk kacang sampai hangat, lalu angkat dari api.",
+          "Bagilah campuran antara lulur, tutup dengan alpukat dan selada parut, dan peras jeruk nipis. Gulung dan potong setengah sebelum disajikan."
+        ],
+        "toolsLines": [
+          "Penggorengan",
+          "Spatula",
+          "Mangkuk"
+        ],
+        "totalNutrients": {
+          "ENERC_KCAL": {
+            "label": "Energi",
+            "quantity": 425,
+            "unit": "kcal"
+          },
+          "FAT": {
+            "label": "Lemak",
+            "quantity": 11,
+            "unit": "g"
+          },
+          "FASAT": {
+            "label": "Lemak Jenuh",
+            "quantity": 3,
+            "unit": "g"
+          },
+          "CARB": {
+            "label": "Karbohidrat",
+            "quantity": 49,
+            "unit": "g"
+          },
+          "SUGAR": {
+            "label": "Gula",
+            "quantity": 9,
+            "unit": "g"
+          },
+          "FIBER": {
+            "label": "Serat",
+            "quantity": 9,
+            "unit": "g"
+          },
+          "PROTEIN": {
+            "label": "Protein",
+            "quantity": 28,
+            "unit": "g"
+          },
+          "SALT": {
+            "label": "Garam",
+            "quantity": 1.2,
+            "unit": "g"
+          }
+        },
+        "bookmarked": false
+      }
     }
   ]
 }

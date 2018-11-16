@@ -407,6 +407,93 @@
         },
         "bookmarked": false
       }
+    },
+    {
+      "recipe": {
+        "label": "Ayam casserole",
+        "image": "https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe/recipe-image/2017/06/gfkids_chickencasserole.jpg?itok=s0hVdU74",
+        "source": "www.bbcgoodfood.com",
+        "url": "https://www.bbcgoodfood.com/recipes/slow-cooker-chicken-casserole",
+        "sajian": 4,
+        "desc": "Manjakan keluarga dengan casserole ayam sehat ini yang memberikan kenyamanan saat sedang rendah lemak. Dan Anda dapat membiarkan slow cooker melakukan sebagian besar pekerjaan",
+        "foodLabels": [
+          "healthy"
+        ],
+        "ingredientLines": [
+          "mentega",
+          "½ sendok makan minyak rapeseed atau minyak zaitun",
+          "2 sendok makan bubuk cabe pedas",
+          "1 bawang besar, dicincang halus",
+          "1 ½ sdm tepung terigu",
+          "650g fillet paha ayam tanpa kulit dan tulang",
+          "3 siung bawang putih, dilumatkan",
+          "400g kentang muda, dibelah dua",
+          "2 batang seledri, potong dadu",
+          "2 wortel, potong dadu",
+          "250g jamur, dipotong-potong",
+          "15g jamur porcini kering, direndam dalam 50 ml air mendidih",
+          "500ml kaldu dibuat dengan 2 kaldu blok ayam rendah garam",
+          "2 sdt mustar Dijon",
+          "2 daun salam"
+        ],
+        "instructionLines": [
+          "Panaskan mentega dan ½ sendok makan minyak zaitun dalam wajan besar  , masak 1 bawang besar yang dicincang halus selama 8-10 menit sampai lunak dan mulai berkaramel.",
+          "Sementara itu, masukkan 1 ½ tbsp tepung dan sedikit garam dan merica ke dalam mangkuk dan aduk 650g tanpa tulang, fillet paha ayam tanpa kulit di dalamnya. ",
+          "Tambahkan 3 siung bawang putih dan ayam goreng ke dalam panci dan masak selama 4-5 menit lagi sampai ayam mulai berwarna coklat.",
+          "Pindahkan ke  slow cooker Anda , bersama dengan 400g kentang muda yang dibelah dua, 2 batang seledri, 2 potong wortel, 250g jamur, 15g jamur porcini kering dan direndam dengan cairan perendaman 50ml, ayam 500ml, 2 sendok teh mustard Dijon dan 2 bay Daun-daun.",
+          "Berikan adukan yang bagus. Masak di api Rendah selama 7 jam atau Tinggi selama 4 jam.",
+          "Buang daun salam dan sajikan dengan mustard Dijon kecil di samping."
+        ],
+        "toolsLines": [
+          "Penggorengan",
+          "Spatula",
+          "Mangkuk",
+          "Slow Cooker"
+        ],
+        "totalNutrients": {
+          "ENERC_KCAL": {
+            "label": "Energi",
+            "quantity": 382,
+            "unit": "kcal"
+          },
+          "FAT": {
+            "label": "Lemak",
+            "quantity": 9,
+            "unit": "g"
+          },
+          "FASAT": {
+            "label": "Lemak Jenuh",
+            "quantity": 3,
+            "unit": "g"
+          },
+          "CARB": {
+            "label": "Karbohidrat",
+            "quantity": 30,
+            "unit": "g"
+          },
+          "SUGAR": {
+            "label": "Gula",
+            "quantity": 7,
+            "unit": "g"
+          },
+          "FIBER": {
+            "label": "Serat",
+            "quantity": 6,
+            "unit": "g"
+          },
+          "PROTEIN": {
+            "label": "Protein",
+            "quantity": 41,
+            "unit": "g"
+          },
+          "SALT": {
+            "label": "Garam",
+            "quantity": 0.88,
+            "unit": "g"
+          }
+        },
+        "bookmarked": false
+      }
     }
   ]
 }

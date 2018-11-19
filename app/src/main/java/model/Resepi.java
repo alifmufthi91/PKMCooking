@@ -1,6 +1,5 @@
 package model;
 
-import org.parceler.Parcel;
 
 import java.util.ArrayList;
 import java.util.Collections;

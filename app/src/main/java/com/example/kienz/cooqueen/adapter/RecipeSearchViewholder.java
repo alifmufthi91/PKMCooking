@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import model.Recipe;
+import model.Resepi;
 
 public class RecipeSearchViewholder extends RecyclerView.ViewHolder {
     @BindView(R.id.recipe_img_search)
@@ -23,9 +23,9 @@ public class RecipeSearchViewholder extends RecyclerView.ViewHolder {
     @BindView(R.id.recipe_name_search)
     TextView mRecipeNameTextView;
     private Context mContext;
-    private ArrayList<Recipe> mRecipes = new ArrayList<>();
+    private ArrayList<Resepi> mRecipes = new ArrayList<>();
 
-    public RecipeSearchViewholder(View itemView, ArrayList<Recipe> recipes) {
+    public RecipeSearchViewholder(View itemView, ArrayList<Resepi> recipes) {
         super(itemView);
         ButterKnife.bind(this, itemView);
         mContext = itemView.getContext();
@@ -37,12 +37,22 @@ public class RecipeSearchViewholder extends RecyclerView.ViewHolder {
                 Intent intent = new Intent(mContext, RecipeDetail.class);
                 intent.putExtra("namaResep", mRecipes.get(itemPosition).getName());
                 intent.putExtra("gambarResep",mRecipes.get(itemPosition).getImageUrl());
+                intent.putExtra("deskripsiResep",mRecipes.get(itemPosition).getDescription());
+                intent.putExtra("sumberResep",mRecipes.get(itemPosition).getSourceUrl());
+                intent.putExtra("sajianResep",mRecipes.get(itemPosition).getSajian());
+                intent.putExtra("kandungannutResep",mRecipes.get(itemPosition).getNutritions());
+                intent.putExtra("nilaireviewResep",mRecipes.get(itemPosition).getRating_value());
+                intent.putExtra("jumlahreviewResep",mRecipes.get(itemPosition).getRating_giver());
+                intent.putExtra("alatResep",mRecipes.get(itemPosition).getListString(mRecipes.get(itemPosition).getAlat()));
+                intent.putExtra("bahanResep",mRecipes.get(itemPosition).getListString(mRecipes.get(itemPosition).getIngredients()));
+                intent.putExtra("labelResep",mRecipes.get(itemPosition).getListString(mRecipes.get(itemPosition).getLabels()));
+                intent.putExtra("instruksiResep",mRecipes.get(itemPosition).getListString(mRecipes.get(itemPosition).getInstruksi()));
                 mContext.startActivity(intent);
             }
         });
     }
 
-    public void bindRecipe(Recipe recipe) {
+    public void bindRecipe(Resepi recipe) {
         Picasso.get().load(recipe.getImageUrl()).into(mRecipeImageView);
         mRecipeNameTextView.setText(recipe.getName());
     }

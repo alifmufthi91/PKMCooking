@@ -31,7 +31,7 @@ import model.User;
 public class MainActivity extends AppCompatActivity implements tab1.OnFragmentInteractionListener,tab2.OnFragmentInteractionListener,tab3.OnFragmentInteractionListener, NavigationView.OnNavigationItemSelectedListener {
 
     //      =========ALIF
-//    public ArrayList<Recipe> mRecipes = new ArrayList<>();
+//    public ArrayList<Resepi> mRecipes = new ArrayList<>();
 //    @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
     //      =============
     private Realm realm;
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements tab1.OnFragmentIn
 //            public void onResponse(Call call, Response response) {
 //                Log.d("statmsg","yes");
 //                mRecipes = foodService.processResults(response);
-//                for (Recipe h : mRecipes) {
+//                for (Resepi h : mRecipes) {
 //                    Log.d("nama",h.getName());
 //                    Log.d("urlgambar",h.getImageUrl());
 //                    Log.d("sumber",h.getSourceUrl());

@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import model.Recipe;
+import model.Resepi;
 import model.Recommender;
 
 
@@ -99,7 +99,7 @@ public class tab1 extends Fragment {
 //            public void onResponse(Call call, Response response) {
 //                Log.d("statmsg","yes");
 //                mRecipes = foodService.processResults(response);
-//                for (Recipe h : mRecipes) {
+//                for (Resepi h : mRecipes) {
 //                    Log.d("namonn",h.getName());
 //                }
 //            }
@@ -160,8 +160,8 @@ public class tab1 extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recy.setLayoutManager(layoutManager);
 
-        ArrayList<Recipe> recipeArrayList = new ArrayList<Recipe>();
-        Recipe recipe = new Recipe("Burger","https://images.unsplash.com/photo-1504185945330-7a3ca1380535?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9f2d35c4ea30a81e428e66c653748f91&auto=format&fit=crop&w=621&q=80","google.com","");
+        ArrayList<Resepi> recipeArrayList = new ArrayList<Resepi>();
+        Resepi recipe = new Resepi("Burger","https://images.unsplash.com/photo-1504185945330-7a3ca1380535?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9f2d35c4ea30a81e428e66c653748f91&auto=format&fit=crop&w=621&q=80","google.com","");
         recipeArrayList.add(recipe);
         recipeArrayList.add(recipe);
         recipeArrayList.add(recipe);

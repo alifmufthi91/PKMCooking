@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import model.Recipe;
+import model.Resepi;
 
 
 /**
@@ -136,7 +136,7 @@ public class tab2 extends Fragment  {
     @BindView(R.id.recyclerView_fragsearch)
     RecyclerView recycler_fragsearch;
     private RecipeFragSearchAdapter mAdapter;
-    public ArrayList<Recipe> mRecipes = new ArrayList<>();
+    public ArrayList<Resepi> mRecipes = new ArrayList<>();
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -170,7 +170,7 @@ public class tab2 extends Fragment  {
         GridLayoutManager gridManager = new GridLayoutManager(getActivity(),2);
 
         recycler_fragsearch.setLayoutManager(gridManager);
-        Recipe A=new Recipe("Ayam","https://keeprecipes.com/sites/keeprecipes/files/imagecache/recipe_large/05-resep_ayam_goreng_bumbu_kuning_-_cara_membuat.jpg","google.com","");
+        Resepi A=new Resepi("Ayam","https://keeprecipes.com/sites/keeprecipes/files/imagecache/recipe_large/05-resep_ayam_goreng_bumbu_kuning_-_cara_membuat.jpg","google.com","");
         mRecipes.add(A);
         mRecipes.add(A);
         mRecipes.add(A);
@@ -183,7 +183,7 @@ public class tab2 extends Fragment  {
         mRecipes.add(A);
         mRecipes.add(A);
 
-        for (Recipe h : mRecipes) {
+        for (Resepi h : mRecipes) {
             Log.d("namonn",h.getName());
         }
         mAdapter = new RecipeFragSearchAdapter(getActivity(),mRecipes);

@@ -2,13 +2,12 @@ package model;
 
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Recommender {
     String title;
-    ArrayList<Recipe> recipeList;
+    ArrayList<Resepi> recipeList;
 
-    public Recommender(String title, ArrayList<Recipe> recipeList) {
+    public Recommender(String title, ArrayList<Resepi> recipeList) {
         this.title = title;
         this.recipeList = recipeList;
     }
@@ -17,7 +16,7 @@ public class Recommender {
         return title;
     }
 
-    public ArrayList<Recipe> getRecipeList() {
+    public ArrayList<Resepi> getRecipeList() {
         return recipeList;
     }
 }

@@ -10,14 +10,14 @@ import com.example.kienz.cooqueen.R;
 
 import java.util.ArrayList;
 
-import model.Recipe;
+import model.Resepi;
 
 public class RecipeSearchAdapter  extends RecyclerView.Adapter<RecipeSearchViewholder> {
-    private ArrayList<Recipe> mRecipes = new ArrayList<>();
+    private ArrayList<Resepi> mRecipes = new ArrayList<>();
     private Context mContext;
 
 
-    public RecipeSearchAdapter(Context context, ArrayList<Recipe> recipes) {
+    public RecipeSearchAdapter(Context context, ArrayList<Resepi> recipes) {
         mContext = context;
         mRecipes = recipes;
     }

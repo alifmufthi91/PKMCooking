@@ -12,14 +12,18 @@
 
         <TextView
             android:id="@+id/recipe_name_search"
+            android:shadowColor="#000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:layout_marginHorizontal="16dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_alignParentBottom="true"
             android:gravity="center"
-            android:text="something dipped with tar tar sauce"
-            android:textSize="18dp"
+            android:textSize="21sp"
             android:fontFamily="@font/poppinsbold"
             android:textColor="@android:color/white" />
 

@@ -1,22 +1,16 @@
 package com.example.kienz.cooqueen.adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.kienz.cooqueen.R;
-import com.example.kienz.cooqueen.ui.RecipeDetail;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import model.Recipe;
 import model.Recommender;
 
 public class RecipeFragHomeViewholder extends RecyclerView.ViewHolder {

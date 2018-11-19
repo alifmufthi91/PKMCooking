@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import jp.wasabeef.picasso.transformations.BlurTransformation;
-import model.Recipe;
+import model.Resepi;
 
 public class RecipeFragSearchViewholder extends RecyclerView.ViewHolder {
     @BindView(R.id.img_fragsearch)
@@ -25,9 +25,9 @@ public class RecipeFragSearchViewholder extends RecyclerView.ViewHolder {
     TextView mRecipeNameTextView;
 
     private Context mContext;
-    private ArrayList<Recipe> mRecipes = new ArrayList<>();
+    private ArrayList<Resepi> mRecipes = new ArrayList<>();
 
-    public RecipeFragSearchViewholder(View itemView, ArrayList<Recipe> recipes) {
+    public RecipeFragSearchViewholder(View itemView, ArrayList<Resepi> recipes) {
         super(itemView);
         ButterKnife.bind(this, itemView);
         mContext = itemView.getContext();
@@ -45,7 +45,7 @@ public class RecipeFragSearchViewholder extends RecyclerView.ViewHolder {
 
     }
 
-    public void bindRecipe(Recipe recipe) {
+    public void bindRecipe(Resepi recipe) {
         Picasso.get().load(recipe.getImageUrl()).transform(new BlurTransformation(mContext,3,3)).into(mRecipeImageView);
         mRecipeNameTextView.setText(recipe.getName());
     }

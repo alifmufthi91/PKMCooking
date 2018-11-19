@@ -6,7 +6,7 @@
     <string name="AppName">Cooqueen</string>
     <string name="title_activity_recipe_detail">Recipe_Name</string>
     <string name="large_text">
-        "Recipe Description (Recommend 300 Char, biar enak).."
+        "Recipe Description.."
     </string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_drawer_nav">DrawerNav</string>
@@ -31,4 +31,8 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="kandungan_nutrisi">Kandungan Nutrisi</string>
+    <string name="bahan_bahan">Bahan bahan</string>
+    <string name="perlengkapan">Perlengkapan</string>
+    <string name="langkah_pembuatan">Langkah pembuatan</string>
 </resources>

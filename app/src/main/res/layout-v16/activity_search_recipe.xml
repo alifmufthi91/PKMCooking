@@ -25,8 +25,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:visibility="gone"
+        android:fontFamily="@font/poppinsregular"
         android:textSize="24sp"
+        android:visibility="gone"
         android:textAlignment="center"
         android:text="Hasil pencarian \ntidak dapat ditemukan."/>
     <android.support.v7.widget.RecyclerView

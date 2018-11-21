@@ -35,4 +35,8 @@
     <string name="bahan_bahan">Bahan bahan</string>
     <string name="perlengkapan">Perlengkapan</string>
     <string name="langkah_pembuatan">Langkah pembuatan</string>
+    <string name="user_mail_com">user@mail.com</string>
+    <string name="user_name">User Name</string>
+    <string name="beranda">Beranda</string>
+    <string name="setting">Setting</string>
 </resources>

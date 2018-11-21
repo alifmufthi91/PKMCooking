@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.kienz.cooqueen.R;
 import com.example.kienz.cooqueen.adapter.RecipeSearchAdapter;
@@ -36,6 +37,8 @@ public class SearchRecipe extends AppCompatActivity {
     RecyclerView recy;
     @BindView(R.id.search_recipe)
     SearchView SearchField;
+    @BindView(R.id.search_notfound)
+    TextView notFound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,12 +47,15 @@ public class SearchRecipe extends AppCompatActivity {
         RealmResults<Resepi> reseps = getRecipes(que);
         setContentView(R.layout.activity_search_recipe);
         ButterKnife.bind(this);
-        SearchField.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SearchField.setIconified(false);
-            }
-        });
+        SearchField.setFocusable(false);
+        SearchField.setIconified(false);
+        SearchField.clearFocus();
+//        SearchField.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                SearchField.setIconified(false);
+//            }
+//        });
         SearchField.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
             @Override
             public boolean onQueryTextChange(String s) {
@@ -57,6 +63,11 @@ public class SearchRecipe extends AppCompatActivity {
                 mRecipes.addAll(getRecipes(s));
                 mAdapter.swapItems(mRecipes);
                 mAdapter.notifyDataSetChanged();
+                if(mRecipes.isEmpty()){
+                    notFound.setVisibility(View.VISIBLE);
+                }else{
+                    notFound.setVisibility(View.GONE);
+                }
                 return true;
             }
             @Override
@@ -68,6 +79,11 @@ public class SearchRecipe extends AppCompatActivity {
         mRecipes.addAll(realm.copyFromRealm(reseps));
         mAdapter = new RecipeSearchAdapter(getApplicationContext(), mRecipes);
         recy.setAdapter(mAdapter);
+
+        if(mRecipes.isEmpty()){
+            notFound.setVisibility(View.VISIBLE);
+        }
+
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(SearchRecipe.this);
         recy.setLayoutManager(layoutManager);
         recy.setHasFixedSize(true);

@@ -19,8 +19,7 @@
             android:id="@+id/search_tab2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:defaultQueryHint="Search Meal, Snack, or Ingredients"
-            app:queryHint="Search Meal, Snack, or Ingredients" >
+            app:queryHint="Cari resep makanan.." >
 
         </android.support.v7.widget.SearchView>
     </android.support.design.card.MaterialCardView>

@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.example.kienz.cooqueen.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import model.Resepi;
 
@@ -20,6 +21,11 @@ public class RecipeSearchAdapter  extends RecyclerView.Adapter<RecipeSearchViewh
     public RecipeSearchAdapter(Context context, ArrayList<Resepi> recipes) {
         mContext = context;
         mRecipes = recipes;
+    }
+
+    public void swapItems(ArrayList<Resepi> items) {
+        this.mRecipes = items;
+        notifyDataSetChanged();
     }
 
     @Override

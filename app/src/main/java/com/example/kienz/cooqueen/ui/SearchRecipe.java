@@ -1,9 +1,12 @@
 package com.example.kienz.cooqueen.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
+import android.view.View;
 
 import com.example.kienz.cooqueen.R;
 import com.example.kienz.cooqueen.adapter.RecipeSearchAdapter;
@@ -31,6 +34,8 @@ public class SearchRecipe extends AppCompatActivity {
     public ArrayList<Resepi> mRecipes = new ArrayList<>();
     @BindView(R.id.recyclerView_search)
     RecyclerView recy;
+    @BindView(R.id.search_recipe)
+    SearchView SearchField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +44,27 @@ public class SearchRecipe extends AppCompatActivity {
         RealmResults<Resepi> reseps = getRecipes(que);
         setContentView(R.layout.activity_search_recipe);
         ButterKnife.bind(this);
+        SearchField.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SearchField.setIconified(false);
+            }
+        });
+        SearchField.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
+            @Override
+            public boolean onQueryTextChange(String s) {
+                mRecipes.clear();
+                mRecipes.addAll(getRecipes(s));
+                mAdapter.swapItems(mRecipes);
+                mAdapter.notifyDataSetChanged();
+                return true;
+            }
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                SearchField.clearFocus();
+                return true;
+            }
+        });
         mRecipes.addAll(realm.copyFromRealm(reseps));
         mAdapter = new RecipeSearchAdapter(getApplicationContext(), mRecipes);
         recy.setAdapter(mAdapter);

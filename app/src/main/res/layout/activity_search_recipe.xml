@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:translationZ="6dp">
         <android.support.v7.widget.SearchView
+            android:id="@+id/search_recipe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/grey_200"

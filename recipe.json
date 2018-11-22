@@ -749,6 +749,79 @@
         },
         "bookmarked": false
       }
+    },
+    {
+      "recipe": {
+        "label": "Seafood Kriuk Sajiku",
+        "image": "http://dapurumami.com/uploads/recipe/wFsEi/274.jpg",
+        "source": "www.dapurumami.com",
+        "url": "http://dapurumami.com/resep/seafood-kriuk-sajiku-wFsEi",
+        "sajian": 4,
+        "desc": " ",
+        "foodLabels": [],
+        "ingredientLines": [
+          "2 bh cumi",
+          "4 bh udang kupas dengan ekor ",
+          "4 sdm air es ",
+          "1 bks Sajiku® Tepung Bumbu ",
+          "700 ml minyak goreng ",
+          "Saus sambal"
+        ],
+        "instructionLines": [
+          "Potong cumi menjadi 2 bagian, sisihkan",
+          "Tusuk cumi dan udang dengan tusukan sate, sisihkan. Buat adonan kering: masukkan Sajiku® Tepung Bumbu. Buat Adonan basah: larutkan 2 sdm Sajiku® Tepung Bumbu dengan 4 sdm air es.",
+          "Masukkan sate cumi dan udang ke adonan basah, gulingkan, angkat, lalu masukkan kedalam adonan kering, gulingkan, remas-remas hingga keriting, ketuk, sisihkan.",
+          "Goreng cumi dan udang dalam minyak panas, masak hingga matang, angkat , Sajikan."
+        ],
+        "toolsLines": [
+          "Penggorengan",
+          "Mangkuk",
+          "Tusuk Sate"
+        ],
+        "totalNutrients": {
+          "ENERC_KCAL": {
+            "label": "Energi",
+            "quantity": 691,
+            "unit": "kcal"
+          },
+          "FAT": {
+            "label": "Lemak",
+            "quantity": 44,
+            "unit": "g"
+          },
+          "FASAT": {
+            "label": "Lemak Jenuh",
+            "quantity": "",
+            "unit": "g"
+          },
+          "CARB": {
+            "label": "Karbohidrat",
+            "quantity": 226,
+            "unit": "g"
+          },
+          "SUGAR": {
+            "label": "Gula",
+            "quantity": "",
+            "unit": "g"
+          },
+          "FIBER": {
+            "label": "Serat",
+            "quantity": 19,
+            "unit": "g"
+          },
+          "PROTEIN": {
+            "label": "Protein",
+            "quantity": 78,
+            "unit": "g"
+          },
+          "SALT": {
+            "label": "Garam",
+            "quantity": "",
+            "unit": "g"
+          }
+        },
+        "bookmarked": false
+      }
     }
   ]
 }

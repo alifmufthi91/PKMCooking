@@ -9,21 +9,20 @@ import android.view.ViewGroup;
 import com.example.kienz.cooqueen.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import model.Resepi;
+import model.Resepop;
 
 public class RecipeSearchAdapter  extends RecyclerView.Adapter<RecipeSearchViewholder> {
-    private ArrayList<Resepi> mRecipes = new ArrayList<>();
+    private ArrayList<Resepop> mRecipes = new ArrayList<>();
     private Context mContext;
 
 
-    public RecipeSearchAdapter(Context context, ArrayList<Resepi> recipes) {
+    public RecipeSearchAdapter(Context context, ArrayList<Resepop> recipes) {
         mContext = context;
         mRecipes = recipes;
     }
 
-    public void swapItems(ArrayList<Resepi> items) {
+    public void swapItems(ArrayList<Resepop> items) {
         this.mRecipes = items;
         notifyDataSetChanged();
     }

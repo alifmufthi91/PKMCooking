@@ -12,7 +12,7 @@ import io.realm.annotations.Required;
 /**
  * Created by Guest on 4/28/16.
  */
-public class Resepi extends RealmObject {
+public class Resepop extends RealmObject {
     @PrimaryKey
     @Required
     private String recipeId;
@@ -37,7 +37,7 @@ public class Resepi extends RealmObject {
     private double rating_value;
     private int rating_giver;
 
-    public Resepi(String name, String imageUrl, String sourceUrl, String description) {
+    public Resepop(String name, String imageUrl, String sourceUrl, String description) {
         this.name = name;
         this.imageUrl = imageUrl;
         this.sourceUrl = sourceUrl;
@@ -46,9 +46,9 @@ public class Resepi extends RealmObject {
         this.rating_giver=0;
     };
 
-    public Resepi() {};
+    public Resepop() {};
 
-    public Resepi(String name, String imageUrl, String sourceUrl, String ingredints, String description, int sajian, String instrc, String labels, String alat) {
+    public Resepop(String name, String imageUrl, String sourceUrl, String ingredints, String description, int sajian, String instrc, String labels, String alat) {
         this.name = name;
         this.imageUrl = imageUrl;
         this.sourceUrl = sourceUrl;

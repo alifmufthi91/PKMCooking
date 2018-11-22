@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import model.Resepi;
+import model.Resepop;
 
 
 /**
@@ -136,7 +136,7 @@ public class tab2 extends Fragment  {
     @BindView(R.id.recyclerView_fragsearch)
     RecyclerView recycler_fragsearch;
     private RecipeFragSearchAdapter mAdapter;
-    public ArrayList<Resepi> mRecipes = new ArrayList<>();
+    public ArrayList<Resepop> mRecipes = new ArrayList<>();
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -145,6 +145,14 @@ public class tab2 extends Fragment  {
         searchView.setFocusable(false);
         searchView.setIconified(false);
         searchView.clearFocus();
+        searchView.setOnCloseListener(new SearchView.OnCloseListener(){
+            @Override
+            public boolean onClose() {
+                searchView.setQuery("",false);
+                searchView.clearFocus();
+                return true;
+            }
+        });
 //        searchView.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -172,7 +180,7 @@ public class tab2 extends Fragment  {
         GridLayoutManager gridManager = new GridLayoutManager(getActivity(),2);
 
         recycler_fragsearch.setLayoutManager(gridManager);
-        Resepi A=new Resepi("Ayam","https://keeprecipes.com/sites/keeprecipes/files/imagecache/recipe_large/05-resep_ayam_goreng_bumbu_kuning_-_cara_membuat.jpg","google.com","");
+        Resepop A=new Resepop("Ayam","https://keeprecipes.com/sites/keeprecipes/files/imagecache/recipe_large/05-resep_ayam_goreng_bumbu_kuning_-_cara_membuat.jpg","google.com","");
         mRecipes.add(A);
         mRecipes.add(A);
         mRecipes.add(A);
@@ -185,7 +193,7 @@ public class tab2 extends Fragment  {
         mRecipes.add(A);
         mRecipes.add(A);
 
-        for (Resepi h : mRecipes) {
+        for (Resepop h : mRecipes) {
             Log.d("namonn",h.getName());
         }
         mAdapter = new RecipeFragSearchAdapter(getActivity(),mRecipes);

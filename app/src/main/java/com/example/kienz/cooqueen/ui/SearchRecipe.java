@@ -1,20 +1,18 @@
 package com.example.kienz.cooqueen.ui;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.kienz.cooqueen.R;
 import com.example.kienz.cooqueen.adapter.RecipeSearchAdapter;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,16 +21,14 @@ import io.realm.Realm;
 import io.realm.RealmResults;
 import io.realm.SyncConfiguration;
 import io.realm.SyncUser;
-import model.Resepi;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
+import model.Resepop;
+import util.Constants;
 
 public class SearchRecipe extends AppCompatActivity {
 
     private RecipeSearchAdapter mAdapter;
     private Realm realm;
-    public ArrayList<Resepi> mRecipes = new ArrayList<>();
+    public ArrayList<Resepop> mRecipes = new ArrayList<>();
     @BindView(R.id.recyclerView_search)
     RecyclerView recy;
     @BindView(R.id.search_recipe)
@@ -44,11 +40,19 @@ public class SearchRecipe extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String que = getIntent().getStringExtra("resep");
-        RealmResults<Resepi> reseps = getRecipes(que);
+        RealmResults<Resepop> reseps = getRecipes(que);
         setContentView(R.layout.activity_search_recipe);
         ButterKnife.bind(this);
         SearchField.setFocusable(false);
         SearchField.setIconified(false);
+        SearchField.setOnCloseListener(new SearchView.OnCloseListener(){
+            @Override
+            public boolean onClose() {
+                SearchField.setQuery("",false);
+                SearchField.clearFocus();
+                return true;
+            }
+        });
         SearchField.clearFocus();
 //        SearchField.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -89,14 +93,13 @@ public class SearchRecipe extends AppCompatActivity {
         recy.setHasFixedSize(true);
     }
 
-    private RealmResults<Resepi> getRecipes(String recipeName) {
+    private RealmResults<Resepop> getRecipes(String recipeName) {
         SyncConfiguration configuration = SyncUser.current()
-                .createConfiguration("realms://cooquenpkmjtk16.us1a.cloud.realm.io" + "/default")
+                .createConfiguration(Constants.REALM_DEFAULT)
                 .build();
         realm = Realm.getInstance(configuration);
-
         return realm
-                .where(Resepi.class)
+                .where(Resepop.class)
                 .contains("name",recipeName,Case.INSENSITIVE)
                 .findAll();
     }

@@ -29,7 +29,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.kienz.cooqueen.R;
-import com.example.kienz.cooqueen.RegisterActivity;
 
 import java.util.ArrayList;
 import java.util.List;

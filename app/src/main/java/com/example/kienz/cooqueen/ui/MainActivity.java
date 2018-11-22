@@ -27,11 +27,12 @@ import io.realm.Realm;
 import io.realm.SyncConfiguration;
 import io.realm.SyncUser;
 import model.User;
+import util.Constants;
 
 public class MainActivity extends AppCompatActivity implements tab1.OnFragmentInteractionListener,tab2.OnFragmentInteractionListener,tab3.OnFragmentInteractionListener, NavigationView.OnNavigationItemSelectedListener {
 
     //      =========ALIF
-//    public ArrayList<Resepi> mRecipes = new ArrayList<>();
+//    public ArrayList<Resepop> mRecipes = new ArrayList<>();
 //    @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
     //      =============
     private Realm realm;
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements tab1.OnFragmentIn
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String url = "https://cooquenpkmjtk16.us1a.cloud.realm.io/~/my";
+        String url = Constants.REALM_USER;
         SyncConfiguration config = new SyncConfiguration.Builder(SyncUser.current(), url).build();
         realm = Realm.getInstance(config);
 
@@ -116,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements tab1.OnFragmentIn
 //            public void onResponse(Call call, Response response) {
 //                Log.d("statmsg","yes");
 //                mRecipes = foodService.processResults(response);
-//                for (Resepi h : mRecipes) {
+//                for (Resepop h : mRecipes) {
 //                    Log.d("nama",h.getName());
 //                    Log.d("urlgambar",h.getImageUrl());
 //                    Log.d("sumber",h.getSourceUrl());

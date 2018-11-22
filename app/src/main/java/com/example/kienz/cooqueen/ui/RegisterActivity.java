@@ -1,4 +1,4 @@
-package com.example.kienz.cooqueen;
+package com.example.kienz.cooqueen.ui;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -18,7 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.kienz.cooqueen.ui.MainActivity;
+import com.example.kienz.cooqueen.R;
 
 import io.realm.ObjectServerError;
 import io.realm.Realm;
@@ -123,7 +123,7 @@ public class RegisterActivity extends AppCompatActivity {
             SyncUser.logInAsync(myCredentials, Constants.AUTH_URL, new SyncUser.Callback<SyncUser>() {
                 @Override
                 public void onSuccess(SyncUser user) {
-                    String url = "https://cooquenpkmjtk16.us1a.cloud.realm.io/~/my";
+                    String url = Constants.REALM_USER;
                     SyncConfiguration config = new SyncConfiguration.Builder(SyncUser.current(), url).build();
                     realm = Realm.getInstance(config);
                     realm.executeTransactionAsync(realm -> {

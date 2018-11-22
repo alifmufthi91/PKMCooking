@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import model.Resepi;
+import model.Resepop;
 
 public class RecipeSearchViewholder extends RecyclerView.ViewHolder {
     @BindView(R.id.recipe_img_search)
@@ -23,9 +23,9 @@ public class RecipeSearchViewholder extends RecyclerView.ViewHolder {
     @BindView(R.id.recipe_name_search)
     TextView mRecipeNameTextView;
     private Context mContext;
-    private ArrayList<Resepi> mRecipes = new ArrayList<>();
+    private ArrayList<Resepop> mRecipes = new ArrayList<>();
 
-    public RecipeSearchViewholder(View itemView, ArrayList<Resepi> recipes) {
+    public RecipeSearchViewholder(View itemView, ArrayList<Resepop> recipes) {
         super(itemView);
         ButterKnife.bind(this, itemView);
         mContext = itemView.getContext();
@@ -52,7 +52,7 @@ public class RecipeSearchViewholder extends RecyclerView.ViewHolder {
         });
     }
 
-    public void bindRecipe(Resepi recipe) {
+    public void bindRecipe(Resepop recipe) {
         Picasso.get().load(recipe.getImageUrl()).into(mRecipeImageView);
         mRecipeNameTextView.setText(recipe.getName());
     }

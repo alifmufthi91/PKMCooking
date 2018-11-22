@@ -45,6 +45,7 @@ public class SearchRecipe extends AppCompatActivity {
         ButterKnife.bind(this);
         SearchField.setFocusable(false);
         SearchField.setIconified(false);
+        SearchField.setQuery(que,false);
         SearchField.setOnCloseListener(new SearchView.OnCloseListener(){
             @Override
             public boolean onClose() {

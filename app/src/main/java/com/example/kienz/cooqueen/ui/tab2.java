@@ -166,6 +166,7 @@ public class tab2 extends Fragment  {
                 Intent searchIntent = new Intent(getContext(),SearchRecipe.class);
                 searchIntent.putExtra("resep",s);
                 startActivity(searchIntent);
+                searchView.clearFocus();
                 return false;
             }
             @Override

@@ -150,14 +150,30 @@ public class Resepop extends RealmObject {
 
     public ArrayList<String> getNutritions(){
         ArrayList<String> nutritions = new ArrayList<>();
-        nutritions.add("Energi : "+String.valueOf(this.Energy)+"kcal");
-        nutritions.add("Karbohidrat : "+String.valueOf(this.Carb)+"g");
-        nutritions.add("Lemak : "+String.valueOf(this.Fat)+"g");
-        nutritions.add("Lemak Jenuh : "+String.valueOf(this.Fasat)+"g");
-        nutritions.add("Gula : "+String.valueOf(this.Sugar)+"g");
-        nutritions.add("Serat : "+String.valueOf(this.Fiber)+"g");
-        nutritions.add("Protein : "+String.valueOf(this.Protein)+"g");
-        nutritions.add("Garam : "+String.valueOf(this.Salt)+"g");
+        if(this.Energy != 0){
+            nutritions.add("Energi : "+String.valueOf(this.Energy)+"kcal");
+        }
+        if(this.Carb != 0){
+            nutritions.add("Karbohidrat : "+String.valueOf(this.Carb)+"g");
+        }
+        if(this.Fat != 0){
+            nutritions.add("Lemak : "+String.valueOf(this.Fat)+"g");
+        }
+        if(this.Fasat != 0){
+            nutritions.add("Lemak Jenuh : "+String.valueOf(this.Fasat)+"g");
+        }
+        if(this.Sugar != 0){
+            nutritions.add("Gula : "+String.valueOf(this.Sugar)+"g");
+        }
+        if(this.Fiber != 0){
+            nutritions.add("Serat : "+String.valueOf(this.Fiber)+"g");
+        }
+        if(this.Protein != 0){
+            nutritions.add("Protein : "+String.valueOf(this.Protein)+"g");
+        }
+        if(this.Salt != 0){
+            nutritions.add("Garam : "+String.valueOf(this.Salt)+"g");
+        }
         return nutritions;
     }
 

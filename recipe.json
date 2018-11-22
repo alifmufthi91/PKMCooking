@@ -573,6 +573,182 @@
         },
         "bookmarked": false
       }
+    },
+    {
+      "recipe": {
+        "label": "Sate ayam",
+        "image": "https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/chickensatay.jpg?itok=3pUpzCNJ",
+        "source": "www.bbcgoodfood.com",
+        "url": "https://www.bbcgoodfood.com/recipe/cheeky-chicken-satay",
+        "sajian": 12,
+        "desc": "Editor makanan, Barney memulai memasaknya membuat sate ayam dengan saus kacang",
+        "foodLabels": [
+          "tak dimasak"
+        ],
+        "ingredientLines": [
+          "sepotong kecil jahe",
+          "2 siung bawang putih",
+          "Irisan kulit dan jus 1 jeruk nipis",
+          "1 sdt madu bening",
+          "1 sdm kecap",
+          "1 sdm bubuk kari ringan",
+          "3 sdm selai kacang halus",
+          "500g pak fillet dada ayam tanpa kulit",
+          "165ml kaleng santan",
+          "1 sdt minyak sayur",
+          "nasi matang dan irisan jeruk nipis, untuk disajikan",
+          "1 ketimun",
+          "2 sendok makan cuka anggur putih",
+          "1 sdm gula kastor",
+          "saus sambal manis (opsional)",
+          "sekelompok ketumbar, daun dipetik (opsional)"
+        ],
+        "instructionLines": [
+          "Kupas jahe dan memasukkannya ke dalam mangkuk. Ulangi dengan bumbu bawang putih dan limau. Potong dua jeruk nipis dan jus, lalu campurkan ke dalam mangkuk dengan madu, kedelai, bubuk kari, dan selai kacang. campur yang baik, tambahkan sedikit percikan air jika terlalu kaku, lalu menyendok dua pertiga campuran ke dalam panci kecil. Sisihkan untuk Langkah 4.",
+          "Masukkan ayam ke dalam kantong sandwich, satu payudara pada satu waktu, meratakan masing-masing dengan penggulung",
+          "Potong ayam menjadi potongan, masukkan ke dalam ketiga sisa campuran selai kacang, aduk dengan baik. Tutup dengan cling film dan dinginkan hingga diperlukan. Ini bisa dilakukan hingga 3 jam ke depan.",
+          "Saat ayam sedang merendam, tuangkan santan ke dalam panci dan aduk bersama dengan campuran selai kacang. Saus harus dipanaskan dengan lembut dan diaduk.",
+          "Ayam harus diulir menjadi bentuk 'S' ke tusuk sate. Panaskan panggangan hingga tinggi, Panggang tusuk sate selama sekitar 10 menit, sesekali diputar, sampai sedikit hangus.",
+          "Dengan menggunakan pengupas pisau putar, kupas mentimun ke dalam mangkuk, lalu terus mengupas daging timun ke dalam pita sampai mereka sampai ke biji. Ulangi dengan setiap sisi mentimun.",
+          "Campur cuka dan gula sampai gula larut. Tambahkan cabai manis, jika menggunakan, lalu tuangkan mentimun. Tambahkan ketumbar jika anak Anda menyukainya, atau sajikan di samping untuk orang dewasa. Untuk menyajikan, taruh tusuk sate di atas piring, saus dan salad dalam mangkuk, dan sajikan dengan nasi dan jeruk nipis di samping."
+        ],
+        "toolsLines": [
+          "Tusuk Sate",
+          "Loyang",
+          "Pemanggang"
+        ],
+        "totalNutrients": {
+          "ENERC_KCAL": {
+            "label": "Energi",
+            "quantity": 117,
+            "unit": "kcal"
+          },
+          "FAT": {
+            "label": "Lemak",
+            "quantity": 6,
+            "unit": "g"
+          },
+          "FASAT": {
+            "label": "Lemak Jenuh",
+            "quantity": 3,
+            "unit": "g"
+          },
+          "CARB": {
+            "label": "Karbohidrat",
+            "quantity": 4,
+            "unit": "g"
+          },
+          "SUGAR": {
+            "label": "Gula",
+            "quantity": 3,
+            "unit": "g"
+          },
+          "FIBER": {
+            "label": "Serat",
+            "quantity": 1,
+            "unit": "g"
+          },
+          "PROTEIN": {
+            "label": "Protein",
+            "quantity": 12,
+            "unit": "g"
+          },
+          "SALT": {
+            "label": "Garam",
+            "quantity": 0.3,
+            "unit": "g"
+          }
+        },
+        "bookmarked": false
+      }
+    },
+    {
+      "recipe": {
+        "label": "Salad Gado Gado",
+        "image": "https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe/recipe-image/2016/05/gado-gado-salad.jpg?itok=MTTSriC8",
+        "source": "www.bbcgoodfood.com",
+        "url": "https://www.bbcgoodfood.com/recipes/gado-gado-salad",
+        "sajian": 4,
+        "desc": "Salad Indonesia pedas Aisha Nanor Martin memiliki semuanya; sayuran renyah, telur rebus, saus kacang cabe, ketumbar segar, tahu goreng dan taburan kerupuk udang untuk tambahan kerutang",
+        "foodLabels": [],
+        "ingredientLines": [
+          "1 sdm minyak sayur",
+          "Tahu 200g, potong kecil-kecil",
+          "250 g kentang masak, dipotong menjadi potongan",
+          "3 butir telur",
+          "Kacang hijau 100g, potongan dua bagian",
+          "250 gram kubis Cina, dicincang halus",
+          "½ mentimun (atau 1 ketimun), diiris tipis",
+          "100 gram buncis",
+          "1 wortel, diparut",
+          "Segenggam ketumbar, daun dipetik dan dipotong kasar",
+          "segelintir kerupuk udang",
+          "4 sdm bawang renyah",
+          "50g selai kacang",
+          "3 tbsp kecap manis (atau 2 ½ sdm kecap dan ½ sdm madu)",
+          "2 sdt terasi udang atau udang karang kering",
+          "1 sdm saus ikan",
+          "1 sdm gula coklat gelap yang lembut",
+          "1 siung bawang putih, dilumatkan",
+          "2 cabe merah gendut, cincang halus",
+          "150 ml santan",
+          "jus 1 jeruk nipis"
+        ],
+        "instructionLines": [
+          "Panaskan minyak dalam wajan besar atau wajan dan rebus panci kecil air. Goreng tahu selama beberapa menit setiap sisi sampai coklat dan renyah, kemudian pindahkan ke piring. Tambahkan kentang ke penggorengan dan masak selama beberapa menit sampai mereka dihangatkan dan mulai renyah, lalu tip ke piring yang sama dan sisihkan untuk mendinginkan.",
+          "Tambahkan telur ke air mendidih dan masak selama 7 menit, lalu masukkan ke dalam air dingin. Isi panci dengan air segar, didihkan dan tambahkan kacang. Masak selama 2-3 menit sampai empuk. Tiriskan di bawah air dingin hingga dingin.",
+          "Untuk membuat saus kacang, masukkan selai kacang dan kecap manis ke dalam mangkok dan tumbuk bersama dengan garpu hingga halus dan dikombinasikan. Kocok sisa bahan.",
+          "Masukkan tahu, kentang, kacang-kacangan, kubis, timun, buncis, wortel dan ketumbar dalam mangkuk besar atau susun di atas piring. Taburkan lebih dari setengah saus, sisakan sisanya untuk orang-orang untuk membantu diri mereka sendiri. Pecahkan kerupuk udang di tangan Anda dan berhamburan. Kupas dan potong telur, dan sajikan dengan bawang yang renyah. Aduk bersama sebelum disajikan."
+        ],
+        "toolsLines": [
+          "Penggorengan",
+          "Mangkuk",
+          "Panci"
+        ],
+        "totalNutrients": {
+          "ENERC_KCAL": {
+            "label": "Energi",
+            "quantity": 398,
+            "unit": "kcal"
+          },
+          "FAT": {
+            "label": "Lemak",
+            "quantity": 22,
+            "unit": "g"
+          },
+          "FASAT": {
+            "label": "Lemak Jenuh",
+            "quantity": 6,
+            "unit": "g"
+          },
+          "CARB": {
+            "label": "Karbohidrat",
+            "quantity": 30,
+            "unit": "g"
+          },
+          "SUGAR": {
+            "label": "Gula",
+            "quantity": 13,
+            "unit": "g"
+          },
+          "FIBER": {
+            "label": "Serat",
+            "quantity": 4,
+            "unit": "g"
+          },
+          "PROTEIN": {
+            "label": "Protein",
+            "quantity": 18,
+            "unit": "g"
+          },
+          "SALT": {
+            "label": "Garam",
+            "quantity": 1.5,
+            "unit": "g"
+          }
+        },
+        "bookmarked": false
+      }
     }
   ]
 }

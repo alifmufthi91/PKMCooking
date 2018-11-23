@@ -3,13 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".ui.RegisterActivity">
+    tools:context=".ui.RegisterActivity"
+    android:background="@drawable/login_bg">
 
     <!-- Login progress -->
     <ProgressBar
@@ -21,7 +23,7 @@
         android:layout_marginBottom="8dp"
         android:visibility="gone" />
 
-    <ScrollView
+    <LinearLayout
         android:id="@+id/register_form"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -30,7 +32,9 @@
             android:id="@+id/email_register_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="100dp">
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -40,8 +44,10 @@
                     android:id="@+id/email-register"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColorHint="@color/colorPrimaryDark"
                     android:hint="@string/prompt_email"
                     android:inputType="textEmailAddress"
+                    android:imeOptions="actionNext"
                     android:maxLines="1"
                     android:singleLine="true" />
 
@@ -55,9 +61,11 @@
                     android:id="@+id/name-register"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColorHint="@color/colorPrimaryDark"
                     android:hint="Nama Lengkap"
                     android:inputType="textPersonName|textCapWords"
                     android:maxLines="1"
+                    android:imeOptions="actionNext"
                     android:singleLine="true" />
 
             </android.support.design.widget.TextInputLayout>
@@ -70,10 +78,11 @@
                     android:id="@+id/password-register"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColorHint="@color/colorPrimaryDark"
                     android:hint="Password"
                     android:imeActionId="6"
                     android:imeActionLabel="@string/action_sign_in_short"
-                    android:imeOptions="actionUnspecified"
+                    android:imeOptions="actionNext"
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:singleLine="true" />
@@ -89,9 +98,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Ulangi Password"
+                    android:textColorHint="@color/colorPrimaryDark"
                     android:imeActionId="6"
                     android:imeActionLabel="@string/action_sign_in_short"
-                    android:imeOptions="actionUnspecified"
+                    android:imeOptions="actionDone"
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:singleLine="true" />
@@ -105,8 +115,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Daftar"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:fontFamily="@font/poppinsregular"
+                android:background="@drawable/shape_bg_blue_rounded_rect"
+                android:textColor="@color/colorPrimaryWhite"/>
 
         </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
 </LinearLayout>

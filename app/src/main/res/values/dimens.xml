@@ -12,5 +12,6 @@
     <dimen name="nav_header_height">176dp</dimen>
 
     <dimen name="card_corner_radius">6dp</dimen>
+    <dimen name="login_corner_radius">30dp</dimen>
     <dimen name="card_elevation">6dp</dimen>
 </resources>

@@ -47,6 +47,12 @@ public class SearchRecipe extends AppCompatActivity {
     private RealmResults<ResepV2> reseps;
 
     @Override
+    protected void onDestroy() {
+        realm.close();
+        super.onDestroy();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String que = getIntent().getStringExtra("resep");
@@ -120,7 +126,7 @@ public class SearchRecipe extends AppCompatActivity {
         return realm
                 .where(ResepV2.class)
                 .contains("name",recipeName,Case.INSENSITIVE)
-                .findAll();
+                .findAllAsync();
     }
 
     @Override

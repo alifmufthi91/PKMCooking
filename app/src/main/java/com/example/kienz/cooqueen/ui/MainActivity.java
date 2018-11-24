@@ -45,6 +45,13 @@ public class MainActivity extends AppCompatActivity implements tab1.OnFragmentIn
     @BindView(R.id.nav_view)
     NavigationView mNavigation;
 
+
+    @Override
+    protected void onDestroy() {
+        realm.close();
+        super.onDestroy();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,9 +68,10 @@ public class MainActivity extends AppCompatActivity implements tab1.OnFragmentIn
 
 //        TeSTING Query
          profile = realm.where(User.class).findFirst();
-         Log.d("nameuser", profile.getName());
-         navUseremail.setText(profile.getEmail());
-         navUsername.setText(profile.getName());
+        if (profile != null) {
+            navUseremail.setText(profile.getEmail());
+            navUsername.setText(profile.getName());
+        }
 //        realm.executeTransaction(realm -> {
 //            final RealmResults<User> users = realm.where(User.class).findAll();
 //            for(User a : users){
@@ -195,6 +203,8 @@ public class MainActivity extends AppCompatActivity implements tab1.OnFragmentIn
         }
         return super.dispatchTouchEvent( event );
     }
+
+
 }
 
 

@@ -10,4 +10,6 @@ public class CooquenApp extends Application {
         super.onCreate();
         Realm.init(this);
     }
+
+
 }

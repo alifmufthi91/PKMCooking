@@ -15,16 +15,16 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import model.Resepop;
+import model.ResepV2;
 
 public class RecipeFragHomeItemsViewholder extends RecyclerView.ViewHolder {
     @BindView(R.id.imageView_fraghome_items) ImageView mRecipeImageView;
     @BindView(R.id.textView_fraghome_items) TextView mRecipeNameTextView;
     private Context mContext;
-    private ArrayList<Resepop> mRecipes = new ArrayList<>();
+    private ArrayList<ResepV2> mRecipes = new ArrayList<>();
 
 
-    public RecipeFragHomeItemsViewholder(View itemView, ArrayList<Resepop> recipes) {
+    public RecipeFragHomeItemsViewholder(View itemView, ArrayList<ResepV2> recipes) {
         super(itemView);
         ButterKnife.bind(this, itemView);
         mContext = itemView.getContext();
@@ -41,7 +41,7 @@ public class RecipeFragHomeItemsViewholder extends RecyclerView.ViewHolder {
         });
     }
 
-    public void bindRecipe(Resepop recipe) {
+    public void bindRecipe(ResepV2 recipe) {
         Picasso.get().load(recipe.getImageUrl()).into(mRecipeImageView);
         mRecipeNameTextView.setText(recipe.getName());
     }

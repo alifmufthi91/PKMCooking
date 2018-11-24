@@ -5,9 +5,9 @@ import java.util.ArrayList;
 
 public class Recommender {
     String title;
-    ArrayList<Resepop> recipeList;
+    ArrayList<ResepV2> recipeList;
 
-    public Recommender(String title, ArrayList<Resepop> recipeList) {
+    public Recommender(String title, ArrayList<ResepV2> recipeList) {
         this.title = title;
         this.recipeList = recipeList;
     }
@@ -16,7 +16,7 @@ public class Recommender {
         return title;
     }
 
-    public ArrayList<Resepop> getRecipeList() {
+    public ArrayList<ResepV2> getRecipeList() {
         return recipeList;
     }
 }

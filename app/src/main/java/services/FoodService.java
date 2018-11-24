@@ -31,8 +31,8 @@
 //    }
 //
 //
-//    public ArrayList<Resepop> processResults(Response response) {
-//        ArrayList<Resepop> recipes = new ArrayList<>();
+//    public ArrayList<ResepV2> processResults(Response response) {
+//        ArrayList<ResepV2> recipes = new ArrayList<>();
 //
 //        try {
 //            String jsonData = response.body().string();
@@ -47,7 +47,7 @@
 //                    String sourceUrl = recipeJSON.getString("url");
 //                    String ingredients = recipeJSON.getJSONArray("ingredientLines").toString();
 //
-//                    Resepop recipe = new Resepop (name, imageUrl, sourceUrl, ingredients);
+//                    ResepV2 recipe = new ResepV2 (name, imageUrl, sourceUrl, ingredients);
 //                    recipes.add(recipe);
 //                }
 //            }

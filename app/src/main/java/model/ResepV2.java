@@ -211,5 +211,6 @@ public class ResepV2 extends RealmObject {
         }else{
             this.rating_value=((this.rating_value*this.rating_giver)+value)/(this.rating_giver+1);
         }
+        this.rating_giver++;
     }
 }

@@ -28,7 +28,10 @@ import com.example.kienz.cooqueen.adapter.MyPagerAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.realm.OrderedCollectionChangeSet;
+import io.realm.OrderedRealmCollectionChangeListener;
 import io.realm.Realm;
+import io.realm.RealmResults;
 import io.realm.SyncConfiguration;
 import io.realm.SyncUser;
 import model.User;
@@ -67,7 +70,20 @@ public class MainActivity extends AppCompatActivity implements tab1.OnFragmentIn
         TextView navUseremail = (TextView) headerView.findViewById(R.id.userEmail);
 
 //        TeSTING Query
-         profile = realm.where(User.class).findFirst();
+        RealmResults<User> results = realm.where(User.class).findAllAsync();
+        results.addChangeListener(new OrderedRealmCollectionChangeListener<RealmResults<User>>() {
+            @Override
+            public void onChange(RealmResults<User> users, OrderedCollectionChangeSet changeSet) {
+                profile = users.first();
+                navUseremail.setText(profile.getEmail());
+                navUsername.setText(profile.getName());
+            }
+        });
+        if(profile==null){
+            if(!results.isEmpty()){
+                profile = results.first();
+            }
+        }
         if (profile != null) {
             navUseremail.setText(profile.getEmail());
             navUsername.setText(profile.getName());

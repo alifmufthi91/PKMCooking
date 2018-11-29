@@ -5,7 +5,7 @@
     <color name="colorPrimary">#47b2d8</color>
     <color name="colorPrimaryDark">#2f97bc</color>
     <color name="colorAccent">#bc2f62</color>
-    <color name="component">#4da9f9</color>
+    <color name="component">#2B95FF</color>
 
     <color name="colorAccent2">#FF4081</color>
     <color name="colorControlHighlight">@color/fifty_percent_transparency_grey_400</color>

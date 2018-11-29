@@ -35,6 +35,7 @@ public class RecipeSearchViewholder extends RecyclerView.ViewHolder {
             public void onClick(View v) {
                 int itemPosition = getLayoutPosition();
                 Intent intent = new Intent(mContext, RecipeDetail.class);
+                intent.putExtra("idResep",mRecipes.get(itemPosition).getRecipeId());
                 intent.putExtra("namaResep", mRecipes.get(itemPosition).getName());
                 intent.putExtra("gambarResep",mRecipes.get(itemPosition).getImageUrl());
                 intent.putExtra("deskripsiResep",mRecipes.get(itemPosition).getDescription());

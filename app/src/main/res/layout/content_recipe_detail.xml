@@ -12,117 +12,200 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <TextView
             android:id="@+id/Recipe_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
             android:layout_marginLeft="@dimen/text_margin"
+            android:layout_marginTop="32dp"
             android:layout_marginRight="@dimen/text_margin"
+            android:text="@string/large_text"
             android:textAlignment="center"
-            android:textStyle="italic"
-            android:text="@string/large_text" />
+            android:textStyle="italic" />
+
         <TextView
             android:id="@+id/Recipe_sajian"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/text_margin"
             android:layout_marginLeft="@dimen/text_margin"
+            android:layout_marginTop="@dimen/text_margin"
             android:layout_marginRight="@dimen/text_margin"
             android:textAlignment="center"
             android:textStyle="italic|bold" />
+
         <TextView
             android:id="@+id/Recipe_sumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/text_margin"
             android:layout_marginLeft="@dimen/text_margin"
+            android:layout_marginTop="@dimen/text_margin"
             android:layout_marginRight="@dimen/text_margin"
             android:textAlignment="center"
             android:textStyle="italic|bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:orientation="vertical"
+            android:background="@drawable/search_bg_shadow"
+            android:backgroundTint="@color/grey_100">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Total Rating"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:id="@+id/ratingValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.0"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/star"
+                    android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/ratingGiver"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(0)"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Beri Rating"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+
+            <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ratingBar"
+                android:layout_gravity="center"
+                android:numStars="5"
+                android:stepSize="0.5" />
+            <Button
+                android:id="@+id/submit_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Submit"
+                android:background="@drawable/custom_button"
+                android:layout_gravity="center"
+                android:textColor="@color/colorPrimaryWhite" />
+
+
+        </LinearLayout>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/text_margin"
             android:layout_marginLeft="@dimen/text_margin"
+            android:layout_marginTop="@dimen/text_margin"
             android:layout_marginRight="@dimen/text_margin"
-            android:textAppearance="@style/RecipeTextComponents"
-            android:text="@string/kandungan_nutrisi" />
+            android:text="@string/kandungan_nutrisi"
+            android:textAppearance="@style/RecipeTextComponents" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:layout_marginLeft="@dimen/text_margin"
             android:layout_marginRight="@dimen/text_margin"
-            android:background="#b5b5b5"/>
+            android:background="#b5b5b5" />
+
         <TextView
             android:id="@+id/Recipe_nutrisi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/text_margin"
-            android:layout_marginRight="@dimen/text_margin"/>
+            android:layout_marginRight="@dimen/text_margin" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/text_margin"
             android:layout_marginLeft="@dimen/text_margin"
+            android:layout_marginTop="@dimen/text_margin"
             android:layout_marginRight="@dimen/text_margin"
-            android:textAppearance="@style/RecipeTextComponents"
-            android:text="@string/bahan_bahan" />
+            android:text="@string/bahan_bahan"
+            android:textAppearance="@style/RecipeTextComponents" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:layout_marginLeft="@dimen/text_margin"
             android:layout_marginRight="@dimen/text_margin"
-            android:background="#b5b5b5"/>
+            android:background="#b5b5b5" />
+
         <TextView
             android:id="@+id/Recipe_bahan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/text_margin"
-            android:layout_marginRight="@dimen/text_margin"/>
+            android:layout_marginRight="@dimen/text_margin" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/text_margin"
             android:layout_marginLeft="@dimen/text_margin"
+            android:layout_marginTop="@dimen/text_margin"
             android:layout_marginRight="@dimen/text_margin"
-            android:textAppearance="@style/RecipeTextComponents"
-            android:text="@string/perlengkapan" />
+            android:text="@string/perlengkapan"
+            android:textAppearance="@style/RecipeTextComponents" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:layout_marginLeft="@dimen/text_margin"
             android:layout_marginRight="@dimen/text_margin"
-            android:background="#b5b5b5"/>
+            android:background="#b5b5b5" />
+
         <TextView
             android:id="@+id/Recipe_alat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/text_margin"
-            android:layout_marginRight="@dimen/text_margin"/>
+            android:layout_marginRight="@dimen/text_margin" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/text_margin"
             android:layout_marginLeft="@dimen/text_margin"
+            android:layout_marginTop="@dimen/text_margin"
             android:layout_marginRight="@dimen/text_margin"
-            android:textAppearance="@style/RecipeTextComponents"
-            android:text="@string/langkah_pembuatan" />
+            android:text="@string/langkah_pembuatan"
+            android:textAppearance="@style/RecipeTextComponents" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:layout_marginLeft="@dimen/text_margin"
             android:layout_marginRight="@dimen/text_margin"
-            android:background="#b5b5b5"/>
+            android:background="#b5b5b5" />
+
         <TextView
             android:id="@+id/Recipe_langkah"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/text_margin"
             android:layout_marginRight="@dimen/text_margin"
-            android:layout_marginBottom="32dp"/>
+            android:layout_marginBottom="32dp" />
     </LinearLayout>
-
 
 
 </android.support.v4.widget.NestedScrollView>

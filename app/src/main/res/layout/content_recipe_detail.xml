@@ -12,16 +12,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <TextView
             android:id="@+id/Recipe_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
             android:layout_marginTop="32dp"
-            android:layout_marginLeft="@dimen/text_margin"
-            android:layout_marginRight="@dimen/text_margin"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam blandit nisi quis pretium sollicitudin. Donec ac libero quis lorem pulvinar sagittis sed at tortor. "
             android:textAlignment="center"
             android:textStyle="italic"
-            android:text="@string/large_text" />
+            android:textSize="15sp"
+            android:fontFamily="@font/poppinslight"/>
+
         <TextView
             android:id="@+id/Recipe_sajian"
             android:layout_width="match_parent"
@@ -30,7 +33,9 @@
             android:layout_marginLeft="@dimen/text_margin"
             android:layout_marginRight="@dimen/text_margin"
             android:textAlignment="center"
+            android:text="Sajian : 4"
             android:textStyle="italic|bold" />
+
         <TextView
             android:id="@+id/Recipe_sumber"
             android:layout_width="match_parent"
@@ -39,38 +44,52 @@
             android:layout_marginLeft="@dimen/text_margin"
             android:layout_marginRight="@dimen/text_margin"
             android:textAlignment="center"
+            android:text="sumber https://www.lipsum.com/feed/html"
             android:textStyle="italic|bold" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/text_margin"
+            android:layout_marginTop="32dp"
             android:layout_marginLeft="@dimen/text_margin"
             android:layout_marginRight="@dimen/text_margin"
             android:textAppearance="@style/RecipeTextComponents"
-            android:text="@string/kandungan_nutrisi" />
+            android:text="@string/kandungan_nutrisi"
+            android:fontFamily="@font/robotobold"
+            android:textSize="20sp"/>
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
+            android:layout_marginVertical="8dp"
             android:layout_marginLeft="@dimen/text_margin"
             android:layout_marginRight="@dimen/text_margin"
-            android:background="#b5b5b5"/>
+            android:background="#d4d4d4"/>
         <TextView
             android:id="@+id/Recipe_nutrisi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/text_margin"
-            android:layout_marginRight="@dimen/text_margin"/>
+            android:layout_marginRight="@dimen/text_margin"
+            android:text="Energi : 398 kcal
+Energi : 398 kcal
+Energi : 398 kcal"
+            android:textSize="17sp"
+            android:fontFamily="@font/robotoregular"
+            android:lineSpacingExtra="8dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/text_margin"
+            android:layout_marginTop="32dp"
             android:layout_marginLeft="@dimen/text_margin"
             android:layout_marginRight="@dimen/text_margin"
             android:textAppearance="@style/RecipeTextComponents"
-            android:text="@string/bahan_bahan" />
+            android:text="@string/bahan_bahan"
+            android:fontFamily="@font/robotobold"
+            android:textSize="20sp"/>
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
+            android:layout_marginVertical="8dp"
             android:layout_marginLeft="@dimen/text_margin"
             android:layout_marginRight="@dimen/text_margin"
             android:background="#b5b5b5"/>
@@ -79,18 +98,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/text_margin"
-            android:layout_marginRight="@dimen/text_margin"/>
+            android:layout_marginRight="@dimen/text_margin"
+            android:text="Energi : 398 kcal
+Energi : 398 kcal
+Energi : 398 kcal"
+            android:textSize="17sp"
+            android:fontFamily="@font/robotoregular"
+            android:lineSpacingExtra="8dp"
+            android:textStyle="bold"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/text_margin"
+            android:layout_marginTop="32dp"
             android:layout_marginLeft="@dimen/text_margin"
             android:layout_marginRight="@dimen/text_margin"
             android:textAppearance="@style/RecipeTextComponents"
-            android:text="@string/perlengkapan" />
+            android:text="@string/perlengkapan"
+            android:fontFamily="@font/robotobold"
+            android:textSize="20sp" />
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
+            android:layout_marginVertical="8dp"
             android:layout_marginLeft="@dimen/text_margin"
             android:layout_marginRight="@dimen/text_margin"
             android:background="#b5b5b5"/>
@@ -99,18 +128,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/text_margin"
-            android:layout_marginRight="@dimen/text_margin"/>
+            android:layout_marginRight="@dimen/text_margin"
+            android:text="Energi : 398 kcal
+Energi : 398 kcal
+Energi : 398 kcal"
+            android:textSize="17sp"
+            android:fontFamily="@font/robotoregular"
+            android:lineSpacingExtra="8dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/text_margin"
+            android:layout_marginTop="32dp"
             android:layout_marginLeft="@dimen/text_margin"
             android:layout_marginRight="@dimen/text_margin"
             android:textAppearance="@style/RecipeTextComponents"
-            android:text="@string/langkah_pembuatan" />
+            android:text="@string/langkah_pembuatan"
+            android:fontFamily="@font/robotobold"
+            android:textSize="20sp" />
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
+            android:layout_marginVertical="8dp"
             android:layout_marginLeft="@dimen/text_margin"
             android:layout_marginRight="@dimen/text_margin"
             android:background="#b5b5b5"/>
@@ -120,7 +158,13 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/text_margin"
             android:layout_marginRight="@dimen/text_margin"
-            android:layout_marginBottom="32dp"/>
+            android:layout_marginBottom="32dp"
+            android:text="Energi : 398 kcal
+Energi : 398 kcal
+Energi : 398 kcal"
+            android:textSize="15sp"
+            android:fontFamily="@font/robotoregular"
+            android:lineSpacingExtra="1dp"/>
     </LinearLayout>
 
 

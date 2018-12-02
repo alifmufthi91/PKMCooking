@@ -28,8 +28,6 @@ import com.example.kienz.cooqueen.adapter.MyPagerAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.realm.OrderedCollectionChangeSet;
-import io.realm.OrderedRealmCollectionChangeListener;
 import io.realm.Realm;
 import io.realm.RealmResults;
 import io.realm.SyncConfiguration;
@@ -47,6 +45,12 @@ public class MainActivity extends AppCompatActivity implements tab1.OnFragmentIn
     private User profile;
     @BindView(R.id.nav_view)
     NavigationView mNavigation;
+//    @BindView(R.id.userName)
+//    TextView navUsername;
+//    @BindView(R.id.userEmail)
+//    TextView navUseremail;
+    TextView navUsername;
+    TextView navUseremail;
 
 
     @Override
@@ -66,14 +70,13 @@ public class MainActivity extends AppCompatActivity implements tab1.OnFragmentIn
 
         ButterKnife.bind(this);
         View headerView =  mNavigation.getHeaderView(0);
-        TextView navUsername = (TextView) headerView.findViewById(R.id.userName);
-        TextView navUseremail = (TextView) headerView.findViewById(R.id.userEmail);
-
+        navUsername = (TextView) headerView.findViewById(R.id.userName);
+        navUseremail = (TextView) headerView.findViewById(R.id.userEmail);
+//        getMyProfile();
 //        TeSTING Query
         RealmResults<User> results = realm.where(User.class).findAllAsync();
-        results.addChangeListener(new OrderedRealmCollectionChangeListener<RealmResults<User>>() {
-            @Override
-            public void onChange(RealmResults<User> users, OrderedCollectionChangeSet changeSet) {
+        results.addChangeListener((users, changeSet) -> {
+            if(!users.isEmpty()){
                 profile = users.first();
                 navUseremail.setText(profile.getEmail());
                 navUsername.setText(profile.getName());
@@ -88,12 +91,12 @@ public class MainActivity extends AppCompatActivity implements tab1.OnFragmentIn
             navUseremail.setText(profile.getEmail());
             navUsername.setText(profile.getName());
         }
-//        realm.executeTransaction(realm -> {
-//            final RealmResults<User> users = realm.where(User.class).findAll();
-//            for(User a : users){
-//                Log.d("nameuser", a.getName());
-//            }
-//        });
+        realm.executeTransaction(realm -> {
+            final RealmResults<User> users = realm.where(User.class).findAll();
+            for(User a : users){
+                Log.d("nameuser", a.getName());
+            }
+        });
 //
 
         Log.d("realm",realm.getPath());
@@ -121,6 +124,32 @@ public class MainActivity extends AppCompatActivity implements tab1.OnFragmentIn
         navigationView.setNavigationItemSelectedListener(this);
 
     }
+
+//    private void getMyProfile(){
+//        String url = Constants.REALM_USER;
+//        SyncConfiguration config = new SyncConfiguration.Builder(SyncUser.current(), url).build();
+//        realm = Realm.getInstance(config);
+//        RealmResults<User> result = realm.where(User.class).findAllAsync();
+//        Log.d("hanuwa1", String.valueOf(result.size()));
+//        result.addChangeListener((user, changeSet) -> {
+//            if(!user.isEmpty()){
+//                profile=user.first();
+//                navUseremail.setText(profile.getEmail());
+//                navUsername.setText(profile.getName());
+//            }
+//            Log.d("hanuwa1","waki");
+//        });
+//        if(profile==null){
+//            if(!result.isEmpty()){
+//                profile=result.first();
+//                navUseremail.setText(profile.getEmail());
+//                navUsername.setText(profile.getName());
+//                Log.d("hanuwa1","waka");
+//            }
+//            Log.d("hanuwa1","wako");
+//        }
+//        Log.d("hanuwa1","wake");
+//    }
 
     @Override
     public void onBackPressed() {

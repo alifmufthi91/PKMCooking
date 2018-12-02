@@ -21,8 +21,6 @@ import java.util.UUID;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.realm.OrderedCollectionChangeSet;
-import io.realm.OrderedRealmCollectionChangeListener;
 import io.realm.Realm;
 import io.realm.RealmResults;
 import io.realm.SyncConfiguration;
@@ -167,13 +165,10 @@ public class RecipeDetail extends AppCompatActivity {
                 .build();
         realm = Realm.getInstance(configuration);
         RealmResults<RatingResepV2> result = realm.where(RatingResepV2.class).equalTo("UserID",SyncUser.current().getIdentity()).equalTo("recipeID",idResep).findAllAsync();
-        result.addChangeListener(new OrderedRealmCollectionChangeListener<RealmResults<RatingResepV2>>() {
-            @Override
-            public void onChange(RealmResults<RatingResepV2> ratingResepV2s, OrderedCollectionChangeSet changeSet) {
-                if(!ratingResepV2s.isEmpty()){
-                    myrate=ratingResepV2s.first();
-                    ratingBar.setRating(ratingResepV2s.first().getRating().floatValue());
-                }
+        result.addChangeListener((ratingResepV2s, changeSet) -> {
+            if(!ratingResepV2s.isEmpty()){
+                myrate=ratingResepV2s.first();
+                ratingBar.setRating(ratingResepV2s.first().getRating().floatValue());
             }
         });
         if(myrate==null){

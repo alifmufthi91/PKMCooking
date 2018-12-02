@@ -26,6 +26,8 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.realm.Case;
+import io.realm.OrderedCollectionChangeSet;
+import io.realm.OrderedRealmCollectionChangeListener;
 import io.realm.Realm;
 import io.realm.RealmResults;
 import io.realm.SyncConfiguration;
@@ -79,6 +81,7 @@ public class SearchRecipe extends AppCompatActivity {
                 mRecipes.clear();
                 if(internet_connection()){
                     mRecipes.addAll(getRecipes(s));
+//                      getRecipesbyName(s);
                 }else{
                     final Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content),
                             "Tidak ada Koneksi Internet.",
@@ -129,6 +132,29 @@ public class SearchRecipe extends AppCompatActivity {
                 .findAllAsync();
     }
 
+    private void getRecipesbyName(String recipeName){
+        SyncConfiguration configuration = SyncUser.current()
+                .createConfiguration(Constants.REALM_DEFAULT)
+                .build();
+        realm = Realm.getInstance(configuration);
+        RealmResults<ResepV2> result = realm.where(ResepV2.class).contains("name",recipeName,Case.INSENSITIVE).findAllAsync();
+        result.addChangeListener(new OrderedRealmCollectionChangeListener<RealmResults<ResepV2>>() {
+            @Override
+            public void onChange(RealmResults<ResepV2> ResepV2s, OrderedCollectionChangeSet changeSet) {
+                if(!ResepV2s.isEmpty()){
+                    mRecipes.addAll(ResepV2s);
+                }
+            }
+        });
+        if(mRecipes==null){
+            if(!result.isEmpty()){
+                mRecipes.addAll(result);
+            }
+
+        }
+
+    }
+
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -150,8 +176,15 @@ public class SearchRecipe extends AppCompatActivity {
         if(internet_connection()){
             try{
                 reseps = getRecipes(que);
-                ResepV2 a = realm.where(ResepV2.class).findFirst();
-                Log.d("hanuwa",a.getName());
+                reseps.addChangeListener(new OrderedRealmCollectionChangeListener<RealmResults<ResepV2>>() {
+                    @Override
+                    public void onChange(RealmResults<ResepV2> resepV2s, OrderedCollectionChangeSet changeSet) {
+                        mRecipes.addAll(realm.copyFromRealm(resepV2s));
+                        Log.d("hanuwa","wakuna");
+                        SearchField.setQuery(que,true);
+                    }
+                });
+//                  getRecipesbyName(que);
             }catch (NullPointerException e){
                 Log.d("hanuwa",e.getMessage());
             }

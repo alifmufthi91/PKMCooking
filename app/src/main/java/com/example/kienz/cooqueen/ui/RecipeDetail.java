@@ -1,22 +1,25 @@
 package com.example.kienz.cooqueen.ui;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.kienz.cooqueen.R;
 import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
+import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 
 import butterknife.BindView;
@@ -26,6 +29,7 @@ import io.realm.RealmResults;
 import io.realm.SyncConfiguration;
 import io.realm.SyncUser;
 import me.zhanghai.android.materialratingbar.MaterialRatingBar;
+import model.PlannedResepV3;
 import model.RatingResepV2;
 import model.ResepV2;
 import util.Constants;
@@ -57,10 +61,12 @@ public class RecipeDetail extends AppCompatActivity {
     @BindView(R.id.ratingValue)
     TextView ratingValueView;
     RatingResepV2 myrate;
+    PlannedResepV3 myplan;
     Double recipe_ratingvalue;
     int recipe_ratinggiver;
     String recipeId;
     Realm realm;
+    Realm profileRealm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,15 +112,60 @@ public class RecipeDetail extends AppCompatActivity {
                 }
             }
         });
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-                Log.d("habuwa",myrate.getRating().toString());
+                AlertDialog.Builder builder = new AlertDialog.Builder(RecipeDetail.this);
+                String[] category = new String[]{
+                        "Sarapan",
+                        "Makan siang",
+                        "Makan malam"
+                };
+                final boolean[] checkedCategory = new boolean[]{
+                        false,
+                        false,
+                        false
 
+                };
+                final List<String> categoryList = Arrays.asList(category);
+                builder.setMultiChoiceItems(category, checkedCategory, new DialogInterface.OnMultiChoiceClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+
+                        checkedCategory[which] = isChecked;
+
+                        String currentItem = categoryList.get(which);
+                    }
+                });
+
+                builder.setTitle("Tambahkan ke");
+                builder.setPositiveButton("Tambah", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        profileRealm.executeTransactionAsync(realm1 -> {
+                            int i = 0;
+                            for(boolean selected : checkedCategory){
+                                if(selected){
+                                    PlannedResepV3 newPlan = new PlannedResepV3(recipeId,category[i]);
+                                    realm1.insert(newPlan);
+                                }
+                                i++;
+                            }
+                        });
+                        Toast.makeText(getApplicationContext(),
+                                "Resep berhasil ditambahkan", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                builder.setNeutralButton("Kembali", null);
+
+                AlertDialog dialog = builder.create();
+                // Display the alert dialog on interface
+                dialog.show();
             }
         });
+
         submitRating.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -164,6 +215,9 @@ public class RecipeDetail extends AppCompatActivity {
                 .createConfiguration(Constants.REALM_DEFAULT)
                 .build();
         realm = Realm.getInstance(configuration);
+        String url = Constants.REALM_USER;
+        SyncConfiguration config = new SyncConfiguration.Builder(SyncUser.current(), url).build();
+        profileRealm = Realm.getInstance(config);
         RealmResults<RatingResepV2> result = realm.where(RatingResepV2.class).equalTo("UserID",SyncUser.current().getIdentity()).equalTo("recipeID",idResep).findAllAsync();
         result.addChangeListener((ratingResepV2s, changeSet) -> {
             if(!ratingResepV2s.isEmpty()){

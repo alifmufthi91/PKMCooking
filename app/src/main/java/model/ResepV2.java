@@ -213,4 +213,80 @@ public class ResepV2 extends RealmObject {
         }
         this.rating_giver++;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public void setSourceUrl(String sourceUrl) {
+        this.sourceUrl = sourceUrl;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setSajian(int sajian) {
+        this.sajian = sajian;
+    }
+
+    public void setInstruksi(RealmList<String> instruksi) {
+        this.instruksi = instruksi;
+    }
+
+    public void setLabels(RealmList<String> labels) {
+        this.labels = labels;
+    }
+
+    public void setAlat(RealmList<String> alat) {
+        this.alat = alat;
+    }
+
+    public void setIngredients(RealmList<String> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public void setEnergy(double energy) {
+        Energy = energy;
+    }
+
+    public void setFat(double fat) {
+        Fat = fat;
+    }
+
+    public void setFasat(double fasat) {
+        Fasat = fasat;
+    }
+
+    public void setSugar(double sugar) {
+        Sugar = sugar;
+    }
+
+    public void setCarb(double carb) {
+        Carb = carb;
+    }
+
+    public void setFiber(double fiber) {
+        Fiber = fiber;
+    }
+
+    public void setProtein(double protein) {
+        Protein = protein;
+    }
+
+    public void setSalt(double salt) {
+        Salt = salt;
+    }
+
+    public void setRating_value(double rating_value) {
+        this.rating_value = rating_value;
+    }
+
+    public void setRating_giver(int rating_giver) {
+        this.rating_giver = rating_giver;
+    }
 }

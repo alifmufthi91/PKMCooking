@@ -33,6 +33,7 @@ public class RecipeFragMealplanAdapter extends RecyclerView.Adapter<ViewHolder> 
         }
     }
 
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
@@ -62,6 +63,10 @@ public class RecipeFragMealplanAdapter extends RecyclerView.Adapter<ViewHolder> 
     @Override
     public int getItemCount() {
         return mRecipes.size();
+    }
+
+    public Meal_Plan getItem(int position) {
+        return mRecipes.get(position);
     }
 
 }

@@ -132,28 +132,28 @@ public class SearchRecipe extends AppCompatActivity {
                 .findAllAsync();
     }
 
-    private void getRecipesbyName(String recipeName){
-        SyncConfiguration configuration = SyncUser.current()
-                .createConfiguration(Constants.REALM_DEFAULT)
-                .build();
-        realm = Realm.getInstance(configuration);
-        RealmResults<ResepV2> result = realm.where(ResepV2.class).contains("name",recipeName,Case.INSENSITIVE).findAllAsync();
-        result.addChangeListener(new OrderedRealmCollectionChangeListener<RealmResults<ResepV2>>() {
-            @Override
-            public void onChange(RealmResults<ResepV2> ResepV2s, OrderedCollectionChangeSet changeSet) {
-                if(!ResepV2s.isEmpty()){
-                    mRecipes.addAll(ResepV2s);
-                }
-            }
-        });
-        if(mRecipes==null){
-            if(!result.isEmpty()){
-                mRecipes.addAll(result);
-            }
-
-        }
-
-    }
+//    private void getRecipesbyName(String recipeName){
+//        SyncConfiguration configuration = SyncUser.current()
+//                .createConfiguration(Constants.REALM_DEFAULT)
+//                .build();
+//        realm = Realm.getInstance(configuration);
+//        RealmResults<ResepV2> result = realm.where(ResepV2.class).contains("name",recipeName,Case.INSENSITIVE).findAllAsync();
+//        result.addChangeListener(new OrderedRealmCollectionChangeListener<RealmResults<ResepV2>>() {
+//            @Override
+//            public void onChange(RealmResults<ResepV2> ResepV2s, OrderedCollectionChangeSet changeSet) {
+//                if(!ResepV2s.isEmpty()){
+//                    mRecipes.addAll(ResepV2s);
+//                }
+//            }
+//        });
+//        if(mRecipes==null){
+//            if(!result.isEmpty()){
+//                mRecipes.addAll(result);
+//            }
+//
+//        }
+//
+//    }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
@@ -179,9 +179,15 @@ public class SearchRecipe extends AppCompatActivity {
                 reseps.addChangeListener(new OrderedRealmCollectionChangeListener<RealmResults<ResepV2>>() {
                     @Override
                     public void onChange(RealmResults<ResepV2> resepV2s, OrderedCollectionChangeSet changeSet) {
+                        mRecipes.clear();
                         mRecipes.addAll(realm.copyFromRealm(resepV2s));
                         Log.d("hanuwa","wakuna");
-                        SearchField.setQuery(que,true);
+                        mAdapter.notifyDataSetChanged();
+                        if(mRecipes.isEmpty()){
+                            notFound.setVisibility(View.VISIBLE);
+                        }else{
+                            notFound.setVisibility(View.GONE);
+                        }
                     }
                 });
 //                  getRecipesbyName(que);

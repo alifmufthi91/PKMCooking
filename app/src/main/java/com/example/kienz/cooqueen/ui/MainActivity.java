@@ -4,6 +4,8 @@ package com.example.kienz.cooqueen.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -26,12 +28,18 @@ import android.widget.TextView;
 import com.example.kienz.cooqueen.R;
 import com.example.kienz.cooqueen.adapter.MyPagerAdapter;
 
+import java.util.ArrayList;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.realm.OrderedCollectionChangeSet;
+import io.realm.OrderedRealmCollectionChangeListener;
 import io.realm.Realm;
 import io.realm.RealmResults;
 import io.realm.SyncConfiguration;
 import io.realm.SyncUser;
+import model.PlannedResepV3;
+import model.ResepV2;
 import model.User;
 import util.Constants;
 
@@ -51,6 +59,8 @@ public class MainActivity extends AppCompatActivity implements tab1.OnFragmentIn
 //    TextView navUseremail;
     TextView navUsername;
     TextView navUseremail;
+    private ArrayList<ResepV2> plannedRecipes = new ArrayList<>();
+
 
 
     @Override
@@ -59,47 +69,27 @@ public class MainActivity extends AppCompatActivity implements tab1.OnFragmentIn
         super.onDestroy();
     }
 
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        super.onStop();
+//    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String url = Constants.REALM_USER;
-        SyncConfiguration config = new SyncConfiguration.Builder(SyncUser.current(), url).build();
-        realm = Realm.getInstance(config);
-
         ButterKnife.bind(this);
         View headerView =  mNavigation.getHeaderView(0);
         navUsername = (TextView) headerView.findViewById(R.id.userName);
         navUseremail = (TextView) headerView.findViewById(R.id.userEmail);
+        setUp();
 //        getMyProfile();
 //        TeSTING Query
-        RealmResults<User> results = realm.where(User.class).findAllAsync();
-        results.addChangeListener((users, changeSet) -> {
-            if(!users.isEmpty()){
-                profile = users.first();
-                navUseremail.setText(profile.getEmail());
-                navUsername.setText(profile.getName());
-            }
-        });
-        if(profile==null){
-            if(!results.isEmpty()){
-                profile = results.first();
-            }
-        }
-        if (profile != null) {
-            navUseremail.setText(profile.getEmail());
-            navUsername.setText(profile.getName());
-        }
-        realm.executeTransaction(realm -> {
-            final RealmResults<User> users = realm.where(User.class).findAll();
-            for(User a : users){
-                Log.d("nameuser", a.getName());
-            }
-        });
-//
 
-        Log.d("realm",realm.getPath());
+//
+//        Log.d("realm",realm.getPath());
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -109,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements tab1.OnFragmentIn
         viewPager.setAdapter(myPagerAdapter);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayout);
         tabLayout.setupWithViewPager(viewPager);
-
+//        getPlannedRecipes();
 
 //        ================================
 //        getRecipes("flour", "chicken");
@@ -249,62 +239,113 @@ public class MainActivity extends AppCompatActivity implements tab1.OnFragmentIn
         return super.dispatchTouchEvent( event );
     }
 
+    private ResepV2 getRecipe(String recipeId) {
+        SyncConfiguration configuration = SyncUser.current()
+                .createConfiguration(Constants.REALM_DEFAULT)
+                .build();
+        realm = Realm.getInstance(configuration);
+        return realm
+                .where(ResepV2.class)
+                .equalTo("recipeId",recipeId)
+                .findAllAsync().first();
+    }
+
+    private void setUp(){
+        String url = Constants.REALM_USER;
+        SyncConfiguration config = new SyncConfiguration.Builder(SyncUser.current(), url).build();
+        realm = Realm.getInstance(config);
+        RealmResults<User> results = realm.where(User.class).findAllAsync();
+        results.addChangeListener(new OrderedRealmCollectionChangeListener<RealmResults<User>>() {
+            @Override
+            public void onChange(RealmResults<User> users, OrderedCollectionChangeSet changeSet) {
+                if(!users.isEmpty()){
+                    profile = users.first();
+                    MainActivity.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            navUseremail.setText(profile.getEmail());
+                            navUsername.setText(profile.getName());
+                        }
+                    });
+                }
+            }
+        });
+        if(profile==null){
+            if(!results.isEmpty()){
+                profile = results.first();
+            }
+        }
+        if (profile != null) {
+            navUseremail.setText(profile.getEmail());
+            navUsername.setText(profile.getName());
+        }
+    }
+
+//    private void GatherRecipes(String que){
+//        RealmResults<ResepV2> plannedReseps;
+//        if(internet_connection()){
+//            try{
+//                //TODO
+//                plannedReseps = getRecipes(que);
+//                plannedReseps.addChangeListener(new OrderedRealmCollectionChangeListener<RealmResults<ResepV2>>() {
+//                    @Override
+//                    public void onChange(RealmResults<ResepV2> resepV2s, OrderedCollectionChangeSet changeSet) {
+//                        plannedRecipes.addAll(realm.copyFromRealm(resepV2s));
+//                        Log.d("hanuwa","wakuna");
+//                    }
+//                });
+////                  getRecipesbyName(que);
+//            }catch (NullPointerException e){
+//                Log.d("hanuwa",e.getMessage());
+//            }
+//        }else{
+//            final Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content),
+//                    "Tidak ada Koneksi Internet.",
+//                    Snackbar.LENGTH_SHORT);
+//            snackbar.setActionTextColor(ContextCompat.getColor(getApplicationContext(),
+//                    R.color.colorPrimary));
+//            snackbar.show();
+//
+//        }
+//    }
+
+    void getPlannedRecipes(){
+        ArrayList<PlannedResepV3> plannedIds = new ArrayList<>();
+        RealmResults<PlannedResepV3> plannedresults = realm.where(PlannedResepV3.class).findAllAsync();
+        plannedresults.addChangeListener((plannedResepV2s, changeSet) -> {
+            if(changeSet.isCompleteResult()){
+                if(!plannedResepV2s.isEmpty()){
+                    plannedIds.addAll(plannedresults);
+                }
+            }
+            Log.d("hakuwasize3", String.valueOf(plannedresults.size()));
+            for (PlannedResepV3 itemResep : plannedIds){
+                plannedRecipes.add(getRecipe(itemResep.getRecipeID()));
+            }
+            Log.d("hakuwasize4", String.valueOf(plannedRecipes.size()));
+        });
+        if (plannedIds==null){
+            if(!plannedresults.isEmpty()){
+                plannedIds.addAll(plannedresults);
+                Log.d("hakuwasize2", String.valueOf(plannedresults.size()));
+                for (PlannedResepV3 itemResep : plannedIds){
+                    plannedRecipes.add(getRecipe(itemResep.getRecipeID()));
+                }
+            }
+        }
+        Log.d("hakuwasize1", String.valueOf(plannedresults.size()));
+    }
+
+    boolean internet_connection() {
+        //Check if connected to internet, output accordingly
+        ConnectivityManager cm =
+                (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+        return isConnected;
+    }
 
 }
-
-
-//        TESTING PRADIKA===========================================================================================================================================
-//    public void retrofittest() {
-//        Retrofit retrofit = new Retrofit.Builder()
-//                .baseUrl(apiInterface.BASE_URL)
-//                .addConverterFactory(GsonConverterFactory.create())
-//                .build();
-//        ApiInterface api = retrofit.create(ApiInterface.class);
-//        Call<List<Test_Hero>> call = api.getheroes();
-//        call.enqueue(new Callback<List<Test_Hero>>() {
-//            @Override
-//            public void onResponse(Call<List<Test_Hero>> call, Response<List<Test_Hero>> response) {
-//
-////                ResponseEdamamRecipe recipes = response.body();
-////                Log.d("statuspaket","yes");
-//                if (response.isSuccessful()) {
-//                    Log.d("statuspaket","yes");
-//                    // todo display the data instead of just a toast
-//                }
-//                else {
-//                    Log.d("statuspaket","fail");
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<Test_Hero>> call, Throwable t) {
-//                Log.d("statuspaket","no");
-//                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG);
-//            }
-//
-//
-//        });
-//        final FindRecipes foodService = new FindRecipes();
-//        FindRecipes.findRecipes("flour", "chicken", new Callback() {
-//
-//            @Override
-//            public void onFailure(Call call, IOException e) {
-//                e.printStackTrace();
-//            }
-//
-//            @Override
-//            public void onResponse(Call call, Response response) {
-//                ArrayList<Resep> mRecipes = new ArrayList<>();
-//                mRecipes = foodService.processResults(response);
-//                for (Resep h : mRecipes) {
-//                    Log.d("nama",h.getName());
-//                    Log.d("urlgambar",h.getImageUrl());
-//                    Log.d("sumber",h.getSourceUrl());
-//                }
-//            }
-//
-//        });
-//    }
-//        TESTING PRADIKA===========================================================================================================================================
-
 

@@ -2,13 +2,26 @@ package model;
 
 public class Meal_Plan {
     private String type;
-    private String image_url;
-    private String name;
+    private String planId;
+    private ResepV2 resep;
 
-    public Meal_Plan(String type, String image_url, String name) {
+    public void setType(String type) {
         this.type = type;
-        this.image_url = image_url;
-        this.name = name;
+    }
+
+    public String getPlanId() {
+        return planId;
+    }
+
+    public void setPlanId(String planId) {
+        this.planId = planId;
+    }
+
+    public Meal_Plan(String type, ResepV2 resep, String planId) {
+        this.type = type;
+        this.resep = resep;
+        this.planId = planId;
+
     }
 
     public String getType() {
@@ -16,10 +29,18 @@ public class Meal_Plan {
     }
 
     public String getImage_url() {
-        return image_url;
+        return resep.getImageUrl();
     }
 
     public String getName() {
-        return name;
+        return resep.getName();
+    }
+
+    public ResepV2 getResep() {
+        return resep;
+    }
+
+    public void setResep(ResepV2 resep) {
+        this.resep = resep;
     }
 }

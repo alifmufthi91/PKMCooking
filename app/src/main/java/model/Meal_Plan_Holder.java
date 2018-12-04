@@ -7,27 +7,44 @@ public class Meal_Plan_Holder {
 
     public Meal_Plan_Holder() {
         this.mealPlanArrayList = new ArrayList<Meal_Plan>();
-        mealPlanArrayList.add(new Meal_Plan("type_breakfast","https://image.freepik.com/free-icon/sweet-dessert_318-29824.jpg","SARAPAN"));
-        mealPlanArrayList.add(new Meal_Plan("type_lunch","https://image.freepik.com/free-icon/sweet-dessert_318-29824.jpg","MAKAN SIANG"));
-        mealPlanArrayList.add(new Meal_Plan("type_dinner","https://image.freepik.com/free-icon/sweet-dessert_318-29824.jpg","MAKAN MALAM"));
+        ResepV2 breakfast = new ResepV2();
+        breakfast.setImageUrl("https://image.freepik.com/free-icon/sweet-dessert_318-29824.jpg");
+        breakfast.setName("SARAPAN");
+        ResepV2 lunch = new ResepV2();
+        lunch.setImageUrl("https://image.freepik.com/free-icon/sweet-dessert_318-29824.jpg");
+        lunch.setName("MAKAN SIANG");
+        ResepV2 dinner = new ResepV2();
+        dinner.setImageUrl("https://image.freepik.com/free-icon/sweet-dessert_318-29824.jpg");
+        dinner.setName("MAKAN MALAM");
+        mealPlanArrayList.add(new Meal_Plan("type_breakfast",breakfast,"01"));
+        mealPlanArrayList.add(new Meal_Plan("type_lunch",lunch,"02"));
+        mealPlanArrayList.add(new Meal_Plan("type_dinner",dinner,"03"));
     }
 
     public ArrayList<Meal_Plan> getMealPlanArrayList() {
         return mealPlanArrayList;
     }
 
-    public void add(String type,String URL,String name){
-        Meal_Plan mealPlan = new Meal_Plan(type,URL,name);
+    public void add(String type,ResepV2 resep, String planId){
+        Meal_Plan mealPlan = new Meal_Plan(type,resep,planId);
 
         switch (type){
-            case "breakfast":
+            case "Sarapan":
                 mealPlanArrayList.add(getBreakfastIndex(mealPlanArrayList),mealPlan);break;
-            case "dinner":
-                mealPlanArrayList.add(getDinnerIndex(mealPlanArrayList),mealPlan);break;
-            case "lunch":
+            case "Makan siang":
                 mealPlanArrayList.add(getLunchIndex(mealPlanArrayList),mealPlan);break;
+            case "Makan malam":
+                mealPlanArrayList.add(getDinnerIndex(mealPlanArrayList),mealPlan);break;
         }
 
+    }
+
+    public void delete(int position){
+        this.mealPlanArrayList.remove(position);
+    }
+
+    public void clear(){
+        this.mealPlanArrayList.clear();
     }
 
     public void add(Meal_Plan mealPlan){

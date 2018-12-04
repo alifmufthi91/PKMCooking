@@ -243,7 +243,7 @@ public class tab3 extends Fragment {
                         .setTitle("Hapus Resep")
                         .setMessage("Anda ingin menghapus resep ini dari jadwal?")
                         .setIcon(android.R.drawable.ic_dialog_alert)
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        .setPositiveButton("Hapus", new DialogInterface.OnClickListener() {
 
                             public void onClick(DialogInterface dialog, int whichButton) {
                                 int position = viewHolder.getAdapterPosition();
@@ -264,7 +264,7 @@ public class tab3 extends Fragment {
                                 adapter.notifyDataSetChanged();
                                 Toast.makeText(getContext(), "Resep telah dihapus", Toast.LENGTH_SHORT).show();
                             }})
-                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                        .setNegativeButton("Batal", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 adapter.notifyDataSetChanged();

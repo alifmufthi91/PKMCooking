@@ -212,6 +212,16 @@ public class ResepV2 extends RealmObject {
             this.rating_value=((this.rating_value*this.rating_giver)+value)/(this.rating_giver+1);
         }
         this.rating_giver++;
+
+    }
+
+    public void giveRating(double value, double oldValue){
+        if(this.rating_giver==0){
+            this.rating_value=value;
+        }else{
+            this.rating_value=((this.rating_value*this.rating_giver)-oldValue+value)/(this.rating_giver);
+        }
+
     }
 
     public void setName(String name) {

@@ -169,37 +169,52 @@ public class RecipeDetail extends AppCompatActivity {
         submitRating.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(myrate!=null){
-                    myrate.getRealm().executeTransactionAsync(realm1 -> {
-                        RatingResepV2 newRate = realm1.where(RatingResepV2.class).equalTo("UserID",SyncUser.current().getIdentity()).equalTo("recipeID",recipeId).findFirst();
-                        newRate.setRating((double) ratingBar.getRating());
-                    });
-                    thisRecipe.getRealm().executeTransactionAsync(realm1 -> {
-                        ResepV2 olditem = realm1.where(ResepV2.class).equalTo("recipeId", recipeId).findFirst();
-                        RatingResepV2 oldrating = realm1.where(RatingResepV2.class).equalTo("UserID",SyncUser.current().getIdentity()).equalTo("recipeID",recipeId).findFirst();
-                        if (olditem != null&&oldrating != null) {
-                            double newValue = ((olditem.getRating_value()*olditem.getRating_giver()) - oldrating.getRating() + (double) ratingBar.getRating())/olditem.getRating_giver();
-                            olditem.giveRating(newValue);
-                            recipe_ratinggiver=olditem.getRating_giver();
-                            recipe_ratingvalue=newValue;
-                        }
-                    });
-                }else{
-                    realm.executeTransaction(realm1 -> {
-                        RatingResepV2 rate = new RatingResepV2(UUID.randomUUID().toString(),SyncUser.current().getIdentity(),recipeId, (double) ratingBar.getRating());
-                        realm.insert(rate);
-                        myrate = rate;
-                    });
-                    thisRecipe.getRealm().executeTransactionAsync(realm -> {
-                        ResepV2 item = realm.where(ResepV2.class).equalTo("recipeId", recipeId).findFirst();
-                        if (item != null) {
-                            item.giveRating((double) ratingBar.getRating());
-                            recipe_ratinggiver=item.getRating_giver();
-                            recipe_ratingvalue=item.getRating_value();
-                        }
-                    });
-                    UpdateRate(recipe_ratingvalue,recipe_ratinggiver);
-                }
+                new AlertDialog.Builder(RecipeDetail.this)
+                        .setTitle("Beri Rating")
+                        .setMessage("Anda ingin memberi rate untuk resep ini?")
+                        .setPositiveButton("Beri", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                if(myrate!=null){
+                                    Double oldValue = myrate.getRating();
+                                    myrate.getRealm().executeTransactionAsync(realm1 -> {
+                                        RatingResepV2 newRate = realm1.where(RatingResepV2.class).equalTo("UserID",SyncUser.current().getIdentity()).equalTo("recipeID",recipeId).findFirst();
+                                        newRate.setRating((double) ratingBar.getRating());
+                                    });
+                                    thisRecipe.getRealm().executeTransactionAsync(realm1 -> {
+                                        ResepV2 olditem = realm1.where(ResepV2.class).equalTo("recipeId", recipeId).findFirst();
+                                        RatingResepV2 oldrating = realm1.where(RatingResepV2.class).equalTo("UserID",SyncUser.current().getIdentity()).equalTo("recipeID",recipeId).findFirst();
+                                        if (olditem != null&&oldrating != null) {
+                                            double newValue = ((olditem.getRating_value()*olditem.getRating_giver()) - oldrating.getRating() + (double) ratingBar.getRating())/olditem.getRating_giver();
+                                            olditem.giveRating(newValue,oldValue);
+                                            recipe_ratinggiver=olditem.getRating_giver();
+                                            recipe_ratingvalue=newValue;
+                                        }
+                                    });
+                                }else{
+                                    realm.executeTransaction(realm1 -> {
+                                        RatingResepV2 rate = new RatingResepV2(UUID.randomUUID().toString(),SyncUser.current().getIdentity(),recipeId, (double) ratingBar.getRating());
+                                        realm.insert(rate);
+                                        myrate = rate;
+                                    });
+                                    thisRecipe.getRealm().executeTransactionAsync(realm -> {
+                                        ResepV2 item = realm.where(ResepV2.class).equalTo("recipeId", recipeId).findFirst();
+                                        if (item != null) {
+                                            item.giveRating((double) ratingBar.getRating());
+                                            recipe_ratinggiver=item.getRating_giver();
+                                            recipe_ratingvalue=item.getRating_value();
+                                        }
+                                    });
+                                    UpdateRate(recipe_ratingvalue,recipe_ratinggiver);
+                                }
+                            }
+                        })
+                        .setNeutralButton("Kembali", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                            }
+                        }).show();
             }
         });
     }

@@ -17,12 +17,6 @@
         <item name="android:shadowRadius">1</item>
     </style>
 
-    <style name="AppTheme.Toolbar" parent="ThemeOverlay.AppCompat.Light">
-        <item name="colorPrimary">@color/colorAccent</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorPrimary</item>
-    </style>
-
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="RecipeTextComponents">

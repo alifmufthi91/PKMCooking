@@ -29,4 +29,5 @@
     <string name="beranda">Beranda</string>
     <string name="setting">Setting</string>
     <string name="star">\u2605</string>
+    <string name="title_activity_splash">SplashActivity</string>
 </resources>

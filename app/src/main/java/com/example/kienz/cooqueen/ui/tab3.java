@@ -173,10 +173,11 @@ public class tab3 extends Fragment {
                 .createConfiguration(Constants.REALM_DEFAULT)
                 .build();
         realm = Realm.getInstance(configuration);
-        return realm
+        ResepV2 returned = realm
                 .where(ResepV2.class)
                 .equalTo("recipeId",recipeId)
                 .findAllAsync().first();
+        return returned;
     }
 
     @Override
@@ -291,5 +292,12 @@ public class tab3 extends Fragment {
         };
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
         itemTouchHelper.attachToRecyclerView(recycler);
+    }
+
+    @Override
+    public void onDestroy() {
+        realm.close();
+        super.onDestroy();
+
     }
 }

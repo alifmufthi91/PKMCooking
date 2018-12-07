@@ -17,7 +17,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import model.Meal_Plan;
 
-public class RecipeFragMealplanViewholder2 extends RecyclerView.ViewHolder {
+public class MealPlanItemViewholder extends RecyclerView.ViewHolder {
     @BindView(R.id.imageView_fragmealplan_item)
     ImageView mRecipeImageView;
     @BindView(R.id.textView_fragmealplan_item)
@@ -27,7 +27,7 @@ public class RecipeFragMealplanViewholder2 extends RecyclerView.ViewHolder {
     private Context mContext;
     private ArrayList<Meal_Plan> mRecipes = new ArrayList<>();
 
-    public RecipeFragMealplanViewholder2(View itemView, ArrayList<Meal_Plan> recipes) {
+    public MealPlanItemViewholder(View itemView, ArrayList<Meal_Plan> recipes) {
         super(itemView);
         ButterKnife.bind(this, itemView);
         mContext = itemView.getContext();

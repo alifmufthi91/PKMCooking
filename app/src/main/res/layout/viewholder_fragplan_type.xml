@@ -19,6 +19,7 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_margin="16dp"
+                android:src="@mipmap/plan_type_fg"
                 />
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -27,7 +28,7 @@
                     android:id="@+id/textView_fragmealplan_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="BREAKFAST"
+                    android:text="PLAN_TYPE"
                     android:textSize="25sp"
                     android:fontFamily="@font/poppinsbold"
                     android:layout_centerVertical="true"

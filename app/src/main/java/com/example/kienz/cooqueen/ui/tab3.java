@@ -20,8 +20,8 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.kienz.cooqueen.R;
+import com.example.kienz.cooqueen.adapter.MealPlanItemViewholder;
 import com.example.kienz.cooqueen.adapter.RecipeFragMealplanAdapter;
-import com.example.kienz.cooqueen.adapter.RecipeFragMealplanViewholder2;
 
 import java.util.ArrayList;
 
@@ -281,7 +281,7 @@ public class tab3 extends Fragment {
 
             @Override
             public int getSwipeDirs(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder) {
-                if (viewHolder instanceof RecipeFragMealplanViewholder2){
+                if (viewHolder instanceof MealPlanItemViewholder){
                     return super.getSwipeDirs(recyclerView, viewHolder);
                 }else{
                     return 0;

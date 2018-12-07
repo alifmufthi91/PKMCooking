@@ -35,10 +35,14 @@
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
                                       <entry key="backgroundColor" value="ffffff" />
-                                      <entry key="backgroundLayerName" value="cooqueen_text_background" />
-                                      <entry key="foregroundImage" value="C:\Users\Kienz\Downloads\logo PKM - cooking\logo pkm - text2.png" />
-                                      <entry key="foregroundLayerName" value="cooqueen_text_foreground" />
-                                      <entry key="outputName" value="cooqueen_launcher_text" />
+                                      <entry key="backgroundLayerName" value="plan_type_bg" />
+                                      <entry key="foregroundImage" value="C:\Users\Kienz\Downloads\sweet-dessert_318-29824.jpg" />
+                                      <entry key="foregroundLayerName" value="plan_type_fg" />
+                                      <entry key="generateLegacyIcon" value="false" />
+                                      <entry key="generateRoundIcon" value="false" />
+                                      <entry key="generateWebIcon" value="false" />
+                                      <entry key="outputName" value="plan_type" />
+                                      <entry key="previewDensity" value="XXXHIGH" />
                                       <entry key="webIconShape" value="CIRCLE" />
                                     </map>
                                   </option>

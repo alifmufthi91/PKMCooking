@@ -5,6 +5,8 @@
         />
 
     <item
+        android:height="200dp"
+        android:width="200dp"
         android:gravity="center">
         <bitmap
             android:gravity="fill"

@@ -8,13 +8,10 @@ public class Meal_Plan_Holder {
     public Meal_Plan_Holder() {
         this.mealPlanArrayList = new ArrayList<Meal_Plan>();
         ResepV2 breakfast = new ResepV2();
-        breakfast.setImageUrl("https://image.freepik.com/free-icon/sweet-dessert_318-29824.jpg");
         breakfast.setName("SARAPAN");
         ResepV2 lunch = new ResepV2();
-        lunch.setImageUrl("https://image.freepik.com/free-icon/sweet-dessert_318-29824.jpg");
         lunch.setName("MAKAN SIANG");
         ResepV2 dinner = new ResepV2();
-        dinner.setImageUrl("https://image.freepik.com/free-icon/sweet-dessert_318-29824.jpg");
         dinner.setName("MAKAN MALAM");
         mealPlanArrayList.add(new Meal_Plan("type_breakfast",breakfast,"01"));
         mealPlanArrayList.add(new Meal_Plan("type_lunch",lunch,"02"));

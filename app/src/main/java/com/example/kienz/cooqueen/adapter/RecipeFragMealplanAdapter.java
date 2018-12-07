@@ -41,10 +41,10 @@ public class RecipeFragMealplanAdapter extends RecyclerView.Adapter<ViewHolder> 
         switch (viewType) {
             case 0:
                 view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.viewholder_fragplan_type,viewGroup,false);
-                return new RecipeFragMealplanViewholder(view,mRecipes);
+                return new MealPlanTypeViewholder(view,mRecipes);
             case 1:
                 view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.viewholder_fragplan_item, viewGroup, false);
-                return new RecipeFragMealplanViewholder2(view,mRecipes);
+                return new MealPlanItemViewholder(view,mRecipes);
         }
 
         return null;
@@ -54,9 +54,9 @@ public class RecipeFragMealplanAdapter extends RecyclerView.Adapter<ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         String type = mRecipes.get(i).getType();
         if (type.equals("type_breakfast")||type.equals("type_dinner")||type.equals("type_lunch")) {
-            ((RecipeFragMealplanViewholder)viewHolder).bindRecipe(mRecipes.get(i));
+            ((MealPlanTypeViewholder)viewHolder).bindRecipe(mRecipes.get(i));
         }else{
-            ((RecipeFragMealplanViewholder2)viewHolder).bindRecipe(mRecipes.get(i));
+            ((MealPlanItemViewholder)viewHolder).bindRecipe(mRecipes.get(i));
         }
     }
 

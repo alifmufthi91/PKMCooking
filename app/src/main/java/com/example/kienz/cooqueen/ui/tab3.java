@@ -243,7 +243,6 @@ public class tab3 extends Fragment {
                 new AlertDialog.Builder(getContext())
                         .setTitle("Hapus Resep")
                         .setMessage("Anda ingin menghapus resep ini dari jadwal?")
-                        .setIcon(android.R.drawable.ic_dialog_alert)
                         .setPositiveButton("Hapus", new DialogInterface.OnClickListener() {
 
                             public void onClick(DialogInterface dialog, int whichButton) {

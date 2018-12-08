@@ -4,10 +4,9 @@
         android:drawable="@color/colorPrimaryWhite"
         />
 
-    <item
-        android:gravity="center">
+    <item>
         <bitmap
-            android:gravity="fill"
+            android:gravity="center"
             android:src="@mipmap/cooqueen_text_foreground" />
     </item>
 

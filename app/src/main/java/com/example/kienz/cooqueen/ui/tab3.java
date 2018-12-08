@@ -27,6 +27,8 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.realm.OrderedCollectionChangeSet;
+import io.realm.OrderedRealmCollectionChangeListener;
 import io.realm.Realm;
 import io.realm.RealmResults;
 import io.realm.SyncConfiguration;
@@ -54,6 +56,7 @@ public class tab3 extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private Realm realm;
+    private Realm reciperealm;
     private ArrayList<ResepV2> plannedRecipes = new ArrayList<>();
     private RecipeFragMealplanAdapter adapter;
     Meal_Plan_Holder mealPlans;
@@ -168,70 +171,34 @@ public class tab3 extends Fragment {
 
     }
 
-    private ResepV2 getRecipe(String recipeId) {
-        SyncConfiguration configuration = SyncUser.current()
-                .createConfiguration(Constants.REALM_DEFAULT)
-                .build();
-        realm = Realm.getInstance(configuration);
-        ResepV2 returned = realm
-                .where(ResepV2.class)
-                .equalTo("recipeId",recipeId)
-                .findAllAsync().first();
-        return returned;
+//    private ResepV2 getRecipe(String recipeId) {
+//        SyncConfiguration configuration = SyncUser.current()
+//                .createConfiguration(Constants.REALM_DEFAULT)
+//                .build();
+//        reciperealm = Realm.getInstance(configuration);
+//        ResepV2 returned = realm
+//                .where(ResepV2.class)
+//                .equalTo("recipeId",recipeId)
+//                .findAllAsync().first();
+//        if(returned!=null){
+//            return returned;
+//        }
+//        return null;
+//    }
+
+
+    @Override
+    public void onPause() {
+        super.onPause();
     }
 
     @Override
     public void onResume() {
-        getPlannedRecipes();
-        super.onResume();
-    }
-
-    void getPlannedRecipes(){
         mealPlans = new Meal_Plan_Holder();
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
         recycler.setLayoutManager(layoutManager);
         adapter = new RecipeFragMealplanAdapter(getActivity(),mealPlans.getMealPlanArrayList());
         recycler.setAdapter(adapter);
-        String url = Constants.REALM_USER;
-        SyncConfiguration config = new SyncConfiguration.Builder(SyncUser.current(), url).build();
-        realm = Realm.getInstance(config);
-        ArrayList<PlannedResepV3> plannedIds = new ArrayList<>();
-        if(!mealPlans.getMealPlanArrayList().isEmpty()){
-
-        }
-        RealmResults<PlannedResepV3> plannedresults = realm.where(PlannedResepV3.class).findAllAsync();
-        plannedresults.addChangeListener((plannedResepV2s, changeSet) -> {
-            if(changeSet.isCompleteResult()){
-                if(!plannedResepV2s.isEmpty()){
-                    plannedIds.addAll(plannedresults);
-                }
-            }
-            Log.d("hakuwasize3", String.valueOf(plannedresults.size()));
-            for (PlannedResepV3 itemResep : plannedIds){
-                if(itemResep.isValid()){
-                    ResepV2 detailResep = getRecipe(itemResep.getRecipeID());
-                    plannedRecipes.add(detailResep);
-                    mealPlans.add(itemResep.getType(),detailResep,itemResep.getPlanId());
-                    adapter.notifyDataSetChanged();
-                }
-
-            }
-            plannedresults.removeAllChangeListeners();
-            Log.d("hakuwasize4", String.valueOf(plannedRecipes.size()));
-        });
-        if (plannedIds==null){
-            if(!plannedresults.isEmpty()){
-                plannedIds.addAll(plannedresults);
-                Log.d("hakuwasize2", String.valueOf(plannedresults.size()));
-                for (PlannedResepV3 itemResep : plannedIds){
-                    ResepV2 detailResep = getRecipe(itemResep.getRecipeID());
-                    plannedRecipes.add(detailResep);
-                    mealPlans.add(itemResep.getType(),detailResep,itemResep.getPlanId());
-                    adapter.notifyDataSetChanged();
-                }
-            }
-        }
-        Log.d("hakuwasize1", String.valueOf(plannedresults.size()));
         ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder viewHolder1) {
@@ -291,10 +258,82 @@ public class tab3 extends Fragment {
         };
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
         itemTouchHelper.attachToRecyclerView(recycler);
+        getPlannedRecipes();
+        super.onResume();
+    }
+
+    void getPlannedRecipes(){
+        SyncConfiguration configuration = SyncUser.current()
+                .createConfiguration(Constants.REALM_DEFAULT)
+                .build();
+        reciperealm = Realm.getInstance(configuration);
+        String url = Constants.REALM_USER;
+        SyncConfiguration config = new SyncConfiguration.Builder(SyncUser.current(), url).build();
+        realm = Realm.getInstance(config);
+        ArrayList<PlannedResepV3> plannedIds = new ArrayList<>();
+        RealmResults<PlannedResepV3> plannedresults = realm.where(PlannedResepV3.class).findAllAsync();
+        plannedresults.addChangeListener((plannedResepV2s, changeSet) -> {
+            if(changeSet.isCompleteResult()){
+                if(!plannedResepV2s.isEmpty()){
+                    plannedIds.addAll(plannedResepV2s);
+                }
+                Log.d("hakuwasize3", String.valueOf(plannedresults.size()));
+                for (PlannedResepV3 itemResep : plannedIds){
+                    if(itemResep.isValid()){
+                        RealmResults<ResepV2> detailResep = reciperealm
+                                .where(ResepV2.class)
+                                .equalTo("recipeId",itemResep.getRecipeID())
+                                .findAllAsync();
+                        detailResep.addChangeListener(new OrderedRealmCollectionChangeListener<RealmResults<ResepV2>>() {
+                            @Override
+                            public void onChange(RealmResults<ResepV2> resepV2s, OrderedCollectionChangeSet changeSet) {
+                                plannedRecipes.add(detailResep.first());
+                                mealPlans.add(itemResep.getType(),detailResep.first(),itemResep.getPlanId());
+                                adapter.notifyDataSetChanged();
+                            }
+
+                        });
+                    }
+
+                }
+            }
+
+            plannedresults.removeAllChangeListeners();
+            Log.d("hakuwasize4", String.valueOf(plannedRecipes.size()));
+            adapter.notifyDataSetChanged();
+        });
+        if (plannedIds.isEmpty()){
+            if(!plannedresults.isEmpty()){
+                plannedIds.addAll(plannedresults);
+                Log.d("hakuwasize2", String.valueOf(plannedresults.size()));
+                for (PlannedResepV3 itemResep : plannedIds){
+                    RealmResults<ResepV2> detailResep = reciperealm
+                            .where(ResepV2.class)
+                            .equalTo("recipeId",itemResep.getRecipeID())
+                            .findAllAsync();
+                    detailResep.addChangeListener(new OrderedRealmCollectionChangeListener<RealmResults<ResepV2>>() {
+                        @Override
+                        public void onChange(RealmResults<ResepV2> resepV2s, OrderedCollectionChangeSet changeSet) {
+                            plannedRecipes.add(detailResep.first());
+                            mealPlans.add(itemResep.getType(),detailResep.first(),itemResep.getPlanId());
+                            adapter.notifyDataSetChanged();
+                        }
+                    });
+                    if(!detailResep.isEmpty()){
+                        plannedRecipes.add(detailResep.first());
+                        mealPlans.add(itemResep.getType(),detailResep.first(),itemResep.getPlanId());
+                        adapter.notifyDataSetChanged();
+                    }
+                }
+            }
+        }
+        Log.d("hakuwasize1", String.valueOf(plannedresults.size()));
+
     }
 
     @Override
     public void onDestroy() {
+        reciperealm.close();
         realm.close();
         super.onDestroy();
 

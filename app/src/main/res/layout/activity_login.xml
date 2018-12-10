@@ -15,20 +15,24 @@
         android:src="@drawable/login_2"
         android:scaleType="centerCrop"
         />
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#e0ffffff"></LinearLayout>
+        android:background="#e0ffffff">
+        <ProgressBar
+            android:id="@+id/login_progress"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="200dp"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone" />
+    </RelativeLayout>
 
     <!-- Login progress -->
-    <ProgressBar
-        android:id="@+id/login_progress"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:layout_marginBottom="8dp"
-        android:visibility="gone" />
+
 
     <ImageView
         android:layout_width="match_parent"

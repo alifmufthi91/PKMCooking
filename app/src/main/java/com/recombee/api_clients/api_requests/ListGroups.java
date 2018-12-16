@@ -1,0 +1,63 @@
+package com.recombee.api_clients.api_requests;
+
+/*
+ This file is auto-generated, do not edit
+*/
+
+import java.util.Map;
+import java.util.HashMap;
+
+import com.recombee.api_clients.util.HTTPMethod;
+
+/**
+ * Gets the list of all the groups currently present in the database.
+ */
+public class ListGroups extends Request {
+
+
+    /**
+     * Construct the request
+     */
+    public ListGroups () {
+        this.timeout = 100000;
+    }
+
+
+
+    /**
+     * @return Used HTTP method
+     */
+    @Override
+    public HTTPMethod getHTTPMethod() {
+        return HTTPMethod.GET;
+    }
+
+    /**
+     * @return URI to the endpoint including path parameters
+     */
+    @Override
+    public String getPath() {
+        return "/groups/list/";
+    }
+
+    /**
+     * Get query parameters
+     * @return Values of query parameters (name of parameter: value of the parameter)
+     */
+    @Override
+    public Map<String, Object> getQueryParameters() {
+        HashMap<String, Object> params = new HashMap<String, Object>();
+        return params;
+    }
+
+    /**
+     * Get body parameters
+     * @return Values of body parameters (name of parameter: value of the parameter)
+     */
+    @Override
+    public Map<String, Object> getBodyParameters() {
+        HashMap<String, Object> params = new HashMap<String, Object>();
+        return params;
+    }
+
+}

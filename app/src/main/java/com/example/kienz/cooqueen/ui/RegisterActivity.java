@@ -27,6 +27,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.kienz.cooqueen.R;
+import com.recombee.api_client.RecombeeClient;
+import com.recombee.api_client.api_requests.AddDetailView;
+import com.recombee.api_client.exceptions.ApiException;
+
+import java.sql.Timestamp;
+import java.util.Date;
 
 import io.realm.ObjectServerError;
 import io.realm.Realm;
@@ -140,6 +146,7 @@ public class RegisterActivity extends AppCompatActivity {
             SyncUser.logInAsync(myCredentials, Constants.AUTH_URL+"/auth", new SyncUser.Callback<SyncUser>() {
                 @Override
                 public void onSuccess(SyncUser user) {
+//                    RecombeeClient client = new RecombeeClient("pkmcooking","f7TmuRpKNXlVVNLz6Se5CfSjbSTBRVaPRN6eqZvTPSftZUdAvHuWe9luZCjnynzf");
                     String url = Constants.REALM_USER;
                     SyncConfiguration config = new SyncConfiguration.Builder(SyncUser.current(), url).build();
                     realm = Realm.getInstance(config);
@@ -147,6 +154,18 @@ public class RegisterActivity extends AppCompatActivity {
                         User newuser = new User(name,email,SyncUser.current().getIdentity());
                         realm.insert(newuser);
                     });
+//                    Date date= new Date();
+//
+//                    long time = date.getTime();
+//                    Timestamp ts = new Timestamp(time);
+//                    try {
+//                        client.send(new AddDetailView(SyncUser.current().getIdentity(), "resep-1")
+//                                .setTimestamp(ts)
+//                                .setCascadeCreate(true)
+//                        );
+//                    } catch (ApiException e) {
+//                        e.printStackTrace();
+//                    }
                     goToMainActivity();
                     showProgress(false);
                 }

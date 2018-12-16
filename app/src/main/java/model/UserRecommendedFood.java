@@ -9,8 +9,8 @@ public class UserRecommendedFood extends RealmObject {
     @PrimaryKey
     @Required
     private String recommendationId;
-
-    private RealmList<ResepV2> listFood = new RealmList<>();
+    private String userId;
+    private RealmList<String> listFoodId = new RealmList<>();
 
     public UserRecommendedFood() {
     }
@@ -19,9 +19,18 @@ public class UserRecommendedFood extends RealmObject {
         this.recommendationId = recommendationId;
     }
 
-    public UserRecommendedFood(String recommendationId, RealmList<ResepV2> listFood) {
+    public UserRecommendedFood(String recommendationId, String userId, RealmList<String> listFoodId) {
         this.recommendationId = recommendationId;
-        this.listFood = listFood;
+        this.userId = userId;
+        this.listFoodId = listFoodId;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getRecommendationId() {
@@ -32,11 +41,11 @@ public class UserRecommendedFood extends RealmObject {
         this.recommendationId = recommendationId;
     }
 
-    public RealmList<ResepV2> getListFood() {
-        return listFood;
+    public RealmList<String> getListFoodId() {
+        return listFoodId;
     }
 
-    public void setListFood(RealmList<ResepV2> listFood) {
-        this.listFood = listFood;
+    public void setListFoodId(RealmList<String> listFoodId) {
+        this.listFoodId = listFoodId;
     }
 }

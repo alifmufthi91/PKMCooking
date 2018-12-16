@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Rect;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -27,12 +28,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.kienz.cooqueen.R;
-import com.recombee.api_client.RecombeeClient;
-import com.recombee.api_client.api_requests.AddDetailView;
-import com.recombee.api_client.exceptions.ApiException;
+import com.recombee.api_clients.RecombeeClient;
+import com.recombee.api_clients.api_requests.AddDetailView;
+import com.recombee.api_clients.api_requests.AddUser;
+import com.recombee.api_clients.api_requests.Batch;
+import com.recombee.api_clients.api_requests.Request;
+import com.recombee.api_clients.api_requests.SetUserValues;
+import com.recombee.api_clients.exceptions.ApiException;
 
-import java.sql.Timestamp;
-import java.util.Date;
+import java.net.URL;
+import java.util.HashMap;
 
 import io.realm.ObjectServerError;
 import io.realm.Realm;
@@ -96,6 +101,20 @@ public class RegisterActivity extends AppCompatActivity {
         mProgressView = findViewById(R.id.register_progress);
     }
 
+    private class SyncRegister extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected Void doInBackground(Void... voids) {
+            RecombeeClient client = new RecombeeClient("pkmcooking","f7TmuRpKNXlVVNLz6Se5CfSjbSTBRVaPRN6eqZvTPSftZUdAvHuWe9luZCjnynzf");
+            try {
+                client.send(new AddUser(SyncUser.current().getIdentity()));
+                client.send(new SetUserValues(SyncUser.current().getIdentity(), new HashMap<String, Object>(){{put("email", mEmailView.getText().toString());}}));
+            } catch (ApiException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+    }
+
     private void attemptRegister() {
 
 
@@ -146,7 +165,6 @@ public class RegisterActivity extends AppCompatActivity {
             SyncUser.logInAsync(myCredentials, Constants.AUTH_URL+"/auth", new SyncUser.Callback<SyncUser>() {
                 @Override
                 public void onSuccess(SyncUser user) {
-//                    RecombeeClient client = new RecombeeClient("pkmcooking","f7TmuRpKNXlVVNLz6Se5CfSjbSTBRVaPRN6eqZvTPSftZUdAvHuWe9luZCjnynzf");
                     String url = Constants.REALM_USER;
                     SyncConfiguration config = new SyncConfiguration.Builder(SyncUser.current(), url).build();
                     realm = Realm.getInstance(config);
@@ -154,18 +172,7 @@ public class RegisterActivity extends AppCompatActivity {
                         User newuser = new User(name,email,SyncUser.current().getIdentity());
                         realm.insert(newuser);
                     });
-//                    Date date= new Date();
-//
-//                    long time = date.getTime();
-//                    Timestamp ts = new Timestamp(time);
-//                    try {
-//                        client.send(new AddDetailView(SyncUser.current().getIdentity(), "resep-1")
-//                                .setTimestamp(ts)
-//                                .setCascadeCreate(true)
-//                        );
-//                    } catch (ApiException e) {
-//                        e.printStackTrace();
-//                    }
+                    new SyncRegister().execute();
                     goToMainActivity();
                     showProgress(false);
                 }

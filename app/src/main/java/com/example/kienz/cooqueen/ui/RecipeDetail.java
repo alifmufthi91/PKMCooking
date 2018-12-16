@@ -2,6 +2,7 @@ package com.example.kienz.cooqueen.ui;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -15,10 +16,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.kienz.cooqueen.R;
+import com.recombee.api_clients.RecombeeClient;
+import com.recombee.api_clients.api_requests.AddDetailView;
+import com.recombee.api_clients.api_requests.AddUser;
+import com.recombee.api_clients.api_requests.SetUserValues;
+import com.recombee.api_clients.exceptions.ApiException;
 import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
@@ -71,6 +78,7 @@ public class RecipeDetail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         recipeId = getIntent().getStringExtra("idResep");
+        new SyncViewInteraction().execute(recipeId);
         getMyRating(recipeId);
         String recipeName = getIntent().getStringExtra("namaResep");
         String recipeImg = getIntent().getStringExtra("gambarResep");
@@ -220,6 +228,19 @@ public class RecipeDetail extends AppCompatActivity {
     protected void onDestroy() {
         realm.close();
         super.onDestroy();
+    }
+
+    private class SyncViewInteraction extends AsyncTask<String, Void, Void> {
+        @Override
+        protected Void doInBackground(String... ids) {
+            RecombeeClient client = new RecombeeClient("pkmcooking","f7TmuRpKNXlVVNLz6Se5CfSjbSTBRVaPRN6eqZvTPSftZUdAvHuWe9luZCjnynzf");
+            try {
+                client.send(new AddDetailView(SyncUser.current().getIdentity(), ids[0]));
+            } catch (ApiException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
     }
 
     private void getMyRating(String idResep){

@@ -7,7 +7,6 @@ import android.graphics.Rect;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -28,12 +27,6 @@ import android.widget.TextView;
 
 import com.example.kienz.cooqueen.R;
 import com.example.kienz.cooqueen.adapter.MyPagerAdapter;
-import com.recombee.api_clients.RecombeeClient;
-import com.recombee.api_clients.api_requests.AddDetailView;
-import com.recombee.api_clients.api_requests.RecommendItemsToUser;
-import com.recombee.api_clients.bindings.Recommendation;
-import com.recombee.api_clients.bindings.RecommendationResponse;
-import com.recombee.api_clients.exceptions.ApiException;
 
 import java.util.ArrayList;
 
@@ -67,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements tab1.OnFragmentIn
     TextView navUsername;
     TextView navUseremail;
     private ArrayList<ResepV2> plannedRecipes = new ArrayList<>();
-    ArrayList<String> listRecipeId = new ArrayList<>();
+
 
 
     @Override
@@ -87,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements tab1.OnFragmentIn
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        new SyncRecommendation().execute();
+
         ButterKnife.bind(this);
         View headerView =  mNavigation.getHeaderView(0);
         navUsername = (TextView) headerView.findViewById(R.id.userName);
@@ -123,26 +116,7 @@ public class MainActivity extends AppCompatActivity implements tab1.OnFragmentIn
 
     }
 
-    private class SyncRecommendation extends AsyncTask<Void, Void, Void> {
-        @Override
-        protected Void doInBackground(Void... ids) {
-            RecombeeClient client = new RecombeeClient("pkmcooking","f7TmuRpKNXlVVNLz6Se5CfSjbSTBRVaPRN6eqZvTPSftZUdAvHuWe9luZCjnynzf");
-            try {
-                RecommendationResponse recommendationResponse = client.send(new RecommendItemsToUser(SyncUser.current().getIdentity(), 5));
-                System.out.println("Recommended items:");
-                for(Recommendation rec: recommendationResponse) {
-                    listRecipeId.add(rec.getId());
-                }
-                for(String id: listRecipeId) {
-                    System.out.println(id);
-                }
-            } catch (ApiException e) {
-                e.printStackTrace();
-            }
 
-            return null;
-        }
-    }
 
 //    private void getMyProfile(){
 //        String url = Constants.REALM_USER;

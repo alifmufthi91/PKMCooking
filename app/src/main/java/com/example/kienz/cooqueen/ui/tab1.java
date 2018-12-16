@@ -2,6 +2,7 @@ package com.example.kienz.cooqueen.ui;
 
 import android.content.Context;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,11 +16,18 @@ import android.view.ViewGroup;
 
 import com.example.kienz.cooqueen.R;
 import com.example.kienz.cooqueen.adapter.RecipeFragHomeAdapter;
+import com.recombee.api_clients.RecombeeClient;
+import com.recombee.api_clients.api_requests.RecommendItemsToUser;
+import com.recombee.api_clients.bindings.Recommendation;
+import com.recombee.api_clients.bindings.RecommendationResponse;
+import com.recombee.api_clients.exceptions.ApiException;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.realm.OrderedCollectionChangeSet;
+import io.realm.OrderedRealmCollectionChangeListener;
 import io.realm.Realm;
 import io.realm.RealmResults;
 import io.realm.Sort;
@@ -38,6 +46,8 @@ import util.Constants;
  * Use the {@link tab1#newInstance} factory method to
  * create an instance of this fragment.
  */
+
+
 public class tab1 extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -48,11 +58,14 @@ public class tab1 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private RecipeFragHomeAdapter adapter;
-    public ArrayList<Recommender> mRecipes = new ArrayList<>();
+    public RecipeFragHomeAdapter adapter;
+    public ArrayList<Recommender> mRecipes;
     @BindView (R.id.recyclerView_fraghome) RecyclerView recy;
     private Realm defaultrealm;
     private ArrayList<ResepV2> topRated;
+    ArrayList<String> listRecipeId;
+    ArrayList<ResepV2> listRecommend;
+    ArrayList<ResepV2> listRecommend2;
 
     private OnFragmentInteractionListener mListener;
 
@@ -85,38 +98,36 @@ public class tab1 extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override
     public void onResume() {
+        mRecipes = new ArrayList<>();
+        listRecipeId = new ArrayList<>();
+        listRecommend = new ArrayList<>();
+        listRecommend2 = new ArrayList<>();
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recy.setLayoutManager(layoutManager);
+        new SyncRecommendation().execute();
         topRated = new ArrayList<>();
-        ArrayList<ResepV2> recipeArrayList = new ArrayList<ResepV2>();
-        ResepV2 recipe = new ResepV2("Burger","https://images.unsplash.com/photo-1504185945330-7a3ca1380535?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9f2d35c4ea30a81e428e66c653748f91&auto=format&fit=crop&w=621&q=80","google.com","");
-        recipeArrayList.add(recipe);
-        recipeArrayList.add(recipe);
-        recipeArrayList.add(recipe);
-        recipeArrayList.add(recipe);
-        recipeArrayList.add(recipe);
-        recipeArrayList.add(recipe);
-        recipeArrayList.add(recipe);
-        recipeArrayList.add(recipe);
-        recipeArrayList.add(recipe);
-        Recommender A = new Recommender("Recommended for you",recipeArrayList);
+        Recommender A = new Recommender("Recommended for you",listRecommend2);
         Recommender B = new Recommender("Top Rated",topRated);
         mRecipes.add(A);
         mRecipes.add(B);
 
-        getTopRated();
+
 
         for (Recommender h : mRecipes) {
             Log.d("namonn",h.getTitle());
         }
 
         adapter = new RecipeFragHomeAdapter(getActivity(),mRecipes);
+        getTopRated();
         recy.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+
         super.onResume();
     }
 
@@ -197,38 +208,6 @@ public class tab1 extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-
-
-//        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-//        recy.setLayoutManager(layoutManager);
-//
-//        ArrayList<ResepV2> recipeArrayList = new ArrayList<ResepV2>();
-//        ResepV2 recipe = new ResepV2("Burger","https://images.unsplash.com/photo-1504185945330-7a3ca1380535?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9f2d35c4ea30a81e428e66c653748f91&auto=format&fit=crop&w=621&q=80","google.com","");
-//        recipeArrayList.add(recipe);
-//        recipeArrayList.add(recipe);
-//        recipeArrayList.add(recipe);
-//        recipeArrayList.add(recipe);
-//        recipeArrayList.add(recipe);
-//        recipeArrayList.add(recipe);
-//        recipeArrayList.add(recipe);
-//        recipeArrayList.add(recipe);
-//        recipeArrayList.add(recipe);
-//        Recommender A = new Recommender("Recommended for you",recipeArrayList);
-//        mRecipes.add(A);
-//        mRecipes.add(A);
-//        mRecipes.add(A);
-//        mRecipes.add(A);
-//        mRecipes.add(A);
-//        mRecipes.add(A);
-//
-//        for (Recommender h : mRecipes) {
-//            Log.d("namonn",h.getTitle());
-//        }
-//
-//        adapter = new RecipeFragHomeAdapter(getActivity(),mRecipes);
-//        recy.setAdapter(adapter);
-//        adapter.notifyDataSetChanged();
-
     }
 
     void getTopRated(){
@@ -244,7 +223,6 @@ public class tab1 extends Fragment {
                     for (int i=0;i<8;i++){
                         topRated.add(resepV2s.get(i));
                     }
-                    topratedRecipe.removeAllChangeListeners();
                     adapter.notifyDataSetChanged();
                 }
             }
@@ -262,4 +240,62 @@ public class tab1 extends Fragment {
         }
 
     }
+
+    void getRec(){
+        for (String a : listRecipeId){
+            RealmResults<ResepV2> recoRecipe = defaultrealm.where(ResepV2.class).equalTo("recipeId",a).findAllAsync();
+            recoRecipe.addChangeListener(new OrderedRealmCollectionChangeListener<RealmResults<ResepV2>>() {
+                @Override
+                public void onChange(RealmResults<ResepV2> resepV2s, OrderedCollectionChangeSet changeSet) {
+                    if(changeSet.isCompleteResult()){
+                        listRecommend2.add(resepV2s.first());
+                        Log.d("hanuwa","masuk eko");
+                        adapter.notifyDataSetChanged();
+                    }
+
+                }
+            });
+
+        }
+
+    }
+
+
+
+    private class SyncRecommendation extends AsyncTask<Void, Void, Void> {
+
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            Log.d("hakuwanexy", String.valueOf(listRecommend.size()));
+            getRec();
+            super.onPostExecute(aVoid);
+        }
+
+        @Override
+        protected Void doInBackground(Void... ids) {
+            SyncConfiguration configuration = SyncUser.current()
+                    .createConfiguration(Constants.REALM_DEFAULT)
+                    .build();
+            Realm defaultrealmrec  = Realm.getInstance(configuration);
+            RecombeeClient client = new RecombeeClient("pkmcooking","f7TmuRpKNXlVVNLz6Se5CfSjbSTBRVaPRN6eqZvTPSftZUdAvHuWe9luZCjnynzf");
+            try {
+                RecommendationResponse recommendationResponse = client.send(new RecommendItemsToUser(SyncUser.current().getIdentity(), 5));
+                Log.d("hakuwarec","Recommended items:");
+                for(Recommendation rec: recommendationResponse) {
+                    Log.d("hakuwarecid",rec.getId());
+                    listRecipeId.add(rec.getId());
+                    ResepV2 a = defaultrealmrec.where(ResepV2.class).equalTo("recipeId",rec.getId()).findFirst();
+                    listRecommend.add(a);
+                }
+            } catch (ApiException e) {
+                e.printStackTrace();
+            }
+            Log.d("hakuwanexy", String.valueOf(listRecommend.size()));
+
+            return null;
+        }
+    }
+
+
 }

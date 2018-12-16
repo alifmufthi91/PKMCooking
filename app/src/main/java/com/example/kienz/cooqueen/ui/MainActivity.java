@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements tab1.OnFragmentIn
     TextView navUsername;
     TextView navUseremail;
     private ArrayList<ResepV2> plannedRecipes = new ArrayList<>();
-    ArrayList<String> listRecipeId = null;
+    ArrayList<String> listRecipeId = new ArrayList<>();
 
 
     @Override
@@ -131,8 +131,10 @@ public class MainActivity extends AppCompatActivity implements tab1.OnFragmentIn
                 RecommendationResponse recommendationResponse = client.send(new RecommendItemsToUser(SyncUser.current().getIdentity(), 5));
                 System.out.println("Recommended items:");
                 for(Recommendation rec: recommendationResponse) {
-                    System.out.println(rec.getId());
                     listRecipeId.add(rec.getId());
+                }
+                for(String id: listRecipeId) {
+                    System.out.println(id);
                 }
             } catch (ApiException e) {
                 e.printStackTrace();

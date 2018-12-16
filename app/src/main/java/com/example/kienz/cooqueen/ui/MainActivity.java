@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements tab1.OnFragmentIn
     TextView navUsername;
     TextView navUseremail;
     private ArrayList<ResepV2> plannedRecipes = new ArrayList<>();
-
+    ArrayList<String> listRecipeId = null;
 
 
     @Override
@@ -123,10 +123,9 @@ public class MainActivity extends AppCompatActivity implements tab1.OnFragmentIn
 
     }
 
-    private class SyncRecommendation extends AsyncTask<Void, Void, ArrayList<String>> {
+    private class SyncRecommendation extends AsyncTask<Void, Void, Void> {
         @Override
-        protected ArrayList<String> doInBackground(Void... ids) {
-            ArrayList<String> listRecipeId = null;
+        protected Void doInBackground(Void... ids) {
             RecombeeClient client = new RecombeeClient("pkmcooking","f7TmuRpKNXlVVNLz6Se5CfSjbSTBRVaPRN6eqZvTPSftZUdAvHuWe9luZCjnynzf");
             try {
                 RecommendationResponse recommendationResponse = client.send(new RecommendItemsToUser(SyncUser.current().getIdentity(), 5));
@@ -139,7 +138,7 @@ public class MainActivity extends AppCompatActivity implements tab1.OnFragmentIn
                 e.printStackTrace();
             }
 
-            return listRecipeId;
+            return null;
         }
     }
 

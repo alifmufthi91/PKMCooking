@@ -20,8 +20,14 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.realm.Realm;
+import io.realm.RealmResults;
+import io.realm.Sort;
+import io.realm.SyncConfiguration;
+import io.realm.SyncUser;
 import model.Recommender;
 import model.ResepV2;
+import util.Constants;
 
 
 /**
@@ -42,6 +48,11 @@ public class tab1 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private RecipeFragHomeAdapter adapter;
+    public ArrayList<Recommender> mRecipes = new ArrayList<>();
+    @BindView (R.id.recyclerView_fraghome) RecyclerView recy;
+    private Realm defaultrealm;
+    private ArrayList<ResepV2> topRated;
 
     private OnFragmentInteractionListener mListener;
 
@@ -74,6 +85,39 @@ public class tab1 extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+    }
+
+    @Override
+    public void onResume() {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+        recy.setLayoutManager(layoutManager);
+        topRated = new ArrayList<>();
+        ArrayList<ResepV2> recipeArrayList = new ArrayList<ResepV2>();
+        ResepV2 recipe = new ResepV2("Burger","https://images.unsplash.com/photo-1504185945330-7a3ca1380535?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9f2d35c4ea30a81e428e66c653748f91&auto=format&fit=crop&w=621&q=80","google.com","");
+        recipeArrayList.add(recipe);
+        recipeArrayList.add(recipe);
+        recipeArrayList.add(recipe);
+        recipeArrayList.add(recipe);
+        recipeArrayList.add(recipe);
+        recipeArrayList.add(recipe);
+        recipeArrayList.add(recipe);
+        recipeArrayList.add(recipe);
+        recipeArrayList.add(recipe);
+        Recommender A = new Recommender("Recommended for you",recipeArrayList);
+        Recommender B = new Recommender("Top Rated",topRated);
+        mRecipes.add(A);
+        mRecipes.add(B);
+
+        getTopRated();
+
+        for (Recommender h : mRecipes) {
+            Log.d("namonn",h.getTitle());
+        }
+
+        adapter = new RecipeFragHomeAdapter(getActivity(),mRecipes);
+        recy.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+        super.onResume();
     }
 
     @Override
@@ -146,9 +190,7 @@ public class tab1 extends Fragment {
     }
 
 
-    private RecipeFragHomeAdapter adapter;
-    public ArrayList<Recommender> mRecipes = new ArrayList<>();
-    @BindView (R.id.recyclerView_fraghome) RecyclerView recy;
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -157,35 +199,67 @@ public class tab1 extends Fragment {
 
 
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-        recy.setLayoutManager(layoutManager);
+//        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+//        recy.setLayoutManager(layoutManager);
+//
+//        ArrayList<ResepV2> recipeArrayList = new ArrayList<ResepV2>();
+//        ResepV2 recipe = new ResepV2("Burger","https://images.unsplash.com/photo-1504185945330-7a3ca1380535?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9f2d35c4ea30a81e428e66c653748f91&auto=format&fit=crop&w=621&q=80","google.com","");
+//        recipeArrayList.add(recipe);
+//        recipeArrayList.add(recipe);
+//        recipeArrayList.add(recipe);
+//        recipeArrayList.add(recipe);
+//        recipeArrayList.add(recipe);
+//        recipeArrayList.add(recipe);
+//        recipeArrayList.add(recipe);
+//        recipeArrayList.add(recipe);
+//        recipeArrayList.add(recipe);
+//        Recommender A = new Recommender("Recommended for you",recipeArrayList);
+//        mRecipes.add(A);
+//        mRecipes.add(A);
+//        mRecipes.add(A);
+//        mRecipes.add(A);
+//        mRecipes.add(A);
+//        mRecipes.add(A);
+//
+//        for (Recommender h : mRecipes) {
+//            Log.d("namonn",h.getTitle());
+//        }
+//
+//        adapter = new RecipeFragHomeAdapter(getActivity(),mRecipes);
+//        recy.setAdapter(adapter);
+//        adapter.notifyDataSetChanged();
 
-        ArrayList<ResepV2> recipeArrayList = new ArrayList<ResepV2>();
-        ResepV2 recipe = new ResepV2("Burger","https://images.unsplash.com/photo-1504185945330-7a3ca1380535?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9f2d35c4ea30a81e428e66c653748f91&auto=format&fit=crop&w=621&q=80","google.com","");
-        recipeArrayList.add(recipe);
-        recipeArrayList.add(recipe);
-        recipeArrayList.add(recipe);
-        recipeArrayList.add(recipe);
-        recipeArrayList.add(recipe);
-        recipeArrayList.add(recipe);
-        recipeArrayList.add(recipe);
-        recipeArrayList.add(recipe);
-        recipeArrayList.add(recipe);
-        Recommender A = new Recommender("Recommended for you",recipeArrayList);
-        mRecipes.add(A);
-        mRecipes.add(A);
-        mRecipes.add(A);
-        mRecipes.add(A);
-        mRecipes.add(A);
-        mRecipes.add(A);
+    }
 
-        for (Recommender h : mRecipes) {
-            Log.d("namonn",h.getTitle());
+    void getTopRated(){
+        SyncConfiguration configuration = SyncUser.current()
+                .createConfiguration(Constants.REALM_DEFAULT)
+                .build();
+        defaultrealm  = Realm.getInstance(configuration);
+        RealmResults<ResepV2> topratedRecipe = defaultrealm.where(ResepV2.class).sort("rating_value",Sort.DESCENDING,"rating_giver",Sort.DESCENDING).findAllAsync();
+        topratedRecipe.addChangeListener((resepV2s, changeSet) -> {
+            Log.d("hakuwatop221", String.valueOf(resepV2s.size()));
+            if(changeSet.isCompleteResult()){
+                if(!resepV2s.isEmpty()){
+                    for (int i=0;i<8;i++){
+                        topRated.add(resepV2s.get(i));
+                    }
+                    topratedRecipe.removeAllChangeListeners();
+                    adapter.notifyDataSetChanged();
+                }
+            }
+
+        });
+        if(topRated.isEmpty()){
+            Log.d("hakuwatop222", String.valueOf(topRated.size()));
+            if(!topratedRecipe.isEmpty()){
+                for (int i=0;i<8;i++){
+                    topRated.add(topratedRecipe.get(i));
+                }
+                Log.d("hakuwatop223", String.valueOf(topRated.size()));
+                adapter.notifyDataSetChanged();
+            }
         }
-
-        adapter = new RecipeFragHomeAdapter(getActivity(),mRecipes);
-        recy.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
 
     }
 }

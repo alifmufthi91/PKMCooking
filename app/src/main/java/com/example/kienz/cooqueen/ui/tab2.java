@@ -181,18 +181,10 @@ public class tab2 extends Fragment  {
         GridLayoutManager gridManager = new GridLayoutManager(getActivity(),2);
 
         recycler_fragsearch.setLayoutManager(gridManager);
-        ResepV2 A=new ResepV2("Ayam","https://keeprecipes.com/sites/keeprecipes/files/imagecache/recipe_large/05-resep_ayam_goreng_bumbu_kuning_-_cara_membuat.jpg","google.com","");
-        mRecipes.add(A);
-        mRecipes.add(A);
-        mRecipes.add(A);
-        mRecipes.add(A);
-        mRecipes.add(A);
-        mRecipes.add(A);
-        mRecipes.add(A);
-        mRecipes.add(A);
-        mRecipes.add(A);
-        mRecipes.add(A);
-        mRecipes.add(A);
+        mRecipes.add(new ResepV2("Ayam","https://keeprecipes.com/sites/keeprecipes/files/imagecache/recipe_large/05-resep_ayam_goreng_bumbu_kuning_-_cara_membuat.jpg","google.com",""));
+        mRecipes.add(new ResepV2("Sapi","https://ecs7.tokopedia.net/img/cache/700/product-1/2016/9/26/468603/468603_381e0bfe-ad67-4505-bbe4-5e76eebca5ac.jpg","google.com",""));
+        mRecipes.add(new ResepV2("Wortel","http://cdn2.tstatic.net/aceh/foto/bank/images/wortel_20170108_093912.jpg","google.com",""));
+        mRecipes.add(new ResepV2("Seafood","https://www.sbs.com.au/food/sites/sbs.com.au.food/files/styles/full/public/thalassina-sta-karvouna-grilled-seafood.jpg?itok=QZn2Za0E&mtime=1416267312","google.com",""));
 
         for (ResepV2 h : mRecipes) {
             Log.d("namonn",h.getName());
